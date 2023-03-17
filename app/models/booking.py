@@ -14,11 +14,13 @@ guest_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
         'users.id')), nullable=False)
 vehicle_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
         'vehicles.id')), nullable=False)
-
+review_id = db.Column(db.Integer, db.ForeignKey(
+        add_prefix_for_prod('reviews.id')), nullable=False)
 
 
 guest = db.relationship('User', foreign_keys=[guest_id], back_populates='bookings_guest')
 vehicle = db.relationship('Vehicle', back_populates='bookings')
+review = db.relationship('Review', back_populates='booking')
 
 
 
@@ -31,6 +33,5 @@ def to_dict(self):
             'location': self.location,
             'vehicle': self.vehicle.to_dict(),
             'guest': self.guest,
-
       }
-# do I need to list vehicle, guest, host
+# the host will come from the vehicle
