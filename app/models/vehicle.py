@@ -48,5 +48,6 @@ def to_dict(self):
         'description': self.description,
         'type': self.type,
         'passengers': self.passengers,
-        'host': self.host
+        'host': self.host,
+        'bookings': self.bookings.to_dict()
     }

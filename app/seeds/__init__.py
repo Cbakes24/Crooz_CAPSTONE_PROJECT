@@ -1,5 +1,9 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
+from .vehicles import seed_vehicles, undo_vehicles
+from .bookings import seed_bookings, undo_bookings
+from .reviews import seed_reviews, undo_reviews
+from .favorites import seed_favorites, undo_favorites
 
 from app.models.db import db, environment, SCHEMA
 
@@ -18,10 +22,19 @@ def seed():
         # Make sure to add all your other model's undo functions below
         # Before seeding, truncate all tables prefixed with schema name
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.vehicles RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.bookings RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.reviews RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.favorites RESTART IDENTITY CASCADE;")
+
         # Add a truncate command here for every table that will be seeded.
         db.session.commit()
-        undo_users()
+
     seed_users()
+    seed_vehicles()
+    seed_bookings()
+    seed_reviews()
+    seed_favorites()
     # Add other seed functions here
 
 
@@ -29,4 +42,8 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
+    undo_vehicles()
+    undo_bookings()
+    undo_reviews()
+    undo_favorites()
     # Add other undo functions here

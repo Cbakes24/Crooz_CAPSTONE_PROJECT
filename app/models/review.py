@@ -26,9 +26,7 @@ class Review(db.Model):
         return {
             'id': self.id,
             'userId': self.user_id,
-            'beerId': self.beer_id,
             'body': self.body,
-            'image': self.image,
             'rating': self.rating,
             'createdAt': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
             'updatedAt': self.updated_at.strftime('%Y-%m-%d %H:%M:%S'),
