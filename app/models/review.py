@@ -28,7 +28,8 @@ class Review(db.Model):
 
     user = db.relationship('User', back_populates='reviews')
     vehicle = db.relationship('Vehicle', back_populates='review')
-    booking = db.relationship('Booking', back_populates='review')
+    booking = db.relationship('Booking', uselist=False, back_populates='review')
+
     def to_dict(self):
         return {
             'id': self.id,

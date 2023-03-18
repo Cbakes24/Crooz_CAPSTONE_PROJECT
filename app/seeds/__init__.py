@@ -25,7 +25,7 @@ def seed():
         db.session.execute(f"TRUNCATE table {SCHEMA}.vehicles RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.bookings RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.reviews RESTART IDENTITY CASCADE;")
-        # db.session.execute(f"TRUNCATE table {SCHEMA}.favorites RESTART IDENTITY CASCADE;")
+
 
         # Add a truncate command here for every table that will be seeded.
         db.session.commit()
@@ -34,7 +34,7 @@ def seed():
     seed_vehicles()
     seed_bookings()
     seed_reviews()
-    # seed_favorites()
+
     # Add other seed functions here
 
 
@@ -45,5 +45,5 @@ def undo():
     undo_vehicles()
     undo_bookings()
     undo_reviews()
-    # undo_favorites()
+
     # Add other undo functions here

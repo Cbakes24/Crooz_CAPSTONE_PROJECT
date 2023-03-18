@@ -3,26 +3,28 @@ from sqlalchemy.sql import text
 
 
 # Adds a demo user, you can add other users here if you want
+demo = User(
+    username='Demo', email='demo@aa.io', password='password')
+
+cory = User(
+    username='cory', email='cory@gmail.com', password='password')
+
+heather = User(
+    username='heather', email='heather@gmail.com', password='password')
+
+mac = User(
+username='mac', email='mac@gmail.com', password='password')
+
+ayla = User(
+username='ayla', email='ayla@gmail.com', password='password')
+
+leon = User(
+username='leon', email='leon@gmail.com', password='password')
+
+hailey = User(
+username='hailey', email='hailey@gmail.com', password='password')
+
 def seed_users():
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    cory = User(
-        username='cory', email='cory@gmail.com', password='password')
-
-    heather = User(
-        username='heather', email='heather@gmail.com', password='password')
-
-    mac = User(
-    username='mac', email='mac@gmail.com', password='password')
-
-    ayla = User(
-    username='ayla', email='ayla@gmail.com', password='password')
-
-    leon = User(
-    username='leon', email='leon@gmail.com', password='password')
-
-    hailey = User(
-    username='hailey', email='hailey@gmail.com', password='password')
 
 
     db.session.add(demo)

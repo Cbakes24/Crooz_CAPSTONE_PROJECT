@@ -1,5 +1,6 @@
 from app.models import db, environment, SCHEMA, Vehicle
 from sqlalchemy.sql import text
+from .users import demo, cory, heather, mac, ayla, leon, hailey
 
 
 def seed_vehicles():
@@ -29,6 +30,7 @@ def seed_vehicles():
     db.session.add(vehicle3)
     db.session.add(vehicle4)
     db.session.add(vehicle5)
+    vehicle1.fav_by_users.append(demo)
     db.session.commit()
 
 

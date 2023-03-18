@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from . import favorites
+from .favorites import favorites
 class Vehicle(db.Model):
     __tablename__ = 'vehicles'
 
@@ -20,9 +20,9 @@ class Vehicle(db.Model):
             'users.id')), nullable=False)
 
     review = db.relationship('Review', back_populates='vehicle')
-    host = db.relationship('User', foreign_keys=[host_id], back_populates='bookings_host')
+    host = db.relationship('User', back_populates='bookings_host')
     bookings = db.relationship('Booking', back_populates='vehicle')
-    fav_by_users = db.relationship("User", secondary=favorites, back_populates="fav_vehicles" )
+    fav_by_users = db.relationship("User", secondary=favorites, back_populates="fav_vehicles", cascade='all, delete' )
 
     # def to_dict(self):
     #     return {

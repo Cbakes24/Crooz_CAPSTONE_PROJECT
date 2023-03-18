@@ -14,11 +14,11 @@ class Booking(db.Model):
                 'users.id')), nullable=False)
         vehicle_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
                 'vehicles.id')), nullable=False)
-        review_id = db.Column(db.Integer, db.ForeignKey(
-                add_prefix_for_prod('reviews.id')), nullable=False)
+        # review_id = db.Column(db.Integer, db.ForeignKey(
+        #         add_prefix_for_prod('reviews.id')), nullable=False)
 
 
-        guest = db.relationship('User', foreign_keys=[guest_id], back_populates='bookings_guest')
+        guest = db.relationship('User', back_populates='bookings_guest')
         vehicle = db.relationship('Vehicle', back_populates='bookings')
         review = db.relationship('Review', back_populates='booking')
 
