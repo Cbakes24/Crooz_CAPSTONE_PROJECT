@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
 from sqlalchemy.orm import joinedload
-from app.models import db, Booking, User, Review, Vehicle
+from app.models import db, Booking, User, Review, Vehicle, favorites
 from app.forms.vehicle_form import VehicleForm
 
 
@@ -28,6 +28,8 @@ def get_all_vehicles():
     vehicles = Vehicle.query.all()
     return [vehicle.to_dict() for vehicle in vehicles]
 
+
+
 # CREATE A VEHICLE
 @vehicle_bp.route('', methods=['POST'])
 @login_required
@@ -48,3 +50,6 @@ def create_vehicle():
             new_vehicle.to_dict()
         )
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+

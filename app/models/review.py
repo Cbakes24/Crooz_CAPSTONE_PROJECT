@@ -22,7 +22,7 @@ class Review(db.Model):
         db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     vehicle_id = db.Column(db.Integer, db.ForeignKey(
-        add_prefix_for_prod('vehicless.id')), nullable=False)
+        add_prefix_for_prod('vehicles.id')), nullable=False)
 
 
 

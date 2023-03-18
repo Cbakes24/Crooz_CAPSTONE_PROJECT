@@ -2,7 +2,7 @@ from app.models import db, environment, SCHEMA, Vehicle
 from sqlalchemy.sql import text
 
 
-def seed_users():
+def seed_vehicles():
     vehicle1 = Vehicle(year=2020, make='Yamaha', model='Concierge-6', power='gas',
                        description='This baby can fit 6 people comfortably to go anywhere you want! It also whips at 19mph woooo',
                        type='golf cart', passengers=6, host_id=1, picture='https://www.yamahagolfcar.com/Images/navigation/thumbnails/nav-concierge-6.png')
