@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     bookings_guest = db.relationship('Booking', back_populates='guest')
-    bookings_host = db.relationship('Booking', back_populates='host')
+    bookings_host = db.relationship('Vehicle', back_populates='host')
     fav_vehicles = db.relationship("Vehicle", secondary=favorites, back_populates="users" )
 
     @property

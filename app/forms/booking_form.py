@@ -8,6 +8,8 @@ class BookingForm(FlaskForm):
     location = StringField('Location', validators=[DataRequired()])
     submit = SubmitField('Book')
 
+# this will send a request to the backend api and then run that vehicle query to get all vehicles based on this info?
+
 #ADD TO MODELSS TO CREAT AVAILABILITY
 # from .db import db, environment, SCHEMA, add_prefix_for_prod
 # from datetime import datetime, timedelta
