@@ -22,8 +22,7 @@ def validation_errors_to_error_messages(validation_errors):
 # Get all reviews
 @review_bp.route('', methods=['GET'])
 def get_recent_reviews():
-    reviews = Review.query.options(
-        joinedload(Review.user),
-        joinedload(Review.beer)
-    ).order_by(Review.created_at.desc()).limit(10)
+    reviews = Review.query.order_by(Review.created_at.desc()).limit(10)
     return jsonify([review.to_dict() for review in reviews]), 200
+
+# Create a review

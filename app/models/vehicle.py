@@ -15,7 +15,6 @@ class Vehicle(db.Model):
     description = db.Column(db.String(255), nullable=False)
     type= db.Column(db.String(50), nullable=False)
     passengers = db.Column(db.Integer, nullable=True)
-    # availability =  ??????????
     host_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
             'users.id')), nullable=False)
 
