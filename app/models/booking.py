@@ -31,7 +31,7 @@ class Booking(db.Model):
                         'pickupDate': self.pickup_date,
                         'dropOffDate': self.drop_off_date,
                         'location': self.location,
-                        'vehicle': self.vehicle.to_dict(),
-                        'guest': self.guest,
+                        'vehicleId': self.vehicle_id,
+                        'guest': self.guest.to_dict(),
                 }
                 # the host will come from the vehicle

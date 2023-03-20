@@ -22,5 +22,5 @@ def get_host_bookings():
     """
     Returns a list of all host bookings for the current user
     """
-    user_bookings = Booking.query.join(Vehicle).filter_by(Vehicle.host_id == current_user.id).all()
+    user_bookings = Booking.query.join(Vehicle).filter_by(host_id = current_user.id).all()
     return jsonify([booking.to_dict() for booking in user_bookings])

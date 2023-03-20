@@ -24,7 +24,4 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
-@user_routes.route('/current_user_id', methods=['GET'])
-@login_required
-def get_current_user_id():
-    return jsonify({'id': current_user.id})
+
