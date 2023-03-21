@@ -48,6 +48,20 @@ class Vehicle(db.Model):
             'description': self.description,
             'type': self.type,
             'passengers': self.passengers,
-            'host': self.host.to_dict(),
+            'host': self.host.to_dict_host(),
             'bookings': [booking.to_dict() for booking in self.bookings]
+        }
+
+    def to_dict_fav_vehicle(self):
+        return {
+            'id': self.id,
+            'year': self.year,
+            'make': self.make,
+            'model': self.model,
+            'picture': self.picture,
+            'power': self.power,
+            'description': self.description,
+            'type': self.type,
+            'passengers': self.passengers,
+            'host': self.host.to_dict_host(),
         }

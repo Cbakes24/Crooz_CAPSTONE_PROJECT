@@ -30,7 +30,7 @@ def seed_vehicles():
     db.session.add(vehicle3)
     db.session.add(vehicle4)
     db.session.add(vehicle5)
-    vehicle1.fav_by_users.append(demo)
+    vehicle2.fav_by_users.append(demo)
     db.session.commit()
 
 
