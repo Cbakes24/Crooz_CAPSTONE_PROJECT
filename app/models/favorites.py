@@ -3,7 +3,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 favorites = db.Table(
     'favorites',
-    # db.Model.metadata,
+    db.Model.metadata,
     db.Column("user_id", db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False),
     db.Column("vehicle_id", db.Integer, db.ForeignKey(add_prefix_for_prod('vehicles.id')), nullable=False)
     )
