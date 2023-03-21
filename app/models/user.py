@@ -40,7 +40,7 @@ class User(db.Model, UserMixin):
             'favVehicles': [vehicle.to_dict_fav_vehicle() for vehicle in self.fav_vehicles]
         }
 
-    def to_dict_host(self):
+    def to_dict_user(self):
         return {
             'id': self.id,
             'username': self.username,

@@ -48,7 +48,7 @@ class Vehicle(db.Model):
             'description': self.description,
             'type': self.type,
             'passengers': self.passengers,
-            'host': self.host.to_dict_host(),
+            'host': self.host.to_dict_user(),
             'bookings': [booking.to_dict() for booking in self.bookings]
         }
 
@@ -63,5 +63,5 @@ class Vehicle(db.Model):
             'description': self.description,
             'type': self.type,
             'passengers': self.passengers,
-            'host': self.host.to_dict_host(),
+            'host': self.host.to_dict_user(),
         }
