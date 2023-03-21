@@ -51,48 +51,70 @@ export const fetchVehicleType = (vehicleType) => async (dispatch) => {
   return data;
 };
 
-
 // POST create a vehicle
-export const createVehicle = vehicle => async dispatch => {
-    const res = await fetch('/api/vehicles', {
-      method: 'POST',
-      body: JSON.stringify(vehicle),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+export const createVehicle = (vehicle) => async (dispatch) => {
+  const res = await fetch("/api/vehicles", {
+    method: "POST",
+    body: JSON.stringify(vehicle),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-    const data = await res.json();
-    if (res.ok) {
-      dispatch(setVehicles([data]));
-    }
-    return data;
-  };
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(setVehicles([data]));
+  }
+  return data;
+};
 
 //   PUT edit a vehicle
-export const editVehicle = vehicle => async dispatch => {
-    const res = await fetch(`/api/vehicles${vehicle.id}`, {
-      method: 'PUT',
-      body: JSON.stringify(vehicle),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+export const editVehicle = (vehicle) => async (dispatch) => {
+  const res = await fetch(`/api/vehicles${vehicle.id}`, {
+    method: "PUT",
+    body: JSON.stringify(vehicle),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-    const data = await res.json();
-    if (res.ok) {
-      dispatch(setVehicles([data]));
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(setVehicles([data]));
+  }
+  return data;
+};
+
+//DELETE a vehicle
+export const deleteVehicle = (vehicleId) => async (dispatch) => {
+  const res = await fetch(`/api/vehicles/${vehicleId}`, {
+    method: "DELETE",
+  });
+  if (res.ok) {
+    dispatch(removeVehicle(vehicleId));
+  }
+  return res;
+};
+
+
+const vehiclesReducer = (state = {}, action) => {
+    let newState = { ...state };
+    switch (action.type) {
+      case SET_VEHICLES:
+        const vehiclesObj = {};
+        action.vehicles.forEach(vehicle => {
+          vehiclesObj[vehicle.id] = vehicle;
+        });
+        newState = { ...newState, ...vehiclesObj };
+        return newState;
+
+
+      case REMOVE_VEHICLES:
+        delete newState[action.vehicleId];
+        return newState;
+      default:
+        return state;
     }
-    return data;
   };
 
-  //DELETE a vehicle
-export const deleteVehicle = vehicleId => async dispatch => {
-    const res = await fetch(`/api/vehicles/${vehicleId}`, {
-      method: 'DELETE'
-    });
-    if (res.ok) {
-      dispatch(removeVehicle(vehicleId));
-    }
-    return res;
-  };
+  export default vehiclesReducer;
