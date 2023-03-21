@@ -52,6 +52,8 @@ class Vehicle(db.Model):
             'bookings': [booking.to_dict() for booking in self.bookings]
         }
 
+
+# able to view the vehicle without seeing all the vehicles bookings, also avoids recursion
     def to_dict_fav_vehicle(self):
         return {
             'id': self.id,

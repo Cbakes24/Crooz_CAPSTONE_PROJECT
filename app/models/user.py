@@ -40,6 +40,7 @@ class User(db.Model, UserMixin):
             'favVehicles': [vehicle.to_dict_fav_vehicle() for vehicle in self.fav_vehicles]
         }
 
+# able to see the user without seeing their favorite cars, also avoids recursion
     def to_dict_user(self):
         return {
             'id': self.id,
