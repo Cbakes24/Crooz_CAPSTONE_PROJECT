@@ -37,7 +37,7 @@ class Booking(db.Model):
                         # 'longitude': self.longitude,
                         'vehicleId': self.vehicle_id,
                         'guest': self.guest.to_dict_user(),
-                        # 'totalPrice': self.vehicle.to_dict().daily_price
+                        'totalPrice': self.vehicle.to_dict_no_booking()['dailyPrice'] 
                 }
                 # the host will come from the vehicle
 #   def set_location_coordinates(self):
