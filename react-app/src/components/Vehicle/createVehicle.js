@@ -1,4 +1,4 @@
-import AddVehicleForm from './addVehicleForm';
+import VehicleForm from './vehicleForm';
 
 const CreateVehicleForm = () => {
   const vehicle = {
@@ -14,7 +14,7 @@ const CreateVehicleForm = () => {
   };
 
   return (
-    <AddVehicleForm vehicle={vehicle} formType="New vehicle" />
+    <VehicleForm vehicle={vehicle} formType="New vehicle" />
   );
 }
 
