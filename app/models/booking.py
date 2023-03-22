@@ -39,7 +39,7 @@ class Booking(db.Model):
                         'vehicleId': self.vehicle_id,
                         'guest': self.guest.to_dict_user(),
                         'tripLength': self.trip_length(),
-                        'totalPrice': self.trip_length * self.vehicle.to_dict_no_booking()['dailyPrice'] * self.trip_length()
+                        'totalPrice': self.trip_length() * self.vehicle.to_dict_no_booking()['dailyPrice']
 
                 }
                 # the host will come from the vehicle
