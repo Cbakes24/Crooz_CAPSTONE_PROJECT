@@ -40,5 +40,6 @@ def undo_vehicles():
             f"TRUNCATE table {SCHEMA}.vehicles RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM vehicles")
+        db.session.execute("DELETE FROM favorites")
 
     db.session.commit()
