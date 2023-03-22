@@ -56,7 +56,7 @@ class Vehicle(db.Model):
 
 
 # able to view the vehicle without seeing all the vehicles bookings, also avoids recursion
-    def to_dict_fav_vehicle(self):
+    def to_dict_no_booking(self):
         return {
             'id': self.id,
             'year': self.year,
