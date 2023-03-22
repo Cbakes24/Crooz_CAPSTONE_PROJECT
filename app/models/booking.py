@@ -25,7 +25,7 @@ class Booking(db.Model):
         review = db.relationship('Review', back_populates='booking')
 
 
-
+        # def trip_length(pickup_date, drop_off_date):
 
         def to_dict(self):
                 return {
