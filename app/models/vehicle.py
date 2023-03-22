@@ -15,6 +15,7 @@ class Vehicle(db.Model):
     description = db.Column(db.String(255), nullable=False)
     type= db.Column(db.String(50), nullable=False)
     passengers = db.Column(db.Integer, nullable=True)
+    daily_price = db.Column(db.Integer, nullable=True)
     host_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
             'users.id')), nullable=False)
 
@@ -49,6 +50,7 @@ class Vehicle(db.Model):
             'type': self.type,
             'passengers': self.passengers,
             'host': self.host.to_dict_user(),
+            'dailyPrice': self.daily_price,
             'bookings': [booking.to_dict() for booking in self.bookings]
         }
 
@@ -65,5 +67,6 @@ class Vehicle(db.Model):
             'description': self.description,
             'type': self.type,
             'passengers': self.passengers,
+            'dailyPrice': self.daily_price,
             'host': self.host.to_dict_user(),
         }
