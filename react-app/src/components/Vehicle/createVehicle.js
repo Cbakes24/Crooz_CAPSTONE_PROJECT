@@ -10,7 +10,7 @@ const CreateVehicleForm = () => {
     passengers: '',
     picture: '',
     description: '',
-    // price: ''
+    dailyPrice: ''
   };
 
   return (
