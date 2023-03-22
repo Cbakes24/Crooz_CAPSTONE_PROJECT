@@ -25,7 +25,8 @@ class Booking(db.Model):
         review = db.relationship('Review', back_populates='booking')
 
 
-        # def trip_length(pickup_date, drop_off_date):
+        def trip_length(self):
+                return (self.drop_off_date - self.pickup_date).days
 
         def to_dict(self):
                 return {
@@ -37,7 +38,9 @@ class Booking(db.Model):
                         # 'longitude': self.longitude,
                         'vehicleId': self.vehicle_id,
                         'guest': self.guest.to_dict_user(),
-                        'totalPrice': self.vehicle.to_dict_no_booking()['dailyPrice']
+                        'tripLength': self.trip_length(),
+                        'totalPrice': self.trip_length * self.vehicle.to_dict_no_booking()['dailyPrice'] * self.trip_length()
+
                 }
                 # the host will come from the vehicle
 #   def set_location_coordinates(self):
