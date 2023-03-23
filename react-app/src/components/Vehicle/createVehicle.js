@@ -1,21 +1,19 @@
-import VehicleForm from './vehicleForm';
+import VehicleForm from "./vehicleForm";
 
 const CreateVehicleForm = () => {
   const vehicle = {
-    make: '',
-    model: '',
-    year: '',
-    type: '',
-    power: '',
-    passengers: '',
-    picture: '',
-    description: '',
-    dailyPrice: ''
+    make: "",
+    model: "",
+    year: "",
+    type: "",
+    power: "",
+    passengers: "",
+    picture: "",
+    description: "",
+    dailyPrice: ""
   };
 
-  return (
-    <VehicleForm vehicle={vehicle} formType="New vehicle" />
-  );
-}
+  return <VehicleForm vehicle={vehicle} formType="New vehicle" />;
+};
 
 export default CreateVehicleForm;

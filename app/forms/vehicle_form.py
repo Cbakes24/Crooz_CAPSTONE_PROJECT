@@ -12,5 +12,5 @@ class VehicleForm(FlaskForm):
     passengers = IntegerField('Passengers', validators=[DataRequired()])
     picture = StringField('Picture', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
-    daily_price = IntegerField('Daily Price', validators=[DataRequired(), NumberRange(min=1, max=999)])
+    dailyPrice = IntegerField('Daily Price', validators=[DataRequired(), NumberRange(min=1, max=999)])
     submit = SubmitField('Submit')
