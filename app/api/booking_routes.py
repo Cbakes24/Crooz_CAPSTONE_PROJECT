@@ -1,7 +1,7 @@
 
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
-from app.models import Booking, Vehicle
+from app.models import Booking, Vehicle, User
 
 booking_bp = Blueprint('booking', __name__)
 
@@ -24,3 +24,13 @@ def get_host_bookings():
     """
     user_bookings = Booking.query.join(Vehicle).filter_by(host_id = current_user.id).all()
     return jsonify([booking.to_dict() for booking in user_bookings])
+
+#CREATE A BOOKING
+@booking_bp.route('', methods=['POST'])
+@login_required
+def get_host_bookings():
+    """
+    Creates a booking with a selected vehicle
+    """
+
+# vehicle_location = Vehicle.query.join(User).filter_by(user.city)
