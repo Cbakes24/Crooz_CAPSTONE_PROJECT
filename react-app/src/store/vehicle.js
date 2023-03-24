@@ -29,6 +29,22 @@ export const fetchVehicles = () => async (dispatch) => {
   return data;
 };
 
+// GET ALL VEHICLES BY DATE and LOCATION
+export const fetchVehiclesByLocation = (payload) => async (dispatch) => {
+  const res = await fetch("/api/vehicles", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(setVehicles(data));
+  }
+  return data;
+};
+
 // GET a vehicle by id
 export const fetchVehicle = (vehicleId) => async (dispatch) => {
   const res = await fetch(`/api/vehicles/${vehicleId}`);

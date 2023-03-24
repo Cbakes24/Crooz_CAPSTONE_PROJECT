@@ -72,6 +72,23 @@ def edit_vehicle(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+# GET ALL VEHICLES FROM LOCATION
+@vehicle_bp.route('/search', methods=['POST'])
+@login_required
+def vehicles_by_location():
+    location = request.args.get('location')
+    pickup_date = request.args.get('pickup_date')
+    drop_off_date = request.args.get('drop_off_date')
+
+
+    # filtered_vehicles = db.session.query(Vehicle).filter_by(
+    #     location=vehicles.host.city
+    # ).all()
+
+
+
+
+
     # new_vehicle = Vehicle(
     #     year=form.year.data,
     #     make=form.make.data,

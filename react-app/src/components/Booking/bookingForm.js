@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createVehicle, editVehicle } from "../../store/vehicle";
+import { createVehicle, editVehicle, fetchVehiclesByLocation } from "../../store/vehicle";
 import "./vehicle.css";
+import VehiclesList from "../Vehicle/vehiclesList";
+
 
 const BookingForm = () => {
   const history = useHistory();
@@ -11,9 +13,9 @@ const BookingForm = () => {
   const vehicles = useSelector((state) => Object.values(state.vehicle));
 
   console.log(vehicles.host, "VEHILCE HOST");
-  const [pickupDate, setPickupDate] = useState(vehicle.pickupDate);
-  const [dropOffDate, setDropOffDate] = useState(vehicle.dropOffDate);
-  const [location, setLocation] = useState(vehicle.location);
+  const [pickupDate, setPickupDate] = useState('');
+  const [dropOffDate, setDropOffDate] = useState('');
+  const [location, setLocation] = useState('');
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
@@ -25,8 +27,7 @@ const BookingForm = () => {
       location,
     };
 
-    const action = booking.id ? editBooking : createBooking;
-    const data = await dispatch(action(payload));
+    const data = await dispatch(fetchVehiclesByLocation(payload));
     if (data.errors) {
       setErrors(data.errors);
     } else {
@@ -44,96 +45,45 @@ const BookingForm = () => {
           ))}
         </ul>
         <label>
-          Make
+        pickupDate
           <input
             type="text"
             placeholder=""
             required
-            value={make}
-            onChange={(e) => setMake(e.target.value)}
+            value={pickupDate}
+            onChange={(e) => setPickupDate(e.target.value)}
           />
         </label>
         <label>
-          Model
+        dropOffDate
           <input
             type="text"
             placeholder=""
             required
-            value={model}
-            onChange={(e) => setModel(e.target.value)}
+            value={dropOffDate}
+            onChange={(e) => setDropOffDate(e.target.value)}
           />
         </label>
         <label>
-          Year
+        location
           <input
             type="number"
             placeholder=""
             required
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
-          />
-        </label>
-        <label>
-          Type
-          <input
-            type="text"
-            placeholder=""
-            value={type}
-            onChange={(e) => setType(e.target.value)}
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
           />
         </label>
 
-        <label>
-          Power
-          <input
-            type="text"
-            placeholder=""
-            required
-            value={power}
-            onChange={(e) => setPower(e.target.value)}
-          />
-        </label>
-        <label>
-          Passengers
-          <input
-            type="number"
-            placeholder=""
-            value={passengers}
-            onChange={(e) => setPassengers(e.target.value)}
-          />
-        </label>
-        <label>
-          Picture
-          <input
-            type="text"
-            placeholder=""
-            value={picture}
-            onChange={(e) => setPicture(e.target.value)}
-          />
-        </label>
-        <label>
-          Daily Price
-          <input
-            type="number"
-            placeholder=""
-            value={dailyPrice}
-            onChange={(e) => setDailyPrice(e.target.value)}
-          />
-        </label>
-        <label>
-          Description
-          <input
-            type="text"
-            placeholder=""
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </label>
 
         <button>Search Cars</button>
       </form>
+      <div>
+
+      <VehiclesList location={location} />
+      </div>
     </div>
   );
 };
 
-export default VehicleForm;
+export default BookingForm;
