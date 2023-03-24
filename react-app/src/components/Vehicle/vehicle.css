@@ -1,0 +1,17 @@
+.vehicle-item-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: black solid 1px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+.vehicle-item-image {
+    width: 100px;
+}
+
+.vehicle-name {
+    display: flex;
+    flex-direction: column;
+}

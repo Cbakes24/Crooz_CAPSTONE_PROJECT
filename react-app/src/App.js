@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import CreateVehicleForm from "./components/Vehicle/createVehicle";
+import VehiclesList from "./components/Vehicle/vehiclesList";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path="/vehicles/create">
             <CreateVehicleForm />
+          </Route>
+          <Route path="/vehicles">
+            <VehiclesList />
           </Route>
         </Switch>
       )}

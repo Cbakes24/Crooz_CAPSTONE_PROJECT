@@ -1,0 +1,120 @@
+const SET_BOOKING = "booking/SET_BOOKING";
+const REMOVE_BOOKING = "booking/REMOVE_BOOKING";
+
+export const setBooking = (booking) => {
+  return {
+    type: SET_BOOKING,
+    bookings,
+  };
+};
+
+export const removeBooking = (bookingId) => {
+  return {
+    type: REMOVE_BOOKING,
+    bookingId,
+  };
+};
+
+// GET ALL bookingS
+export const fetchBookings = () => async (dispatch) => {
+  const res = await fetch("/api/bookings", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(setBookings(data));
+  }
+  return data;
+};
+
+// GET a booking by id
+export const fetchBooking = (bookingId) => async (dispatch) => {
+  const res = await fetch(`/api/bookings/${bookingId}`);
+
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(setBookings([data]));
+  }
+  return data;
+};
+
+// GET a booking by type
+export const fetchBookingType = (bookingType) => async (dispatch) => {
+  const res = await fetch(`/api/bookings/${bookingType}`);
+
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(setBookings([data]));
+  }
+  return data;
+};
+
+// POST create a booking
+export const createBooking = (booking) => async (dispatch) => {
+  const res = await fetch("/api/bookings", {
+    method: "POST",
+    body: JSON.stringify(booking),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(setBookings([data]));
+  }
+  return data;
+};
+
+//   PUT edit a booking
+export const editBooking = (booking) => async (dispatch) => {
+  const res = await fetch(`/api/bookings/${booking.id}`, {
+    method: "PUT",
+    body: JSON.stringify(booking),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(setBookings([data]));
+  }
+  return data;
+};
+
+//DELETE a booking
+export const deleteBooking = (bookingId) => async (dispatch) => {
+  const res = await fetch(`/api/bookings/${bookingId}`, {
+    method: "DELETE",
+  });
+  if (res.ok) {
+    dispatch(removeBooking(bookingId));
+  }
+  return res;
+};
+
+
+const bookingsReducer = (state = {}, action) => {
+    let newState = { ...state };
+    switch (action.type) {
+      case SET_BOOKING:
+        const bookingsObj = {};
+        action.bookings.forEach(booking => {
+          bookingsObj[booking.id] = booking;
+        });
+        newState = { ...newState, ...bookingsObj };
+        return newState;
+
+
+      case REMOVE_BOOKINGS:
+        delete newState[action.bookingId];
+        return newState;
+      default:
+        return state;
+    }
+  };
+
+  export default bookingsReducer;
