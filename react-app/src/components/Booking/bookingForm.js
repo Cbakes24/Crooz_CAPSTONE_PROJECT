@@ -7,8 +7,10 @@ import "./vehicle.css";
 const BookingForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.session.user);
+  const vehicles = useSelector((state) => Object.values(state.vehicle));
 
-
+  console.log(vehicles.host, "VEHILCE HOST");
   const [pickupDate, setPickupDate] = useState(vehicle.pickupDate);
   const [dropOffDate, setDropOffDate] = useState(vehicle.dropOffDate);
   const [location, setLocation] = useState(vehicle.location);
@@ -20,15 +22,15 @@ const BookingForm = () => {
     const payload = {
       pickupDate,
       dropOffDate,
-      location
+      location,
     };
 
-    const action = vehicle.id ? editVehicle : createVehicle;
+    const action = booking.id ? editBooking : createBooking;
     const data = await dispatch(action(payload));
     if (data.errors) {
       setErrors(data.errors);
     } else {
-      history.push(`/vehicles/${data.id}`);
+      history.push(`/bookings/${data.id}`);
     }
   };
 
@@ -128,7 +130,7 @@ const BookingForm = () => {
           />
         </label>
 
-        <button>Book Now</button>
+        <button>Search Cars</button>
       </form>
     </div>
   );

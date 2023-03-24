@@ -6,7 +6,7 @@ import VehicleListItem from './vehicleItem';
 import './vehicle.css';
 
 
-const VehiclesList = () => {
+const VehiclesList = ({location}) => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
     const vehicles = useSelector( state => Object.values(state.vehicle))
