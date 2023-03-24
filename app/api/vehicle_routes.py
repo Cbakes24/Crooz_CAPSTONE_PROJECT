@@ -51,6 +51,26 @@ def create_vehicle():
         )
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+# Edit A VEHICLE
+@vehicle_bp.route('', methods=['PUT'])
+@login_required
+def edit_vehicle(id):
+    """
+    Query for creating a vehicle and returning it as a dictionary
+    """
+    form = VehicleForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        vehicle = Vehicle.get(id)
+        form.populate_obj(vehicle)
+        db.session.add(vehicle)
+        db.session.commit()
+        return jsonify(
+
+            vehicle.to_dict()
+        )
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 
     # new_vehicle = Vehicle(
     #     year=form.year.data,

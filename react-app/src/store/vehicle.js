@@ -70,7 +70,7 @@ export const createVehicle = (vehicle) => async (dispatch) => {
 
 //   PUT edit a vehicle
 export const editVehicle = (vehicle) => async (dispatch) => {
-  const res = await fetch(`/api/vehicles${vehicle.id}`, {
+  const res = await fetch(`/api/vehicles/${vehicle.id}`, {
     method: "PUT",
     body: JSON.stringify(vehicle),
     headers: {

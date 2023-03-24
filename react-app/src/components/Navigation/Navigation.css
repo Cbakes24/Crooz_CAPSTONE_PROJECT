@@ -2,6 +2,11 @@
   position: absolute;
 }
 
+.navbar-box {
+  border: black solid 1px;
+  margin-left: 15px;
+}
+
 .hidden {
   display: none;
 }
