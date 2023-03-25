@@ -4,25 +4,25 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 demo = User(
-    username='Demo', email='demo@aa.io', password='password')
+    username='Demo', email='demo@aa.io', password='password', address='123 Happy St', city='San Diego', state='CA', country='USA')
 
 cory = User(
-    username='cory', email='cory@gmail.com', password='password')
+    username='cory', email='cory@gmail.com', password='password', address='127 Phillips Brooks rd', city='Boston', state='MA', country='USA',)
 
 heather = User(
-    username='heather', email='heather@gmail.com', password='password')
+    username='heather', email='heather@gmail.com', password='password', address='1509 Chalcedony st', city='San Diego', state='CA', country='USA',)
 
 mac = User(
-username='mac', email='mac@gmail.com', password='password')
+username='mac', email='mac@gmail.com', password='password', address='5 Deacons Folly rd', city='Boston', state='MA', country='USA',)
 
 ayla = User(
-username='ayla', email='ayla@gmail.com', password='password')
+username='ayla', email='ayla@gmail.com', password='password', address='1227 Chalcedony st', city='San Diego', state='CA', country='USA',)
 
 leon = User(
-username='leon', email='leon@gmail.com', password='password')
+username='leon', email='leon@gmail.com', password='password', address='1852 Reed Ave', city='San Diego', state='CA', country='USA',)
 
 hailey = User(
-username='hailey', email='hailey@gmail.com', password='password')
+username='hailey', email='hailey@gmail.com', password='password', address='6030 North 2nd St', city='Phoenix', state='AZ', country='USA',)
 
 def seed_users():
 
