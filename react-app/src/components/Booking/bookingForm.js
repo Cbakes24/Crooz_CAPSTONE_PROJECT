@@ -27,6 +27,7 @@ const BookingForm = () => {
     };
 
     const data = await dispatch(fetchVehiclesByLocation(payload));
+    console.log(location, 'LOCATION')
     if (data.errors) {
       setErrors(data.errors);
     } else {
