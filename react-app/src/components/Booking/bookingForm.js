@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createVehicle, editVehicle, fetchVehiclesByLocation } from "../../store/vehicle";
-import "./vehicle.css";
+import { fetchVehiclesByLocation } from "../../store/vehicle";
+// import "./booking.css";
 import VehiclesList from "../Vehicle/vehiclesList";
-
 
 const BookingForm = () => {
   const history = useHistory();
@@ -12,10 +11,10 @@ const BookingForm = () => {
   const currentUser = useSelector((state) => state.session.user);
   const vehicles = useSelector((state) => Object.values(state.vehicle));
 
-  console.log(vehicles.host, "VEHILCE HOST");
-  const [pickupDate, setPickupDate] = useState('');
-  const [dropOffDate, setDropOffDate] = useState('');
-  const [location, setLocation] = useState('');
+  console.log(vehicles.host, "VEHICLE HOST");
+  const [pickupDate, setPickupDate] = useState("");
+  const [dropOffDate, setDropOffDate] = useState("");
+  const [location, setLocation] = useState("");
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
@@ -31,21 +30,21 @@ const BookingForm = () => {
     if (data.errors) {
       setErrors(data.errors);
     } else {
-      history.push(`/bookings/${data.id}`);
+      history.push(`/vehicles`);
     }
   };
 
   return (
     <div>
-      <h2>Vehicle Form</h2>
-      <form className="vehicle-form" onSubmit={handleSubmit}>
+      <h2>Booking Form</h2>
+      <form className="booking-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
         <label>
-        pickupDate
+          pickupDate
           <input
             type="text"
             placeholder=""
@@ -55,9 +54,9 @@ const BookingForm = () => {
           />
         </label>
         <label>
-        dropOffDate
+          dropOffDate
           <input
-            type="text"
+            type="date"
             placeholder=""
             required
             value={dropOffDate}
@@ -65,9 +64,9 @@ const BookingForm = () => {
           />
         </label>
         <label>
-        location
+          location
           <input
-            type="number"
+            type="text"
             placeholder=""
             required
             value={location}
@@ -75,12 +74,10 @@ const BookingForm = () => {
           />
         </label>
 
-
         <button>Search Cars</button>
       </form>
       <div>
-
-      <VehiclesList location={location} />
+        <VehiclesList location={location} />
       </div>
     </div>
   );

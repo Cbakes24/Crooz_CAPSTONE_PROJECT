@@ -28,7 +28,7 @@ def get_host_bookings():
 #CREATE A BOOKING
 @booking_bp.route('', methods=['POST'])
 @login_required
-def get_host_bookings():
+def create_bookings():
     """
     Creates a booking with a selected vehicle
     """

@@ -1,7 +1,7 @@
 const SET_BOOKING = "booking/SET_BOOKING";
 const REMOVE_BOOKING = "booking/REMOVE_BOOKING";
 
-export const setBooking = (booking) => {
+export const setBookings = (bookings) => {
   return {
     type: SET_BOOKING,
     bookings,
@@ -40,16 +40,7 @@ export const fetchBooking = (bookingId) => async (dispatch) => {
   return data;
 };
 
-// GET a booking by type
-export const fetchBookingType = (bookingType) => async (dispatch) => {
-  const res = await fetch(`/api/bookings/${bookingType}`);
 
-  const data = await res.json();
-  if (res.ok) {
-    dispatch(setBookings([data]));
-  }
-  return data;
-};
 
 // POST create a booking
 export const createBooking = (booking) => async (dispatch) => {
@@ -109,7 +100,7 @@ const bookingsReducer = (state = {}, action) => {
         return newState;
 
 
-      case REMOVE_BOOKINGS:
+      case REMOVE_BOOKING:
         delete newState[action.bookingId];
         return newState;
       default:

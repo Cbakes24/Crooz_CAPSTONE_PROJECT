@@ -7,6 +7,7 @@ import CreateVehicleForm from "./components/Vehicle/createVehicle";
 import VehiclesList from "./components/Vehicle/vehiclesList";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import BookingForm from "./components/Booking/bookingForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path="/vehicles">
             <VehiclesList />
+          </Route>
+          <Route path="/bookings/search">
+            <BookingForm />
           </Route>
         </Switch>
       )}
