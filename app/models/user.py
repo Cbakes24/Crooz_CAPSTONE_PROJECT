@@ -12,10 +12,10 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    address = db.Column(db.String(255), nullable=False, unique=True)
-    city = db.Column(db.String(255), nullable=False, unique=True)
-    state = db.Column(db.String(255), nullable=False, unique=True)
-    country = db.Column(db.String(255), nullable=False, unique=True)
+    address = db.Column(db.String(255), nullable=False)
+    city = db.Column(db.String(255), nullable=False)
+    state = db.Column(db.String(255), nullable=False)
+    country = db.Column(db.String(255), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
 
     bookings_guest = db.relationship('Booking', back_populates='guest')
@@ -41,7 +41,7 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'user_city': self.city,
+            'userCity': self.city,
             'favVehicles': [vehicle.to_dict_no_booking() for vehicle in self.fav_vehicles]
         }
 
@@ -51,5 +51,5 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'user_city': self.city
+            'userCity': self.city
         }

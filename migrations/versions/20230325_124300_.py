@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 3be6e080bc15
+Revision ID: b03434cb633a
 Revises: 
-Create Date: 2023-03-18 15:16:30.621867
+Create Date: 2023-03-25 12:43:00.168761
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '3be6e080bc15'
+revision = 'b03434cb633a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,6 +22,10 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
+    sa.Column('address', sa.String(length=255), nullable=False),
+    sa.Column('city', sa.String(length=255), nullable=False),
+    sa.Column('state', sa.String(length=255), nullable=False),
+    sa.Column('country', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
@@ -37,6 +41,7 @@ def upgrade():
     sa.Column('description', sa.String(length=255), nullable=False),
     sa.Column('type', sa.String(length=50), nullable=False),
     sa.Column('passengers', sa.Integer(), nullable=True),
+    sa.Column('daily_price', sa.Integer(), nullable=True),
     sa.Column('host_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['host_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -55,8 +60,8 @@ def upgrade():
     op.create_table('favorites',
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('vehicle_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.ForeignKeyConstraint(['vehicle_id'], ['vehicles.id'], )
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
+    sa.ForeignKeyConstraint(['vehicle_id'], ['vehicles.id'], ondelete='CASCADE')
     )
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
