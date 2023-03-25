@@ -11,7 +11,7 @@ const BookingForm = () => {
   const currentUser = useSelector((state) => state.session.user);
   const vehicles = useSelector((state) => Object.values(state.vehicle));
 
-  console.log(vehicles.host, "VEHICLE HOST");
+  // console.log(vehicles.host, "VEHICLE HOST");
   const [pickupDate, setPickupDate] = useState("");
   const [dropOffDate, setDropOffDate] = useState("");
   const [location, setLocation] = useState("");
