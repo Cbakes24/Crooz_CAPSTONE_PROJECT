@@ -46,7 +46,7 @@ const BookingForm = () => {
         <label>
           pickupDate
           <input
-            type="text"
+            type="date"
             placeholder=""
             required
             value={pickupDate}
