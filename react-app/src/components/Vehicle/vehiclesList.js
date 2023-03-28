@@ -21,8 +21,8 @@ const VehiclesList = ({location}) => {
             <h1>Vehicles</h1>
             <div className='add-vehicle-button'>
             {currentUser && (
-              <NavLink to='/breweries/new'>
-                <button className='add-beer-button'>Add Vehicle</button>
+              <NavLink to='/vehicles/create'>
+                <button className='add-vehicle-button'>Add Vehicle</button>
               </NavLink>
             )}
 

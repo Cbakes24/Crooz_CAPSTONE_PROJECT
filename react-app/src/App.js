@@ -27,13 +27,13 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/vehicles/create">
+          <Route exact path="/vehicles/create">
             <CreateVehicleForm />
           </Route>
-          <Route path="/vehicles">
+          <Route exact path="/vehicles">
             <VehiclesList />
           </Route>
-          <Route path="/bookings/search">
+          <Route exact path="/bookings/search">
             <BookingForm />
           </Route>
         </Switch>

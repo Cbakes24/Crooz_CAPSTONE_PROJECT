@@ -31,18 +31,22 @@ export const fetchVehicles = () => async (dispatch) => {
 
 // GET ALL VEHICLES BY DATE and LOCATION
 export const fetchVehiclesByLocation = (payload) => async (dispatch) => {
-  const res = await fetch("/api/vehicles", {
+  console.log("Greetings from the THUNK!");
+  const res = await fetch("/api/bookings/search", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(payload),
   });
-  const data = await res.json();
+  console.log("Greetings HELLOOOOO!");
   if (res.ok) {
-    dispatch(setVehicles(data));
+    const data = await res.json();
+    console.log(data, "DATA IN THE THUNK")
+    dispatch(setVehicles(data.vehicles));
+  } else {
+    console.log(res, "RESSSS");
   }
-  return data;
 };
 
 // GET a vehicle by id
@@ -112,25 +116,24 @@ export const deleteVehicle = (vehicleId) => async (dispatch) => {
   return res;
 };
 
-
 const vehiclesReducer = (state = {}, action) => {
-    let newState = { ...state };
-    switch (action.type) {
-      case SET_VEHICLES:
-        const vehiclesObj = {};
-        action.vehicles.forEach(vehicle => {
-          vehiclesObj[vehicle.id] = vehicle;
-        });
-        newState = { ...newState, ...vehiclesObj };
-        return newState;
+  let newState = { ...state };
+  switch (action.type) {
+    case SET_VEHICLES:
+      const vehiclesObj = {};
+      action.vehicles.forEach((vehicle) => {
+        vehiclesObj[vehicle.id] = vehicle;
+      });
+      newState = { ...newState, ...vehiclesObj };
+      console.log(newState, "THET NEW STATE")
+      return newState;
 
+    case REMOVE_VEHICLES:
+      delete newState[action.vehicleId];
+      return newState;
+    default:
+      return state;
+  }
+};
 
-      case REMOVE_VEHICLES:
-        delete newState[action.vehicleId];
-        return newState;
-      default:
-        return state;
-    }
-  };
-
-  export default vehiclesReducer;
+export default vehiclesReducer;
