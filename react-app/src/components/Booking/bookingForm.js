@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchVehiclesByLocation } from "../../store/vehicle";
 // import "./booking.css";
-import VehiclesList from "../Vehicle/vehiclesList";
+import VehicleListItem from "../Vehicle/vehicleItem";
 
 const BookingForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
-  const vehicles = useSelector((state) => Object.values(state.vehicle));
-  console.log(vehicles, "VEHICLES IN COMP")
-  console.log(vehicles.host, "VEHICLE HOST");
+  // const vehicles = useSelector((state) => Object.values(state.vehicle));
+  // console.log(vehicles, "VEHICLES IN COMP")
+  // console.log(vehicles.host, "VEHICLE HOST");
   const [pickupDate, setPickupDate] = useState("");
   const [dropOffDate, setDropOffDate] = useState("");
   const [address, setAddress] = useState("");
@@ -19,6 +19,7 @@ const BookingForm = () => {
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
   const [errors, setErrors] = useState([]);
+  let locationVehicles = []
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,8 +38,11 @@ const BookingForm = () => {
     if (data.errors) {
       setErrors(data.errors);
     } else {
-      history.push(`/vehicles`);
+      locationVehicles = Object.values(data)
+      console.log(locationVehicles, "LOCATION VEHICLES")
+
     }
+
   };
 
   return (
@@ -115,9 +119,18 @@ const BookingForm = () => {
         <button>Search Cars</button>
       </form>
       <div>
-        <VehiclesList city={city} />
       </div>
+        <ul>
+
+      {locationVehicles.map(vehicle => (
+    <VehicleListItem vehicle={vehicle} key={vehicle.id} />
+        ))}
+        </ul>
     </div>
+
+
+
+
   );
 };
 

@@ -2,6 +2,7 @@ const SET_VEHICLES = "vehicles/SET_VEHICLES";
 const REMOVE_VEHICLES = "vehicles/REMOVE_VEHICLES";
 
 export const setVehicles = (vehicles) => {
+  console.log(vehicles, 'DATA IN THE ACTION')
   return {
     type: SET_VEHICLES,
     vehicles,
@@ -40,13 +41,12 @@ export const fetchVehiclesByLocation = (payload) => async (dispatch) => {
     body: JSON.stringify(payload),
   });
   console.log("Greetings HELLOOOOO!");
+  const data = await res.json();
+  console.log(data, "DATA IN THE THUNK")
   if (res.ok) {
-    const data = await res.json();
-    console.log(data, "DATA IN THE THUNK")
     dispatch(setVehicles(data.vehicles));
-  } else {
-    console.log(res, "RESSSS");
   }
+  return data
 };
 
 // GET a vehicle by id
@@ -124,7 +124,8 @@ const vehiclesReducer = (state = {}, action) => {
       action.vehicles.forEach((vehicle) => {
         vehiclesObj[vehicle.id] = vehicle;
       });
-      newState = { ...newState, ...vehiclesObj };
+      console.log(vehiclesObj, "vehicles OBject")
+      newState = {...vehiclesObj };
       console.log(newState, "THET NEW STATE")
       return newState;
 
