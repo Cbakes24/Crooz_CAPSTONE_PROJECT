@@ -45,7 +45,7 @@ const BookingForm = () => {
 
   return (
     <div>
-      <h2>Booking Form</h2>
+      <h2>Find A Vehicle By Location!</h2>
       <form className="booking-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
