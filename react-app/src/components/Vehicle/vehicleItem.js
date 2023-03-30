@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 
 const VehicleListItem = ({vehicle}) => {
 
+
+
+
 console.log(vehicle, "LIST ITEM VEHICLE")
 
     return (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchVehiclesByLocation } from "../../store/vehicle";
@@ -19,7 +19,7 @@ const BookingForm = () => {
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
   const [errors, setErrors] = useState([]);
-  let locationVehicles = []
+  const [locationVehicles, setLocationVehicles] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,19 +30,17 @@ const BookingForm = () => {
       address,
       city,
       state,
-      country
+      country,
     };
 
     const data = await dispatch(fetchVehiclesByLocation(payload));
-    console.log(data, "DATA FROM THE THUNNKKKK")
+    console.log(data, "DATA FROM THE THUNNKKKK");
     if (data.errors) {
       setErrors(data.errors);
     } else {
-      locationVehicles = Object.values(data)
-      console.log(locationVehicles, "LOCATION VEHICLES")
-
+      setLocationVehicles(data.vehicles);
     }
-
+    console.log(locationVehicles, "LOCATION VEHICLES");
   };
 
   return (
@@ -118,19 +116,13 @@ const BookingForm = () => {
 
         <button>Search Cars</button>
       </form>
-      <div>
-      </div>
-        <ul>
-
-      {locationVehicles.map(vehicle => (
-    <VehicleListItem vehicle={vehicle} key={vehicle.id} />
+      <div></div>
+      <ul>
+        {locationVehicles.map((vehicle) => (
+          <VehicleListItem vehicle={vehicle} key={vehicle.id} />
         ))}
-        </ul>
+      </ul>
     </div>
-
-
-
-
   );
 };
 
