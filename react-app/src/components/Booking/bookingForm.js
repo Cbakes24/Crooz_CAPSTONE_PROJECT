@@ -39,28 +39,31 @@ const BookingForm = () => {
       setErrors(data.errors);
     } else {
       const filterVehicles = data.vehicles.filter((vehicle) => {
-        const bookings = vehicle.bookings;
-        for (let i = 0; i < bookings.length; i++) {
-          const booking = bookings[i];
-          console.log(booking.pickupDate, 'BOOOOOOOOKING pick Up'
-          )
-          if (
-            (pickupDate >= booking.pickupDate &&
-              pickupDate <= booking.dropOffDate) ||
-            (dropOffDate >= booking.pickupDate &&
-              dropOffDate <= booking.dropOffDate) ||
-            (pickupDate <= booking.pickupDate &&
-              dropOffDate >= booking.dropOffDate)
-          ) {
+
+          // Check if the vehicle is available during the selected period using every means that every booking a vehicle has must be true to be available if one is false then the car is not available
+
+          const isVehicleAvailable = vehicle.bookings.every((booking) => {
+            const bookingStart = new Date(booking.pickupDate);
+            console.log(bookingStart, 'VEHICLE BOOKING START')
+            const bookingEnd = new Date(booking.dropOffDate);
+            console.log(bookingEnd, 'VEHICLE BOOKING END')
+            const start = new Date(pickupDate);
+            console.log(start, 'SEARCH START DATE')
+            const end = new Date(dropOffDate);
+            console.log(end, 'SEARCH END DATE')
+            return start >= bookingEnd || end <= bookingStart;
+          });
+
+          if (!isVehicleAvailable) {
             return false;
           }
-        }
-        return true;
-      });
-      console.log(filterVehicles, "Filter Vehicles***");
-      setLocationVehicles(filterVehicles);
+          return true;
+        })
+        console.log(filterVehicles, "Filter Vehicles***");
+        setLocationVehicles(filterVehicles);
+      };
     }
-  };
+
 
   // console.log(locationVehicles, "LOCATION VEHICLES");
   return (
