@@ -9,13 +9,13 @@ const VehicleListItem = (props) => {
     const bookingStart = new Date(booking.pickupDate);
     console.log(bookingStart, 'VEHICLE BOOKING START')
     const bookingEnd = new Date(booking.dropOffDate);
-    console.log(bookingStart, 'VEHICLE BOOKING END')
+    console.log(bookingEnd, 'VEHICLE BOOKING END')
     const start = new Date(pickupDate);
     const end = new Date(dropOffDate);
     return start >= bookingEnd || end <= bookingStart;
   });
 
-  console.log(props.pickupDate, "Pick UP Date");
+  console.log((props.pickupDate), "Pick UP Date");
   console.log(props.vehicle, "LIST ITEM VEHICLE");
   console.log(props.vehicle.bookings, "LIST ITEM BOOKINGS");
 

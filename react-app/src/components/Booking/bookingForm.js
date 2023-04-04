@@ -38,10 +38,30 @@ const BookingForm = () => {
     if (data.errors) {
       setErrors(data.errors);
     } else {
-      setLocationVehicles(data.vehicles);
+      const filterVehicles = data.vehicles.filter((vehicle) => {
+        const bookings = vehicle.bookings;
+        for (let i = 0; i < bookings.length; i++) {
+          const booking = bookings[i];
+          console.log(booking.pickupDate, 'BOOOOOOOOKING pick Up'
+          )
+          if (
+            (pickupDate >= booking.pickupDate &&
+              pickupDate <= booking.dropOffDate) ||
+            (dropOffDate >= booking.pickupDate &&
+              dropOffDate <= booking.dropOffDate) ||
+            (pickupDate <= booking.pickupDate &&
+              dropOffDate >= booking.dropOffDate)
+          ) {
+            return false;
+          }
+        }
+        return true;
+      });
+      console.log(filterVehicles, "Filter Vehicles***");
+      setLocationVehicles(filterVehicles);
     }
-
   };
+
   // console.log(locationVehicles, "LOCATION VEHICLES");
   return (
     <div>
@@ -55,7 +75,7 @@ const BookingForm = () => {
         <label>
           pickupDate
           <input
-            type="date"
+            type="datetime-local"
             placeholder=""
             required
             value={pickupDate}
@@ -65,7 +85,7 @@ const BookingForm = () => {
         <label>
           dropOffDate
           <input
-            type="date"
+            type="datetime-local"
             placeholder=""
             required
             value={dropOffDate}
@@ -119,8 +139,15 @@ const BookingForm = () => {
       <div></div>
       <ul>
         {locationVehicles.map((vehicle) => (
-          <VehicleListItem vehicle={vehicle} key={vehicle.id} pickupDate={pickupDate} dropOffDate={dropOffDate}
-          address={address} city={city} state={state} country={country}
+          <VehicleListItem
+            vehicle={vehicle}
+            key={vehicle.id}
+            pickupDate={pickupDate}
+            dropOffDate={dropOffDate}
+            address={address}
+            city={city}
+            state={state}
+            country={country}
           />
         ))}
       </ul>
