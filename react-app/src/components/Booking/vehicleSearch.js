@@ -20,7 +20,8 @@ const VehicleSearch = () => {
   const [country, setCountry] = useState("");
   const [errors, setErrors] = useState([]);
   const [locationVehicles, setLocationVehicles] = useState([]);
-
+  const today = new Date()
+console.log(today, 'TODAYYYYY')
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
@@ -32,6 +33,14 @@ const VehicleSearch = () => {
       state,
       country,
     };
+
+    if( pickupDate > dropOffDate ) {
+      alert('The Pick Up Date must be before the Drop Off Date');
+      return false
+    } else if ( new Date(pickupDate) < today || new Date(dropOffDate) < today) {
+      alert('Dates cannot be a previous date');
+      return false
+    }
 
     const data = await dispatch(fetchVehiclesByLocation(payload));
     console.log(data, "DATA FROM THE THUNNKKKK");
@@ -51,6 +60,7 @@ const VehicleSearch = () => {
             console.log(start, 'SEARCH START DATE')
             const end = new Date(dropOffDate);
             console.log(end, 'SEARCH END DATE')
+
             return start >= bookingEnd || end <= bookingStart;
           });
 
