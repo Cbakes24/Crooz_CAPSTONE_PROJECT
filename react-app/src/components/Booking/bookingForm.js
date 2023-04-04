@@ -119,7 +119,9 @@ const BookingForm = () => {
       <div></div>
       <ul>
         {locationVehicles.map((vehicle) => (
-          <VehicleListItem vehicle={vehicle} key={vehicle.id} />
+          <VehicleListItem vehicle={vehicle} key={vehicle.id} pickupDate={pickupDate} dropOffDate={dropOffDate}
+          address={address} city={city} state={state} country={country}
+          />
         ))}
       </ul>
     </div>

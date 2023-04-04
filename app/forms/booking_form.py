@@ -42,7 +42,7 @@ class BookingForm(FlaskForm):
 #         for booking in self.bookings:
 #             if booking.pickup_date <= end_date and booking.drop_off_date >= start_date:
 #                 return False
-#         return True
+#         return True   
 
 # class Booking(db.Model):
 #     __tablename__ = 'bookings'
