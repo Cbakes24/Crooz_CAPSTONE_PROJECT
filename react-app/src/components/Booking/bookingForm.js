@@ -40,9 +40,9 @@ const BookingForm = () => {
     } else {
       setLocationVehicles(data.vehicles);
     }
-    console.log(locationVehicles, "LOCATION VEHICLES");
-  };
 
+  };
+  // console.log(locationVehicles, "LOCATION VEHICLES");
   return (
     <div>
       <h2>Find A Vehicle By Location!</h2>
