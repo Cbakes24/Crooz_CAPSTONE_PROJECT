@@ -37,6 +37,8 @@ class Booking(db.Model):
                         # 'latitude': self.latitude,
                         # 'longitude': self.longitude,
                         'vehicleId': self.vehicle_id,
+                        'vehicle': self.vehicle.to_dict_no_booking(),
+                        'host': self.vehicle.to_dict_no_booking()['host'],
                         'guest': self.guest.to_dict_user(),
                         'tripLength': self.trip_length(),
                         'totalPrice': self.trip_length() * self.vehicle.to_dict_no_booking()['dailyPrice']
