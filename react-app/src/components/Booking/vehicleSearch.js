@@ -5,7 +5,7 @@ import { fetchVehiclesByLocation } from "../../store/vehicle";
 // import "./booking.css";
 import VehicleListItem from "../Vehicle/vehicleItem";
 
-const BookingForm = () => {
+const VehicleSearch = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
@@ -158,4 +158,4 @@ const BookingForm = () => {
   );
 };
 
-export default BookingForm;
+export default VehicleSearch;

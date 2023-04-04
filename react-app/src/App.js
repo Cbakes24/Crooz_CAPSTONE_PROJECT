@@ -7,7 +7,7 @@ import CreateVehicleForm from "./components/Vehicle/createVehicle";
 import VehiclesList from "./components/Vehicle/vehiclesList";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import BookingForm from "./components/Booking/bookingForm";
+import VehicleSearch from "./components/Booking/vehicleSearch";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ function App() {
             <VehiclesList />
           </Route>
           <Route exact path="/bookings/search">
-            <BookingForm />
+            <VehicleSearch />
           </Route>
         </Switch>
       )}

@@ -1,14 +1,12 @@
 import "./vehicle.css";
 import { Link } from "react-router-dom";
+import BookNow from "../Booking/bookNow";
 
 const VehicleListItem = (props) => {
   const { vehicle, pickupDate, dropOffDate } = props;
 
 
-  const handleBooking = async (e) => {
-    e.preventDefault();
-      console.log("CREATE BOOKING THUNK");
-  };
+
 
   return (
     <div className="vehicle-item-box">
@@ -21,7 +19,7 @@ const VehicleListItem = (props) => {
           {props.vehicle.year} {props.vehicle.make} {props.vehicle.model}
         </div>
         <div>${props.vehicle.dailyPrice}/day</div>
-        <button onClick={handleBooking}>Book Now</button>
+        <BookNow />
       </div>
     </div>
   );
