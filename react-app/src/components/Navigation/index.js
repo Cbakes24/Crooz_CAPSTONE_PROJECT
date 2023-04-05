@@ -25,6 +25,9 @@ function Navigation({ isLoaded }) {
         <NavLink className="navbar-box" exact to="/bookings/search">
           Booking
         </NavLink>
+        <NavLink className="navbar-box" exact to="/users/host">
+          Host Home
+        </NavLink>
       </li>
       {isLoaded && (
         <li>

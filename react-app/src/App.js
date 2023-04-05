@@ -37,7 +37,7 @@ function App() {
           <Route exact path="/bookings/search">
             <VehicleSearch />
           </Route>
-          <Route exact path="/users/host/:userId">
+          <Route exact path="/users/host">
             <HomepageHost />
           </Route>
         </Switch>
