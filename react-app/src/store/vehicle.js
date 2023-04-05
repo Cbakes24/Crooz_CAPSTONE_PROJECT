@@ -30,6 +30,21 @@ export const fetchVehicles = () => async (dispatch) => {
   return data;
 };
 
+//GET ALL VEHICLES BY VEHICLE HOST ID
+export const fetchHostVehicles = () => async (dispatch) => {
+  const res = await fetch("/api/vehicles/host", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(setVehicles(data));
+  }
+  return data;
+};
+
+
 // GET ALL VEHICLES BY DATE and LOCATION
 export const fetchVehiclesByLocation = (payload) => async (dispatch) => {
   console.log("Greetings from the THUNK!");

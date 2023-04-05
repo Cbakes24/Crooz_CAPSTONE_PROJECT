@@ -30,6 +30,19 @@ def get_all_vehicles():
 
 
 
+
+# GET ALL VEHICLES - HOST
+@vehicle_bp.route('host', methods=['GET'])
+@login_required
+def get_all_vehicles_host():
+    """
+    Query for all current host vehicles and returns them in a list of vehicle dictionaries
+    """
+    host_vehicles = Vehicle.query.filter_by(host_id=current_user.id).all()
+    return [vehicle.to_dict() for vehicle in host_vehicles]
+
+
+
 # CREATE A VEHICLE
 @vehicle_bp.route('', methods=['POST'])
 @login_required
