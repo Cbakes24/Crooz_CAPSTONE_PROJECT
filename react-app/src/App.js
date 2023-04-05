@@ -8,6 +8,7 @@ import VehiclesList from "./components/Vehicle/vehiclesList";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import VehicleSearch from "./components/Booking/vehicleSearch";
+import HomepageHost from "./components/HomepageHost/homepageHost";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route exact path="/bookings/search">
             <VehicleSearch />
+          </Route>
+          <Route exact path="/users/host/:userId">
+            <HomepageHost />
           </Route>
         </Switch>
       )}
