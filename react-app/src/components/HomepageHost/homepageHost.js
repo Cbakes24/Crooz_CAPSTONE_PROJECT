@@ -7,19 +7,23 @@ homepage host will contain
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { fetchBookings } from '../../store/booking';
 import { fetchHostVehicles } from '../../store/vehicle';
 import VehicleListItem from '../Vehicle/vehicleItem';
+import BookingListItem from '../Booking/bookingListItem';
+import { fetchHostBookings } from '../../store/booking';
+
 
 const HomepageHost = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
     const vehicles = useSelector( state => Object.values(state.vehicle))
+    const bookings = useSelector( state => Object.values(state.booking))
     console.log(vehicles, "HOST VEHICLES")
+    console.log(bookings, "HOST Bookings")
 
     useEffect(() => {
         dispatch(fetchHostVehicles());
+        dispatch(fetchHostBookings());
       }, [dispatch]);
     return (
 
@@ -35,7 +39,10 @@ const HomepageHost = () => {
             </div>
             <div>
                 <h3>Your Bookings</h3>
-            
+                {bookings.map(booking => (
+
+                <BookingListItem booking={booking} key={booking.id} />
+                ))}
             </div>
 
         </div>
