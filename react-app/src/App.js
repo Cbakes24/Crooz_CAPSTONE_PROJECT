@@ -8,7 +8,7 @@ import VehiclesList from "./components/Vehicle/vehiclesList";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import VehicleSearch from "./components/Booking/vehicleSearch";
-import HomepageHost from "./components/HomepageHost/homepageHost";
+import HomepageHost from "./components/Homepage/homepageHost";
 
 function App() {
   const dispatch = useDispatch();
