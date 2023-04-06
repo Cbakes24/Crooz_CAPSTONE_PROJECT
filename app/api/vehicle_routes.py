@@ -29,7 +29,20 @@ def get_all_vehicles():
     return [vehicle.to_dict() for vehicle in vehicles]
 
 
-
+# GET VEHICLE BY ID
+@vehicle_bp.route('', methods=['GET'])
+def get_vehicle_by_id():
+    """
+    Query for a vehicle by id and returns that vehicle in a dictionary
+    """
+    vehicle = Vehicle.query.get(id)
+    if vehicle:
+        return jsonify(vehicle.to_dict())
+    else:
+        return jsonify({
+            'success': False,
+            'message': 'Vehicle not found'
+        })
 
 # GET ALL VEHICLES - HOST
 @vehicle_bp.route('host', methods=['GET'])

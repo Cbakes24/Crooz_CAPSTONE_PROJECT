@@ -41,7 +41,10 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'userCity': self.city,
+            'address': self.address,
+            'city': self.city,
+            'state' : self.state,
+            'country': self.country,
             'favVehicles': [vehicle.to_dict_no_booking() for vehicle in self.fav_vehicles]
         }
 
@@ -51,5 +54,8 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'userCity': self.city
+            'address': self.address,
+            'city': self.city,
+            'state' : self.state,
+            'country': self.country,
         }
