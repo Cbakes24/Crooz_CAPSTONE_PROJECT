@@ -15,16 +15,10 @@ class Booking(db.Model):
         city = db.Column(db.String, nullable=False)
         state = db.Column(db.String, nullable=False)
         country = db.Column(db.String, nullable=False)
-        # latitude = db.Column(db.Float)
-        # longitude = db.Column(db.Float)
         guest_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
                 'users.id')), nullable=False)
         vehicle_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
                 'vehicles.id')), nullable=False)
-        # review_id = db.Column(db.Integer, db.ForeignKey(
-        #         add_prefix_for_prod('reviews.id')), nullable=False)
-
-
         guest = db.relationship('User', back_populates='bookings_guest')
         vehicle = db.relationship('Vehicle', back_populates='bookings')
         review = db.relationship('Review', back_populates='booking')
@@ -42,8 +36,6 @@ class Booking(db.Model):
                         'city': self.city,
                         'state': self.state,
                         'country': self.country,
-                        # 'latitude': self.latitude,
-                        # 'longitude': self.longitude,
                         'vehicleId': self.vehicle_id,
                         'vehicle': self.vehicle.to_dict_no_booking(),
                         'host': self.vehicle.to_dict_no_booking()['host'],
