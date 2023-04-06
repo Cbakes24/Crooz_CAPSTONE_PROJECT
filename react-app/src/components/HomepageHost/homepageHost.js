@@ -5,61 +5,65 @@ homepage host will contain
 -your name and picture
 */
 
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchHostVehicles } from '../../store/vehicle';
-import VehicleListItem from '../Vehicle/vehicleItem';
-import BookingListItem from '../Booking/bookingListItem';
-import { fetchHostBookings } from '../../store/booking';
-import { useHistory } from 'react-router-dom'
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchHostVehicles } from "../../store/vehicle";
+import VehicleListItem from "../Vehicle/vehicleItem";
+import BookingListItem from "../Booking/bookingListItem";
+import CreateVehicleForm from "../Vehicle/createVehicle";
+import { fetchHostBookings } from "../../store/booking";
+import { useHistory } from "react-router-dom";
+
 
 const HomepageHost = () => {
-    const dispatch = useDispatch();
-    const history = useHistory()
-    const currentUser = useSelector(state => state.session.user);
-    const vehicles = useSelector( state => Object.values(state.vehicle))
-    const bookings = useSelector( state => Object.values(state.booking))
-    console.log(vehicles, "HOST VEHICLES")
-    console.log(bookings, "HOST Bookings")
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const currentUser = useSelector((state) => state.session.user);
+  const vehicles = useSelector((state) => Object.values(state.vehicle));
+  const bookings = useSelector((state) => Object.values(state.booking));
+  console.log(vehicles, "HOST VEHICLES");
+  console.log(bookings, "HOST Bookings");
 
-    useEffect(() => {
-        dispatch(fetchHostVehicles());
-        dispatch(fetchHostBookings());
-      }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchHostVehicles());
+    dispatch(fetchHostBookings());
+  }, [dispatch]);
 
-
-      if (!currentUser) {
-        return (
-            <div>
-                <h1>Please log in</h1>
-                <button onClick={() => history.push('/login')}>Log in</button>
-            </div>
-        )
-    }
-
-
+  if (!currentUser) {
     return (
+      <div>
+        <h1>Please log in</h1>
+        <button onClick={() => history.push("/login")}>Log in</button>
+      </div>
+    );
+  }
 
-        <div>
-            <div>
-                <h1>{currentUser.username}</h1>
-            </div>
+  return (
+    <div>
+      <div>
+        <h1>{currentUser.username}</h1>
+      </div>
+
             <div>
                 <h3>Your Vehicles</h3>
-            {vehicles.map(vehicle => (
-                    <VehicleListItem vehicle={vehicle} key={vehicle.id} />
+                {vehicles.map((vehicle) => (
+                <VehicleListItem vehicle={vehicle} key={vehicle.id} />
                 ))}
             </div>
+
             <div>
                 <h3>Your Bookings</h3>
-                {bookings.map(booking => (
-
+                {bookings.map((booking) => (
                 <BookingListItem booking={booking} key={booking.id} />
                 ))}
             </div>
 
-        </div>
-    )
-}
+            <div>
+                <h3>Add a Vehicle</h3>
+                <CreateVehicleForm />
+            </div>
+    </div>
+  );
+};
 
-export default HomepageHost
+export default HomepageHost;

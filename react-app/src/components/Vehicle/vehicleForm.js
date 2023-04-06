@@ -34,7 +34,7 @@ const VehicleForm = ({ vehicle }) => {
       description,
       dailyPrice,
     };
-    
+
     const action = vehicle.id ? editVehicle : createVehicle;
     const data = await dispatch(action(payload));
     if (data.errors) {
@@ -46,7 +46,7 @@ const VehicleForm = ({ vehicle }) => {
 
   return (
     <div>
-      <h2>Vehicle Form</h2>
+
       <form className="vehicle-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
