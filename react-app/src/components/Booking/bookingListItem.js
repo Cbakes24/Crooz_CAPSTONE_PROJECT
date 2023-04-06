@@ -1,7 +1,7 @@
 // import "./booking.css";
 import { Link } from "react-router-dom";
 import BookNow from "../Booking/bookNow";
-
+import './booking.css';
 const BookingListItem = ({booking}) => {
 
 
