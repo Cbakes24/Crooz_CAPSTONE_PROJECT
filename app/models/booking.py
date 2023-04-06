@@ -9,7 +9,12 @@ class Booking(db.Model):
         id = db.Column(db.Integer, primary_key=True)
         pickup_date = db.Column(db.DateTime, nullable=False)
         drop_off_date = db.Column(db.DateTime, nullable=False)
-        location = db.Column(db.String, nullable=False)
+
+
+        address = db.Column(db.String, nullable=False)
+        city = db.Column(db.String, nullable=False)
+        state = db.Column(db.String, nullable=False)
+        country = db.Column(db.String, nullable=False)
         # latitude = db.Column(db.Float)
         # longitude = db.Column(db.Float)
         guest_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
@@ -33,7 +38,10 @@ class Booking(db.Model):
                         'id': self.id,
                         'pickupDate': self.pickup_date,
                         'dropOffDate': self.drop_off_date,
-                        'location': self.location,
+                        'address': self.address,
+                        'city': self.city,
+                        'state': self.state,
+                        'country': self.country,
                         # 'latitude': self.latitude,
                         # 'longitude': self.longitude,
                         'vehicleId': self.vehicle_id,
