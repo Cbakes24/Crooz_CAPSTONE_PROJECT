@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from sqlalchemy.orm import joinedload
 from app.models import db, Booking, User, Review, Vehicle, favorites
 from app.forms.vehicle_form import VehicleForm
+import datetime
 
 booking_bp = Blueprint('booking', __name__)
 
@@ -52,13 +53,13 @@ def create_bookings():
         city=city,
         state=state,
         country=country,
-        pickup_date=pickup_date,
-        drop_off_date=drop_off_date,
+        pickup_date=datetime.datetime.fromisoformat(pickup_date),
+        drop_off_date=datetime.datetime.fromisoformat(drop_off_date),
         vehicle=vehicle,
         vehicle_id=vehicle_id
 
     )
-
+    print(new_booking.pickup_date, "PICKUP DATEEE")
 
     db.session.add(new_booking)
     db.session.commit()
