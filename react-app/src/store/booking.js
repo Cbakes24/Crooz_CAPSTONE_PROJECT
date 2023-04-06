@@ -56,7 +56,7 @@ export const fetchBooking = (bookingId) => async (dispatch) => {
 
 // POST create a booking
 export const createBooking = (booking) => async (dispatch) => {
-  const res = await fetch("/api/bookings", {
+  const res = await fetch("/api/bookings/create", {
     method: "POST",
     body: JSON.stringify(booking),
     headers: {
