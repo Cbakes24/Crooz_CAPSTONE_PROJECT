@@ -9,6 +9,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import VehicleSearch from "./components/Booking/vehicleSearch";
 import HomepageHost from "./components/Homepage/homepageHost";
+import VehicleProfile from "./components/Vehicle/vehicleProfile";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route exact path="/users/host">
             <HomepageHost />
+          </Route>
+          <Route exact path="/vehicles/:vehicleId">
+            <VehicleProfile />
           </Route>
         </Switch>
       )}

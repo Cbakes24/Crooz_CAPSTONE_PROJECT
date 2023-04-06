@@ -5,9 +5,10 @@ import BookNow from "../Booking/bookNow";
 const VehicleListItem = (props) => {
 
 
+
   return (
     <div className="vehicle-item-box">
-      <Link to={`/vehicles/${props.vehicle.id}`}></Link>
+      <Link to={`/vehicles/${props.vehicle.id}`}  >View Car</Link>
       <div>
         <img className="vehicle-item-image" src={props.vehicle.picture}></img>
       </div>
