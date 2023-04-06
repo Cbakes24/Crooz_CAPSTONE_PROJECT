@@ -11,10 +11,11 @@ import { fetchHostVehicles } from '../../store/vehicle';
 import VehicleListItem from '../Vehicle/vehicleItem';
 import BookingListItem from '../Booking/bookingListItem';
 import { fetchHostBookings } from '../../store/booking';
-
+import { useHistory } from 'react-router-dom'
 
 const HomepageHost = () => {
     const dispatch = useDispatch();
+    const history = useHistory()
     const currentUser = useSelector(state => state.session.user);
     const vehicles = useSelector( state => Object.values(state.vehicle))
     const bookings = useSelector( state => Object.values(state.booking))
@@ -25,6 +26,18 @@ const HomepageHost = () => {
         dispatch(fetchHostVehicles());
         dispatch(fetchHostBookings());
       }, [dispatch]);
+
+
+      if (!currentUser) {
+        return (
+            <div>
+                <h1>Please log in</h1>
+                <button onClick={() => history.push('/login')}>Log in</button>
+            </div>
+        )
+    }
+
+
     return (
 
         <div>
