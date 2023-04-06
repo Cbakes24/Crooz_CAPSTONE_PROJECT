@@ -1,13 +1,7 @@
 import "./vehicle.css";
-import { Link } from "react-router-dom";
 import BookNow from "../Booking/bookNow";
 
 const VehicleListItem = (props) => {
-  const { vehicle, pickupDate, dropOffDate } = props;
-
-
-
-
   return (
     <div className="vehicle-item-box">
       <div>
@@ -19,7 +13,14 @@ const VehicleListItem = (props) => {
           {props.vehicle.year} {props.vehicle.make} {props.vehicle.model}
         </div>
         <div>${props.vehicle.dailyPrice}/day</div>
-        <BookNow />
+        <BookNow
+          pickupDate={props.pickupDate}
+          dropOffDate={props.dropOffDate}
+          vehicle={props.vehicle}
+          address={props.address}
+          city={props.city}
+          state={props.state}
+          country={props.country} />
       </div>
     </div>
   );
@@ -27,12 +28,10 @@ const VehicleListItem = (props) => {
 
 export default VehicleListItem;
 
-
 // import "./vehicle.css";
 // import BookNow from "../Booking/bookNow";
 
 // const VehicleListItem = (props) => {
-//   //   const { vehicle, pickupDate, dropOffDate } = props;
 
 //   return (
 //     <div className="vehicle-item-box">
@@ -46,18 +45,18 @@ export default VehicleListItem;
 
 //       <div className="vehicle-info">
 //         <div className="vehicle-name">
-//           {props.vehicle.year} {props.vehicle.make} {props.vehicle.model}{" "}
+//           {props.vehicle.year} {props.vehicle.make} {props.vehicle.model}
 
 //         </div>
 //         <div>${props.vehicle.dailyPrice}/day</div>
 //         <BookNow
-//           pickupDate={props.pickupDate}
-//           dropOffDate={props.dropOffDate}
-//           vehicle={props.vehicle}
-//           address={props.address}
-//           city={props.city}
-//           state={props.state}
-//           country={props.country}
+          // pickupDate={props.pickupDate}
+          // dropOffDate={props.dropOffDate}
+          // vehicle={props.vehicle}
+          // address={props.address}
+          // city={props.city}
+          // state={props.state}
+          // country={props.country}
 //         />
 //       </div>
 //     </div>

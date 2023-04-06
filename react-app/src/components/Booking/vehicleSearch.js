@@ -21,7 +21,7 @@ const VehicleSearch = () => {
   const [errors, setErrors] = useState([]);
   const [locationVehicles, setLocationVehicles] = useState([]);
   const today = new Date()
-console.log(today, 'TODAYYYYY')
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
