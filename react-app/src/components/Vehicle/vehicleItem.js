@@ -1,9 +1,13 @@
 import "./vehicle.css";
+import { Link } from 'react-router-dom';
 import BookNow from "../Booking/bookNow";
 
 const VehicleListItem = (props) => {
+
+
   return (
     <div className="vehicle-item-box">
+      <Link to={`/vehicles/${props.vehicle.id}`}></Link>
       <div>
         <img className="vehicle-item-image" src={props.vehicle.picture}></img>
       </div>
