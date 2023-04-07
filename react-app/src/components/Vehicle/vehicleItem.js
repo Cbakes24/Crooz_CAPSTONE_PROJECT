@@ -30,6 +30,10 @@ const currentUser = useSelector((state) => state.session.user);
             country={props.country}
           />
         )}
+
+        <div>
+          <button onClick={handleDelete}>Delete</button>
+        </div>
       </div>
     </div>
   );
