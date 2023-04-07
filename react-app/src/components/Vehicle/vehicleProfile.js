@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { fetchVehicle } from "../../store/vehicle";
 import BookNow from "../Booking/bookNow";
+import { deleteVehicle } from "../../store/vehicle";
 
 const VehicleProfile = (props) => {
   const dispatch = useDispatch();
@@ -51,6 +52,15 @@ const VehicleProfile = (props) => {
   }, [pickupDate, dropOffDate, vehicle]);
 
   const [vehicleAvailable, setVehicleAvailable] = useState(false);
+
+
+  const handleDelete = async e => {
+    e.preventDefault();
+    if (!window.confirm('Do you want to delete this vehicle?')) return;
+    await dispatch(deleteVehicle(vehicle.id));
+    history.push('/vehicles');
+  };
+
 
   return (
     <div>
@@ -115,6 +125,12 @@ const VehicleProfile = (props) => {
           </div>
         </section>
       )}
+
+      <div>
+         {currentUser && currentUser.id === vehicle.host.id ? (
+           <button onClick={handleDelete}>Delete</button>) : null }
+        </div>
+
     </div>
   );
 };

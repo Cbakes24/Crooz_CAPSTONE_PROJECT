@@ -8,7 +8,7 @@ import { deleteVehicle } from "../../store/vehicle";
 const VehicleListItem = (props) => {
 const currentUser = useSelector((state) => state.session.user);
 const dispatch = useDispatch();
-const history = useHistory
+const history = useHistory();
 
 const handleDelete = async e => {
   e.preventDefault();

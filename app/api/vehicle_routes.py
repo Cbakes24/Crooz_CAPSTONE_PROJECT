@@ -98,7 +98,21 @@ def edit_vehicle(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+# Delete A VEHICLE
+# GET VEHICLE BY ID
+@vehicle_bp.route('/<int:id>', methods=['DELETE'])
+def delete_vehicle_by_id(id):
+    """
+    Query for a vehicle by id and delete that vehicle
+    """
+    vehicle = Vehicle.query.get(id)
 
+    db.session.delete(vehicle)
+    db.session.commit()
+    return jsonify({
+        'success': True,
+        'message': 'Vehicle deleted successfully!'
+    })
 
 
     # new_vehicle = Vehicle(
