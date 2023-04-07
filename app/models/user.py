@@ -10,6 +10,8 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(40), nullable=False)
+    last_name = db.Column(db.String(40), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     address = db.Column(db.String(255), nullable=False)
@@ -40,6 +42,8 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
+            'firstName': self.first_name,
+            'lastName': self.last_name,
             'email': self.email,
             'address': self.address,
             'city': self.city,
@@ -53,6 +57,8 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
+            'firstName': self.first_name,
+            'lastName': self.last_name,
             'email': self.email,
             'address': self.address,
             'city': self.city,

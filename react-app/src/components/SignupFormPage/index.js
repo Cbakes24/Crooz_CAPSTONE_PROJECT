@@ -8,6 +8,8 @@ function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -56,11 +58,28 @@ function SignupFormPage() {
             required
           />
         </label>
-
+        <label>
+          First Name
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Last Name
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+        </label>
         <label>
           Address
           <input
-            type="password"
+            type="text"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             required
@@ -69,7 +88,7 @@ function SignupFormPage() {
         <label>
           City
           <input
-            type="password"
+            type="text"
             value={city}
             onChange={(e) => setCity(e.target.value)}
             required
@@ -78,7 +97,7 @@ function SignupFormPage() {
         <label>
           State
           <input
-            type="password"
+            type="text"
             value={state}
             onChange={(e) => setState(e.target.value)}
             required
@@ -87,7 +106,7 @@ function SignupFormPage() {
         <label>
           Country
           <input
-            type="password"
+            type="text"
             value={country}
             onChange={(e) => setCountry(e.target.value)}
             required

@@ -10,7 +10,6 @@ class Booking(db.Model):
         pickup_date = db.Column(db.DateTime, nullable=False)
         drop_off_date = db.Column(db.DateTime, nullable=False)
 
-
         address = db.Column(db.String, nullable=False)
         city = db.Column(db.String, nullable=False)
         state = db.Column(db.String, nullable=False)
