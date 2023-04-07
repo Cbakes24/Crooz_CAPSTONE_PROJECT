@@ -1,11 +1,21 @@
 import "./vehicle.css";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import BookNow from "../Booking/bookNow";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteVehicle } from "../../store/vehicle";
+
+
 const VehicleListItem = (props) => {
-
 const currentUser = useSelector((state) => state.session.user);
+const dispatch = useDispatch();
+const history = useHistory
 
+const handleDelete = async e => {
+  e.preventDefault();
+  if (!window.confirm('Do you want to delete this vehicle?')) return;
+  await dispatch(deleteVehicle(props.vehicle.id));
+  history.push('/vehicles');
+};
 
   return (
     <div className="vehicle-item-box">
@@ -32,7 +42,8 @@ const currentUser = useSelector((state) => state.session.user);
         )}
 
         <div>
-          <button onClick={handleDelete}>Delete</button>
+         {currentUser && currentUser.id === props.vehicle.host.id ? (
+           <button onClick={handleDelete}>Delete</button>) : null }
         </div>
       </div>
     </div>

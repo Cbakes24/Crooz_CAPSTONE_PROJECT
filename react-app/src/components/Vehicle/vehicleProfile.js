@@ -14,7 +14,7 @@ const VehicleProfile = (props) => {
   const vehicle = useSelector((state) => state.vehicle[vehicleId]);
   const currentUser = useSelector((state) => state.session.user);
   //if vehicle is undefined on a page refresh redirect to vehicle search?
-  console.log(vehicle, "SELECTED VEHICLE");
+  console.log(vehicleId, "SELECTED VEHICLE ID");
 
   const isVehicleAvailable = (pickupDate, dropOffDate) => {
     if (!pickupDate || !dropOffDate) {
