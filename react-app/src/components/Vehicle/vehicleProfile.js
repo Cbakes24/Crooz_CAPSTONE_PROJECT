@@ -9,7 +9,7 @@ const VehicleProfile = (props) => {
   const history = useHistory();
   const [pickupDate, setPickupDate] = useState("");
   const [dropOffDate, setDropOffDate] = useState("");
-
+  const today = new Date()
   const { vehicleId } = useParams();
   const vehicle = useSelector((state) => state.vehicle[vehicleId]);
   //if vehicle is undefined on a page refresh redirect to vehicle search?
@@ -18,6 +18,8 @@ const VehicleProfile = (props) => {
 //   useEffect(() => {
 //     dispatch(fetchVehicle(vehicleId));
 //   }, [dispatch, vehicleId]);
+
+
 
   const isVehicleAvailable = vehicle.bookings.every((booking) => {
     const bookingStart = new Date(booking.pickupDate);
@@ -49,7 +51,7 @@ const VehicleProfile = (props) => {
             <li>Power: {vehicle.power}</li>
             <li>Type: {vehicle.type}</li>
             <li>Price: ${vehicle.dailyPrice}/day</li>
-            <li>Located: {vehicle.userCity}</li>
+            <li>Located: {vehicle.city}</li>
           </ul>
         </section>
       </div>

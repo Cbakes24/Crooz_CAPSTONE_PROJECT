@@ -50,7 +50,7 @@ class Vehicle(db.Model):
             'type': self.type,
             'passengers': self.passengers,
             'host': self.host.to_dict_user(),
-            'userCity': self.host.to_dict_user()['city'],
+            'city': self.host.to_dict_user()['city'],
             'dailyPrice': self.daily_price,
             'bookings': [booking.to_dict() for booking in self.bookings]
         }
@@ -69,6 +69,6 @@ class Vehicle(db.Model):
             'type': self.type,
             'passengers': self.passengers,
             'dailyPrice': self.daily_price,
-            'userCity': self.host.to_dict_user()['city'],
+            'city': self.host.to_dict_user()['city'],
             'host': self.host.to_dict_user(),
         }
