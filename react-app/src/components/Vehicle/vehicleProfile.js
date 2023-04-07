@@ -12,6 +12,7 @@ const VehicleProfile = (props) => {
   const today = new Date()
   const { vehicleId } = useParams();
   const vehicle = useSelector((state) => state.vehicle[vehicleId]);
+  const currentUser = useSelector((state) => state.session.user);
   //if vehicle is undefined on a page refresh redirect to vehicle search?
   console.log(vehicle, "SELECTED VEHICLE");
 
@@ -19,20 +20,52 @@ const VehicleProfile = (props) => {
 //     dispatch(fetchVehicle(vehicleId));
 //   }, [dispatch, vehicleId]);
 
+const isVehicleAvailable = (pickupDate, dropOffDate) => {
+    if (!pickupDate || !dropOffDate) {
+        return false;
+      }
+    return vehicle.bookings.every((booking) => {
+      const bookingStart = new Date(booking.pickupDate);
+      console.log(bookingStart, "VEHICLE BOOKING START");
+      const bookingEnd = new Date(booking.dropOffDate);
+      console.log(bookingEnd, "VEHICLE BOOKING END");
+      const start = new Date(pickupDate);
+      console.log(start, "SEARCH START DATE");
+      const end = new Date(dropOffDate);
+      console.log(end, "SEARCH END DATE");
+
+      if( pickupDate > dropOffDate ) {
+        alert('The Pick Up Date must be before the Drop Off Date');
+        return false
+      } else if ( new Date(pickupDate) < today || new Date(dropOffDate) < today) {
+        alert('Dates cannot be a previous date');
+        return false
+      }
+
+      return start >= bookingEnd || end <= bookingStart;
+    });
+  };
+
+  useEffect(() => {
+    const available = isVehicleAvailable(pickupDate, dropOffDate);
+    setVehicleAvailable(available);
+  }, [pickupDate, dropOffDate, vehicle]);
+
+  const [vehicleAvailable, setVehicleAvailable] = useState(false);
 
 
-  const isVehicleAvailable = vehicle.bookings.every((booking) => {
-    const bookingStart = new Date(booking.pickupDate);
-    console.log(bookingStart, "VEHICLE BOOKING START");
-    const bookingEnd = new Date(booking.dropOffDate);
-    console.log(bookingEnd, "VEHICLE BOOKING END");
-    const start = new Date(pickupDate);
-    console.log(start, "SEARCH START DATE");
-    const end = new Date(dropOffDate);
-    console.log(end, "SEARCH END DATE");
+//   const isVehicleAvailable = vehicle.bookings.every((booking) => {
+//     const bookingStart = new Date(booking.pickupDate);
+//     console.log(bookingStart, "VEHICLE BOOKING START");
+//     const bookingEnd = new Date(booking.dropOffDate);
+//     console.log(bookingEnd, "VEHICLE BOOKING END");
+//     const start = new Date(pickupDate);
+//     console.log(start, "SEARCH START DATE");
+//     const end = new Date(dropOffDate);
+//     console.log(end, "SEARCH END DATE");
 
-    return start >= bookingEnd || end <= bookingStart;
-  });
+//     return start >= bookingEnd || end <= bookingStart;
+//   });
 
   return (
     <div>
@@ -58,7 +91,7 @@ const VehicleProfile = (props) => {
       <div>
         Host: {vehicle.host.username} Email: {vehicle.host.email}
       </div>
-      <section>
+      {currentUser && currentUser.id === vehicle.host.id ? null : (   <section>
       <h4>Check Availability</h4>
         <label>
           pickupDate
@@ -83,7 +116,7 @@ const VehicleProfile = (props) => {
 
         <div>
 
-          {isVehicleAvailable && (
+          {vehicleAvailable && (
             <BookNow
               pickupDate={pickupDate}
               dropOffDate={dropOffDate}
@@ -95,7 +128,7 @@ const VehicleProfile = (props) => {
             />
           )}
         </div>
-      </section>
+      </section>)}
     </div>
   );
 };

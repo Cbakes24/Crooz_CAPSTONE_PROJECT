@@ -161,6 +161,7 @@ const VehicleSearch = () => {
             city={city}
             state={state}
             country={country}
+            currentUser={currentUser}
           />
         ))}
       </ul>
