@@ -9,8 +9,8 @@ const CreateVehicleForm = () => {
     power: "",
     passengers: "",
     picture: "",
-    description: "",
-    dailyPrice: ""
+    dailyPrice: "",
+    description: ""
   };
 
   return <VehicleForm vehicle={vehicle} formType="New vehicle" />;

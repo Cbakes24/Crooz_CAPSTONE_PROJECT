@@ -31,8 +31,8 @@ const VehicleForm = ({ vehicle }) => {
       power,
       passengers,
       picture,
+      daily_price: dailyPrice,
       description,
-      dailyPrice,
     };
 
     const action = vehicle.id ? editVehicle : createVehicle;

@@ -88,6 +88,7 @@ export const fetchVehicleType = (vehicleType) => async (dispatch) => {
 
 // POST create a vehicle
 export const createVehicle = (vehicle) => async (dispatch) => {
+  console.log(vehicle, "VEHICLE IN THUNK")
   const res = await fetch("/api/vehicles", {
     method: "POST",
     body: JSON.stringify(vehicle),
@@ -97,6 +98,7 @@ export const createVehicle = (vehicle) => async (dispatch) => {
   });
 
   const data = await res.json();
+  console.log(data, 'NEW VEHICLE DATAAA in thunk')
   if (res.ok) {
     dispatch(setVehicles([data]));
   }

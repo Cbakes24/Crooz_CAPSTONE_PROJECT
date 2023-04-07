@@ -10,23 +10,17 @@ function Navigation({ isLoaded }) {
   return (
     <ul>
       <li>
-        <NavLink className="navbar-box" exact to="/">
+        <NavLink className="navbar-box" exact to="/bookings/search">
           Home
         </NavLink>
         <NavLink className="navbar-box" exact to="/vehicles/create">
           Vehicle Form
         </NavLink>
-        <NavLink className="navbar-box" exact to="/vehicles">
-          All Vehicles
-        </NavLink>
         <NavLink className="navbar-box" exact to="/signup">
           SignUp
         </NavLink>
-        <NavLink className="navbar-box" exact to="/bookings/search">
-          Booking
-        </NavLink>
         <NavLink className="navbar-box" exact to="/users/host">
-          Host Home
+          My Page
         </NavLink>
       </li>
       {isLoaded && (

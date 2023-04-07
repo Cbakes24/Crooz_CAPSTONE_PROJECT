@@ -65,6 +65,7 @@ def create_vehicle():
     """
     form = VehicleForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data, "VEHICLE FORM DATAA")
     if form.validate_on_submit():
         new_vehicle = Vehicle()
         new_vehicle.host_id = current_user.id
@@ -72,7 +73,6 @@ def create_vehicle():
         db.session.add(new_vehicle)
         db.session.commit()
         return jsonify(
-
             new_vehicle.to_dict()
         )
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
