@@ -22,9 +22,9 @@ const HomepageHost = () => {
   const vehicles = useSelector((state) => Object.values(state.vehicle));
   const bookings = useSelector((state) => Object.values(state.booking));
   const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === currentUser.id);
+  const hostBookings = bookings.filter((booking) => booking.host.id === currentUser.id);
 
 
-  
   useEffect(() => {
     dispatch(fetchHostVehicles());
     dispatch(fetchHostBookings());
@@ -54,7 +54,7 @@ const HomepageHost = () => {
 
             <div>
                 <h3>Your Bookings</h3>
-                {bookings.map((booking) => (
+                {hostBookings.map((booking) => (
                 <BookingListItem booking={booking} key={booking.id} />
                 ))}
             </div>
