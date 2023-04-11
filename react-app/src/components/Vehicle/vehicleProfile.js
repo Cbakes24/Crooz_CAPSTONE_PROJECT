@@ -4,6 +4,7 @@ import { useParams, Link, useHistory } from "react-router-dom";
 import { fetchVehicle } from "../../store/vehicle";
 import BookNow from "../Booking/bookNow";
 import { deleteVehicle } from "../../store/vehicle";
+import ReviewList from "../Review/reviewList";
 
 const VehicleProfile = (props) => {
   const dispatch = useDispatch();
@@ -126,6 +127,10 @@ const VehicleProfile = (props) => {
           </div>
         </section>
       )}
+
+<div>
+  <ReviewList vehicle={vehicle} />
+</div>
 
       <div>
          {currentUser && currentUser.id === vehicle.host.id ? (

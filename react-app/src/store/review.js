@@ -1,10 +1,10 @@
 const SET_REVIEW = "review/SET_REVIEW";
 const REMOVE_REVIEW = "review/REMOVE_REVIEW";
 
-export const setReview = (bookings) => {
+export const setReview = (reviews) => {
   return {
     type: SET_REVIEW,
-    bookings,
+    reviews,
   };
 };
 
@@ -14,3 +14,39 @@ export const removeReview= (reviewId) => {
     reviewId,
   };
 };
+
+// GET ALL reviews
+export const fetchReviews = () => async (dispatch) => {
+    const res = await fetch("/api/reviews", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    if (res.ok) {
+      dispatch(setReview(data));
+    }
+    return data;
+  };
+
+
+  const reviewsReducer = (state = {}, action) => {
+    let newState = { ...state };
+    switch (action.type) {
+        case SET_REVIEW:
+          const reviewsObj = {};
+          action.reviews.forEach((review) => {
+            reviewsObj[review.id] = review;
+          });
+          newState = { ...newState, ...reviewsObj };
+          return newState;
+
+          case REMOVE_REVIEW:
+            delete newState[action.reviewId];
+            return newState;
+          default:
+            return state;
+        }
+      };
+
+      export default reviewsReducer;
