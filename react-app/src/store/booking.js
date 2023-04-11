@@ -42,6 +42,19 @@ export const fetchHostBookings = () => async (dispatch) => {
   }
   return data;
 };
+// GET ALL Guest bookingS
+export const fetchGuestBookings = () => async (dispatch) => {
+  const res = await fetch("/api/bookings/guest", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(setBookings(data));
+  }
+  return data;
+};
 
 // GET a booking by id
 export const fetchBooking = (bookingId) => async (dispatch) => {

@@ -11,7 +11,7 @@ import { fetchHostVehicles } from "../../store/vehicle";
 import VehicleListItem from "../Vehicle/vehicleItem";
 import BookingListItem from "../Booking/bookingListItem";
 import CreateVehicleForm from "../Vehicle/createVehicle";
-import { fetchHostBookings } from "../../store/booking";
+import { fetchHostBookings, fetchGuestBookings } from "../../store/booking";
 import { useHistory } from "react-router-dom";
 
 
@@ -21,14 +21,18 @@ const HomepageHost = () => {
   const currentUser = useSelector((state) => state.session.user);
   const vehicles = useSelector((state) => Object.values(state.vehicle));
   const bookings = useSelector((state) => Object.values(state.booking));
-  const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === currentUser.id);
+  const guestBookings = bookings.filter((booking) => booking.guest.id === currentUser.id);
   const hostBookings = bookings.filter((booking) => booking.host.id === currentUser.id);
-
+  const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === currentUser.id);
+  console.log(guestBookings, " Guest BOOOKING TRIPSSS")
 
   useEffect(() => {
     dispatch(fetchHostVehicles());
     dispatch(fetchHostBookings());
+    dispatch(fetchGuestBookings());
   }, [dispatch]);
+
+
 
   if (!currentUser) {
     return (
@@ -53,12 +57,18 @@ const HomepageHost = () => {
             </div>
 
             <div>
-                <h3>Your Bookings</h3>
+                <h3>Your Hosted Trips</h3>
                 {hostBookings.map((booking) => (
                 <BookingListItem booking={booking} key={booking.id} />
                 ))}
             </div>
 
+            <div>
+                <h3>Your Personal Trips</h3>
+                {guestBookings.map((booking) => (
+                <BookingListItem booking={booking} key={booking.id} />
+                ))}
+            </div>
             <div>
                 <h3>Add a Vehicle</h3>
                 <CreateVehicleForm />
