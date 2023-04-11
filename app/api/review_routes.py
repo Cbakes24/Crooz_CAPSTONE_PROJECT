@@ -26,3 +26,21 @@ def get_recent_reviews():
     return jsonify([review.to_dict() for review in reviews]), 200
 
 # Create a review
+@review_bp.route('', methods=['POST'])
+def create_review():
+    """
+    Query for creating a review and returning it as a dictionary
+    """
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data, "REVIEW FORM DATAA")
+    if form.validate_on_submit():
+        new_review = Review()
+        new_review.user_id = current_user.id
+        form.populate_obj(new_review)
+        db.session.add(new_review)
+        db.session.commit()
+        return jsonify(
+            new_review.to_dict()
+        )
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

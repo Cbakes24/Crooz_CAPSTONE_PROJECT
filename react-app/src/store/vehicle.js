@@ -142,7 +142,7 @@ const vehiclesReducer = (state = {}, action) => {
         vehiclesObj[vehicle.id] = vehicle;
       });
       console.log(vehiclesObj, "vehicles OBject")
-      newState = {...vehiclesObj };
+      newState = {...newState, ...vehiclesObj };
       console.log(newState, "THET NEW STATE")
       return newState;
 
