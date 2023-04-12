@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import LeaveReviewModal from "./leaveReviewModal";
 
-const LeaveReviewButton = () => {
+const LeaveReviewButton = ({bookingId, vehicleId}) => {
 
 
 
@@ -15,7 +15,7 @@ const LeaveReviewButton = () => {
 
       <OpenModalButton
         buttonText="Leave Review"
-        modalComponent={<LeaveReviewModal />}
+        modalComponent={<LeaveReviewModal bookingId={bookingId} vehicleId={vehicleId} />}
       />
     </>
   );

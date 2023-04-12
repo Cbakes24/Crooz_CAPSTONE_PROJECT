@@ -5,6 +5,7 @@ import { fetchVehicle } from "../../store/vehicle";
 import BookNow from "../Booking/bookNow";
 import { deleteVehicle } from "../../store/vehicle";
 import ReviewList from "../Review/reviewList";
+import { fetchReviews } from "../../store/review";
 
 const VehicleProfile = (props) => {
   const dispatch = useDispatch();
@@ -24,9 +25,10 @@ const VehicleProfile = (props) => {
 
   useEffect(() => {
     dispatch(fetchVehicle(vehicleId));
+    dispatch(fetchReviews());
   }, [dispatch, vehicleId]);
 
-  const isVehicleAvailable = (pickupDate, dropOffDate, vehicle) => {
+  const isVehicleAvailable = (pickupDate, dropOffDate) => {
     if (!pickupDate || !dropOffDate) {
       return false;
     }

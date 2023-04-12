@@ -10,6 +10,7 @@ const BookingListItem = ({booking}) => {
   return (
     <div className="booking-item-box">
       <div>
+        <h3>{booking.vehicle.make} {booking.vehicle.model}</h3>
         <img className="booking-item-image" src={booking.vehicle.picture}></img>
       </div>
 
@@ -19,7 +20,7 @@ const BookingListItem = ({booking}) => {
         </div>
         <div>{booking.guest.username}</div>
     <div>
-      <LeaveReviewButton />
+      <LeaveReviewButton  bookingId={booking.id} vehicleId={booking.vehicleId}/>
     </div>
       </div>
     </div>

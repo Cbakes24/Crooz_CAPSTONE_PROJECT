@@ -30,8 +30,22 @@ export const fetchReviews = () => async (dispatch) => {
   };
 
 // CREATE REVIEW
-export const createReview = (review) => async (dispatch) => {
+export const createReview = (payload) => async (dispatch) => {
+  console.log(payload, 'review in thunk')
+  const res = await fetch("/api/reviews/create", {
+    method: "POST",
+    body: JSON.stringify(payload),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
+    const data = await res.json();
+    console.log(data, 'data in thunk')
+  if (res.ok) {
+    dispatch(setReview([data]));
+  }
+  return data;
 }
 
 

@@ -5,3 +5,7 @@ form {
     flex-direction: column;
 
 }
+
+img {
+    width: 100px;
+}
