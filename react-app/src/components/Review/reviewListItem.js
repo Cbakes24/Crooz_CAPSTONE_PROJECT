@@ -1,13 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect} from "react";
 import { fetchBookings } from "../../store/booking";
-const ReviewListItem = ({review}) => {
+const ReviewListItem = ({review, vehicle}) => {
     const dispatch = useDispatch()
     const currentUser = useSelector((state) => state.session.user);
     const bookingState = useSelector((state) => state.booking)
     const booking = bookingState[review.bookingId]
-console.log(booking, 'REVIEW BOOKINGGGG')
 
+    console.log(bookingState, 'BookingState BOOKINGGGG')
+console.log(booking, 'REVIEW BOOKINGGGG')
 
   useEffect(() => {
     dispatch(fetchBookings());
@@ -15,9 +16,9 @@ console.log(booking, 'REVIEW BOOKINGGGG')
   //figure out username need to get a state to get the user
   /*booking.guest.id === revier.userId filter then use that username
   */
-    return booking ? (
+    return review ? (
         <div>
-            {booking.guest.username}
+            {username}
            {review.rating}
           <p>{review.body}</p>
         </div>

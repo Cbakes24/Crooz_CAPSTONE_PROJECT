@@ -6,6 +6,7 @@ import BookNow from "../Booking/bookNow";
 import { deleteVehicle } from "../../store/vehicle";
 import ReviewList from "../Review/reviewList";
 import { fetchReviews } from "../../store/review";
+// import { fetchBookings } from "../../store/booking";
 
 const VehicleProfile = (props) => {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const VehicleProfile = (props) => {
   useEffect(() => {
     dispatch(fetchVehicle(vehicleId));
     dispatch(fetchReviews());
+    // dispatch(fetchBookings());
   }, [dispatch, vehicleId]);
 
   const isVehicleAvailable = (pickupDate, dropOffDate) => {

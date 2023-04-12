@@ -1,27 +1,28 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchReviews } from "../../store/review";
-import ReviewListItem from "./reviewListItem"
+import ReviewListItem from "./reviewListItem";
 
-const ReviewList = ({vehicle}) => {
-const dispatch = useDispatch();
-const reviews = useSelector((state) => Object.values(state.review))
-console.log(reviews, 'REVIEWSSSSSSS')
-const filteredReviews = reviews.filter((review) => review.vehicleId === vehicle.id)
+const ReviewList = ({ vehicle }) => {
+  const dispatch = useDispatch();
+  const reviews = useSelector((state) => Object.values(state.review));
+  console.log(reviews, "REVIEWSSSSSSS");
+  const filteredReviews = reviews.filter(
+    (review) => review.vehicleId === vehicle.id
+  );
 
-
-useEffect(() => {
+  useEffect(() => {
     dispatch(fetchReviews());
-}, [dispatch])
+  }, [dispatch]);
 
-    return (
-        <div>
-            <h3>Vehicle Reviews</h3>
-            {filteredReviews.map((review) => (
-                <ReviewListItem review={review} key={review.id}/>
-            ))}
-        </div>
-    )
-}
+  return (
+    <div>
+      <h3>Vehicle Reviews</h3>
+      {filteredReviews.map((review) => (
+        <ReviewListItem review={review} key={review.id} vehicle={vehicle} />
+      ))}
+    </div>
+  );
+};
 
-export default ReviewList
+export default ReviewList;
