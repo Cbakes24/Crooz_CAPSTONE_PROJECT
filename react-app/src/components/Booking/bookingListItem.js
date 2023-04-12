@@ -1,6 +1,5 @@
-// import "./booking.css";
-import { Link } from "react-router-dom";
-import BookNow from "../Booking/bookNow";
+
+import LeaveReviewButton from '../Review/leaveReviewButton';
 import './booking.css';
 const BookingListItem = ({booking}) => {
 
@@ -19,7 +18,9 @@ const BookingListItem = ({booking}) => {
         {booking.location} {booking.pickupDate} {booking.dropOffDate} {booking.vehicleId}
         </div>
         <div>{booking.guest.username}</div>
-
+    <div>
+      <LeaveReviewButton />
+    </div>
       </div>
     </div>
   );

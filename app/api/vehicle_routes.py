@@ -30,12 +30,13 @@ def get_all_vehicles():
 
 
 # GET VEHICLE BY ID
-@vehicle_bp.route('', methods=['GET'])
-def get_vehicle_by_id():
+@vehicle_bp.route('/<int:id>', methods=['GET'])
+def get_vehicle_by_id(id):
     """
     Query for a vehicle by id and returns that vehicle in a dictionary
     """
     vehicle = Vehicle.query.get(id)
+    print(vehicle, "HEYOOO VEHICLE")
     if vehicle:
         return jsonify(vehicle.to_dict())
     else:

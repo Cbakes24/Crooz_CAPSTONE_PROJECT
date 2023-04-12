@@ -18,7 +18,7 @@ useEffect(() => {
         <div>
             <h3>Vehicle Reviews</h3>
             {filteredReviews.map((review) => (
-                <ReviewListItem review={review}/>
+                <ReviewListItem review={review} key={review.id}/>
             ))}
         </div>
     )

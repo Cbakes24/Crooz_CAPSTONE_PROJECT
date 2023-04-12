@@ -44,8 +44,7 @@ const LeaveReviewModal = () => {
           Rating
           <input
             type="number"
-            step="1"
-            value={body}
+            value={rating}
             onChange={(e) => setRating(e.target.value)}
             required
            />

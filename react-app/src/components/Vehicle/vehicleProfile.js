@@ -13,13 +13,20 @@ const VehicleProfile = (props) => {
   const [dropOffDate, setDropOffDate] = useState("");
   const today = new Date();
   const { vehicleId } = useParams();
-  const vehicle = useSelector((state) => state.vehicle[vehicleId]);
+  const vehicleState = useSelector((state) => state.vehicle);
+  const vehicle = vehicleState[vehicleId]
   const currentUser = useSelector((state) => state.session.user);
   //if vehicle is undefined on a page refresh redirect to vehicle search?
-  console.log(vehicleId, "SELECTED VEHICLE ID");
-  console.log(vehicle, 'VEHICLEEE')
-  console.log(vehicle.dailyPrice, 'DAILY PRICEEEE')
-  const isVehicleAvailable = (pickupDate, dropOffDate) => {
+  // console.log(vehicleId, "SELECTED VEHICLE ID");
+  // console.log(vehicleState, 'VEHICLEE STATEEE')
+  // console.log(vehicle.dailyPrice, 'DAILY PRICEEEE')
+
+
+  useEffect(() => {
+    dispatch(fetchVehicle(vehicleId));
+  }, [dispatch, vehicleId]);
+
+  const isVehicleAvailable = (pickupDate, dropOffDate, vehicle) => {
     if (!pickupDate || !dropOffDate) {
       return false;
     }
@@ -44,9 +51,6 @@ const VehicleProfile = (props) => {
     });
   };
 
-  //   useEffect(() => {
-  //     dispatch(fetchVehicle(vehicleId));
-  //   }, [dispatch, vehicleId]);
 
   useEffect(() => {
     const available = isVehicleAvailable(pickupDate, dropOffDate);
@@ -64,7 +68,7 @@ const VehicleProfile = (props) => {
   };
 
 
-  return (
+  return vehicle ? (
     <div>
       <h1>Vehicle Profile</h1>
       <div>
@@ -138,7 +142,7 @@ const VehicleProfile = (props) => {
         </div>
 
     </div>
-  );
+  ) : null;
 };
 
 export default VehicleProfile;

@@ -4,21 +4,21 @@ import { useHistory } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import LeaveReviewModal from "./leaveReviewModal";
 
+const LeaveReviewButton = () => {
 
 
-const LeaveReview = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const [showMenu, setShowMenu] = useState(false);
-  const ulRef = useRef();
 
-    return (
 
-        <OpenModalButton
+
+  return (
+    <>
+
+      <OpenModalButton
         buttonText="Leave Review"
-        onItemClick={closeMenu}
         modalComponent={<LeaveReviewModal />}
       />
-    )
-}
+    </>
+  );
+};
 
+export default LeaveReviewButton;

@@ -66,9 +66,11 @@ export const fetchVehiclesByLocation = (payload) => async (dispatch) => {
 
 // GET a vehicle by id
 export const fetchVehicle = (vehicleId) => async (dispatch) => {
+  console.log(vehicleId, "VEHICLEID IN THUNK")
   const res = await fetch(`/api/vehicles/${vehicleId}`);
-
+  console.log(res, "RES IN THUNK")
   const data = await res.json();
+
   if (res.ok) {
     dispatch(setVehicles([data]));
   }
