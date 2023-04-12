@@ -87,5 +87,20 @@ def vehicles_by_location():
     print("FILTERED VEHICLES!!!", filtered_vehicles)
     return {'vehicles': [vehicle.to_dict() for vehicle in filtered_vehicles]}
 
+# DELETE A BOOKING
+@booking_bp.route('/<int:id>', methods=['DELETE'])
+def delete_booking_by_id(id):
+    """
+    Query for a booking by id and delete that booking
+    """
+    booking = Booking.query.get(id)
+    print(booking, "BOOKING TO DELEETTTEEEE")
+    db.session.delete(booking)
+    db.session.commit()
+    return jsonify({
+        'success': True,
+        'message': 'Booking deleted successfully!'
+    })
+
 
 # vehicle_location = Vehicle.query.join(User).filter_by(user.city)

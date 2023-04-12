@@ -100,7 +100,6 @@ def edit_vehicle(id):
 
 
 # Delete A VEHICLE
-# GET VEHICLE BY ID
 @vehicle_bp.route('/<int:id>', methods=['DELETE'])
 def delete_vehicle_by_id(id):
     """

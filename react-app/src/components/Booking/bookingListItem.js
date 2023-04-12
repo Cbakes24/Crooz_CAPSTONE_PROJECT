@@ -1,9 +1,21 @@
 import LeaveReviewButton from "../Review/leaveReviewButton";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./booking.css";
-import { Link } from "react-router-dom";
+import { deleteBooking } from "../../store/booking";
+import { Link, useHistory } from "react-router-dom";
+
 const BookingListItem = ({ booking }) => {
   const currentUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const today = new Date();
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    if (!window.confirm("Do you want to delete this booking?")) return;
+    await dispatch(deleteBooking(booking.id));
+    history.push("/users/host");
+  };
 
   return (
     <div className="booking-item-box">
@@ -21,15 +33,26 @@ const BookingListItem = ({ booking }) => {
           {booking.vehicleId}
         </div>
         <div>{booking.guest.username}</div>
-        {currentUser && currentUser.id === booking.guest.id ? (
+
+        {booking.pickupDate && today < new Date(booking.pickupDate) ? (
           <div>
-            <LeaveReviewButton
-              bookingId={booking.id}
-              vehicleId={booking.vehicleId}
-            />
+            <button onClick={handleDelete}>Cancel Trip</button>
           </div>
         ) : null}
       </div>
+
+      {booking.dropOffDate && booking.dropOffDate < today ? (
+        <div>
+          {currentUser && currentUser.id === booking.guest.id ? (
+            <div>
+              <LeaveReviewButton
+                bookingId={booking.id}
+                vehicleId={booking.vehicleId}
+              />
+            </div>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 };
