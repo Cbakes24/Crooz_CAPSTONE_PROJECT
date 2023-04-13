@@ -26,7 +26,7 @@ def get_all_vehicles():
     Query for all vehicles and returns them in a list of vehicle dictionaries
     """
     vehicles = Vehicle.query.all()
-    print(vehicles, "VEHICLES FOR REVIEW")
+
     return [vehicle.to_dict() for vehicle in vehicles]
 
 

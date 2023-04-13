@@ -9,9 +9,7 @@ const ReviewListItem = ({review, vehicle}) => {
   useEffect(() => {
     dispatch(fetchBookings());
   }, [dispatch, ]);
-  //figure out username need to get a state to get the user
-  /*booking.guest.id === revier.userId filter then use that username
-  */
+
     return (
         <div>
           {review.username}

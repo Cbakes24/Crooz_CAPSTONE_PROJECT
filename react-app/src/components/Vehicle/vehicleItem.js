@@ -19,7 +19,7 @@ const handleDelete = async e => {
 
   return (
     <div className="vehicle-item-box">
-      <Link to={`/vehicles/${props.vehicle.id}`} >View Car</Link>
+      <Link to={`/vehicles/${props.vehicle.id}?pickupDate=${props.pickupDate}&dropOffDate=${props.dropOffDate}`} >View Car</Link>
       <div>
         <img className="vehicle-item-image" src={props.vehicle.picture}></img>
       </div>

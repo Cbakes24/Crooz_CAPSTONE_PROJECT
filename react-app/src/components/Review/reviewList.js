@@ -6,7 +6,6 @@ import ReviewListItem from "./reviewListItem";
 const ReviewList = ({ vehicle }) => {
   const dispatch = useDispatch();
   const reviews = useSelector((state) => Object.values(state.review));
-  console.log(reviews, "REVIEWSSSSSSS");
   const filteredReviews = reviews.filter(
     (review) => review.vehicleId === vehicle.id
   );

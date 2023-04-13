@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, Link, useHistory, useLocation } from "react-router-dom";
 import { fetchVehicle } from "../../store/vehicle";
 import BookNow from "../Booking/bookNow";
 import { deleteVehicle } from "../../store/vehicle";
@@ -11,13 +11,19 @@ import { fetchReviews } from "../../store/review";
 const VehicleProfile = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [pickupDate, setPickupDate] = useState("");
-  const [dropOffDate, setDropOffDate] = useState("");
+  const location = useLocation();
+  const urlPickupDate = new URLSearchParams(location.search).get('pickupDate');
+  const urlDropOffDate = new URLSearchParams(location.search).get('dropOffDate');
+  const [pickupDate, setPickupDate] = useState(urlPickupDate || "");
+  const [dropOffDate, setDropOffDate] = useState(urlDropOffDate || "");
   const today = new Date();
   const { vehicleId } = useParams();
   const vehicleState = useSelector((state) => state.vehicle);
   const vehicle = vehicleState[vehicleId]
   const currentUser = useSelector((state) => state.session.user);
+
+
+
   //if vehicle is undefined on a page refresh redirect to vehicle search?
   // console.log(vehicleId, "SELECTED VEHICLE ID");
   // console.log(vehicleState, 'VEHICLEE STATEEE')
@@ -103,7 +109,7 @@ const VehicleProfile = (props) => {
             pickupDate
             <input
               type="datetime-local"
-              placeholder=""
+              placeholder={urlPickupDate}
               required
               value={pickupDate}
               onChange={(e) => setPickupDate(e.target.value)}
