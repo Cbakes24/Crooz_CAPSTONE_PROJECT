@@ -39,5 +39,6 @@ class Review(db.Model):
             'updatedAt': self.updated_at.strftime('%Y-%m-%d %H:%M:%S'),
             'userId': self.user_id,
             'vehicleId': self.vehicle_id,
+            'username' : self.user.to_dict()['username'],
             'bookingId': self.booking_id
         }

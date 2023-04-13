@@ -24,19 +24,6 @@ class Vehicle(db.Model):
     bookings = db.relationship('Booking', back_populates='vehicle', cascade='all, delete', passive_deletes=True)
     fav_by_users = db.relationship("User", secondary=favorites, back_populates="fav_vehicles", cascade='all, delete' )
 
-    # def to_dict(self):
-    #     return {
-    #         'id': self.id,
-    #         'year': self.year,
-    #         'make': self.make,
-    #         'model': self.model,
-    #         'picture': self.picture,
-    #         'power': self.power,
-    #         'description': self.description,
-    #         'type': self.type,
-    #         'passengers': self.passengers,
-    #         'hostId': self.host_id,
-    #     }
 
     def to_dict(self):
         return {
@@ -52,6 +39,7 @@ class Vehicle(db.Model):
             'host': self.host.to_dict_user(),
             'city': self.host.to_dict_user()['city'],
             'dailyPrice': self.daily_price,
+            'reviews' : [review.to_dict() for review in self.reviews],
             'bookings': [booking.to_dict() for booking in self.bookings]
         }
 
@@ -70,5 +58,20 @@ class Vehicle(db.Model):
             'passengers': self.passengers,
             'dailyPrice': self.daily_price,
             'city': self.host.to_dict_user()['city'],
+            'reviews' : [review.to_dict() for review in self.reviews],
             'host': self.host.to_dict_user(),
         }
+
+    # def to_dict(self):
+    #     return {
+    #         'id': self.id,
+    #         'year': self.year,
+    #         'make': self.make,
+    #         'model': self.model,
+    #         'picture': self.picture,
+    #         'power': self.power,
+    #         'description': self.description,
+    #         'type': self.type,
+    #         'passengers': self.passengers,
+    #         'hostId': self.host_id,
+    #     }
