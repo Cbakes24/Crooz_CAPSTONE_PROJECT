@@ -109,6 +109,7 @@ export const createVehicle = (vehicle) => async (dispatch) => {
 
 //   PUT edit a vehicle
 export const editVehicle = (vehicle) => async (dispatch) => {
+  console.log(vehicle, "VEHICLE IN VEHICLE EDIT THUNK")
   const res = await fetch(`/api/vehicles/${vehicle.id}`, {
     method: "PUT",
     body: JSON.stringify(vehicle),
@@ -118,6 +119,7 @@ export const editVehicle = (vehicle) => async (dispatch) => {
   });
 
   const data = await res.json();
+  console.log(data, "DATA EDIT VEHICLE THUNK")
   if (res.ok) {
     dispatch(setVehicles([data]));
   }

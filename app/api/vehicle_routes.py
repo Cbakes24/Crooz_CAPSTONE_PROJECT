@@ -80,18 +80,17 @@ def create_vehicle():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 # Edit A VEHICLE
-@vehicle_bp.route('', methods=['PUT'])
+@vehicle_bp.route('/<int:id>', methods=['PUT'])
 @login_required
 def edit_vehicle(id):
     """
-    Query for creating a vehicle and returning it as a dictionary
+    Query for editing a vehicle and returning it as an updated dictionary
     """
     form = VehicleForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        vehicle = Vehicle.get(id)
+        vehicle = Vehicle.query.get(id)
         form.populate_obj(vehicle)
-        db.session.add(vehicle)
         db.session.commit()
         return jsonify(
 

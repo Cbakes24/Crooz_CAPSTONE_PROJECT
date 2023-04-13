@@ -10,6 +10,7 @@ import Navigation from "./components/Navigation";
 import VehicleSearch from "./components/Booking/vehicleSearch";
 import HomepageHost from "./components/Homepage/homepageHost";
 import VehicleProfile from "./components/Vehicle/vehicleProfile";
+import VehicleEdit from "./components/Vehicle/VehicleEdit";
 
 function App() {
   const dispatch = useDispatch();
