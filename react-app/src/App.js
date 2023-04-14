@@ -11,7 +11,7 @@ import VehicleSearch from "./components/Booking/vehicleSearch";
 import HomepageHost from "./components/Homepage/homepageHost";
 import VehicleProfile from "./components/Vehicle/vehicleProfile";
 import VehicleEdit from "./components/Vehicle/VehicleEdit";
-
+import BookingEdit from "./components/Booking/EditBooking";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -47,6 +47,9 @@ function App() {
           </Route>
           <Route exact path="/vehicles/:vehicleId/edit">
             <VehicleEdit />
+          </Route>
+          <Route exact path="/bookings/:bookingId/edit">
+            <BookingEdit />
           </Route>
         </Switch>
       )}

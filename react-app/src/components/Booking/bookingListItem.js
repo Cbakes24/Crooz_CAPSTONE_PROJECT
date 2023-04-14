@@ -17,6 +17,15 @@ const BookingListItem = ({ booking }) => {
     history.push("/users/host");
   };
 
+  const handleEdit = async e => {
+  e.preventDefault();
+  if (currentUser.id === booking.guest.id) {
+    history.push(`/bookings/${booking.id}/edit`);
+  }
+  return null
+};
+
+
   return (
     <div className="booking-item-box">
       <div>
@@ -37,7 +46,9 @@ const BookingListItem = ({ booking }) => {
         {booking.pickupDate && today < new Date(booking.pickupDate) ? (
           <div>
             <button onClick={handleDelete}>Cancel Trip</button>
+            <button onClick={handleEdit}>Edit</button>
           </div>
+
         ) : null}
       </div>
 
