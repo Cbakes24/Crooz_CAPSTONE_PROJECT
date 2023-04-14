@@ -1,0 +1,7 @@
+.personal-trips {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+    max-height: 400px;
+    flex-direction: column;
+}

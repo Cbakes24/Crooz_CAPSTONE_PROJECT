@@ -10,9 +10,9 @@ const BookingListItem = ({ booking }) => {
   const history = useHistory();
   const today = new Date();
 
-console.log(booking.dropOffDate, "Dop OFF UP DATE BOOKING")
-console.log(today, "TODAYYYYYYY YO")
-console.log(booking.guest.id, "THE GUEST ID")
+  console.log(booking.dropOffDate, "Dop OFF UP DATE BOOKING");
+  console.log(today, "TODAYYYYYYY YO");
+  console.log(booking.guest.id, "THE GUEST ID");
   const handleDelete = async (e) => {
     e.preventDefault();
     if (!window.confirm("Do you want to delete this booking?")) return;
@@ -20,38 +20,38 @@ console.log(booking.guest.id, "THE GUEST ID")
     history.push("/users/host");
   };
 
-  const handleEdit = async e => {
-  e.preventDefault();
-  if (currentUser.id === booking.guest.id) {
-    history.push(`/bookings/${booking.id}/edit`);
-  }
-  return null
-};
-
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    if (currentUser.id === booking.guest.id) {
+      history.push(`/bookings/${booking.id}/edit`);
+    }
+    return null;
+  };
 
   return (
     <div className="booking-item-box">
-      <div>
-        <h3>
-          {booking.vehicle.make} {booking.vehicle.model}
-        </h3>
-        <Link to={`/vehicles/${booking.vehicle.id}`}>View Car</Link>
+      <Link to={`/vehicles/${booking.vehicle.id}`}>
         <img className="booking-item-image" src={booking.vehicle.picture}></img>
-      </div>
+      </Link>
 
       <div className="booking-info">
         <div className="booking-name">
-          {booking.location} {booking.pickupDate} {booking.dropOffDate}{" "}
-          {booking.vehicleId}
+          <h5>
+            {booking.vehicle.make} {booking.vehicle.model}
+          </h5>
+          <ul>
+            <li>City: {booking.city}</li>
+            <li>Pickup Date: {booking.pickupDate}</li>
+            <li>Drop Off Date: {booking.dropOffDate}</li>
+            <li>Guest: {booking.guest.username}</li>
+          </ul>
         </div>
-        <div>{booking.guest.username}</div>
 
         {booking.pickupDate && today < new Date(booking.pickupDate) ? (
           <div>
             <button onClick={handleDelete}>Cancel Trip</button>
             <button onClick={handleEdit}>Edit</button>
           </div>
-
         ) : null}
       </div>
 
