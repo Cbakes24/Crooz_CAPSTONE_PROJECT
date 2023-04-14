@@ -37,7 +37,10 @@ function Navigation({ isLoaded }) {
             SignUp
           </NavLink>
           <NavLink className="navbar-box" exact to="/users/host">
-            My Page
+            Host Page
+          </NavLink>
+          <NavLink className="navbar-box" exact to="/users/guest">
+            Guest Page
           </NavLink>
         </li>
         {isLoaded && (

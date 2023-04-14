@@ -12,6 +12,8 @@ import HomepageHost from "./components/Homepage/homepageHost";
 import VehicleProfile from "./components/Vehicle/vehicleProfile";
 import VehicleEdit from "./components/Vehicle/VehicleEdit";
 import BookingEdit from "./components/Booking/EditBooking";
+import HomepageGuest from "./components/Homepage/homepageGuest";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -41,6 +43,9 @@ function App() {
           </Route>
           <Route exact path="/users/host">
             <HomepageHost />
+          </Route>
+          <Route exact path="/users/guest">
+            <HomepageGuest />
           </Route>
           <Route exact path="/vehicles/:vehicleId">
             <VehicleProfile />

@@ -10,6 +10,9 @@ const BookingListItem = ({ booking }) => {
   const history = useHistory();
   const today = new Date();
 
+console.log(booking.dropOffDate, "Dop OFF UP DATE BOOKING")
+console.log(today, "TODAYYYYYYY YO")
+console.log(booking.guest.id, "THE GUEST ID")
   const handleDelete = async (e) => {
     e.preventDefault();
     if (!window.confirm("Do you want to delete this booking?")) return;
@@ -52,16 +55,16 @@ const BookingListItem = ({ booking }) => {
         ) : null}
       </div>
 
-      {booking.dropOffDate && booking.dropOffDate < today ? (
+      {booking.dropOffDate && new Date(booking.dropOffDate) < new Date() ? (
         <div>
-          {currentUser && currentUser.id === booking.guest.id ? (
+          {/* {currentUser && currentUser.id === booking.guest.id ? ( */}
             <div>
               <LeaveReviewButton
                 bookingId={booking.id}
                 vehicleId={booking.vehicleId}
               />
             </div>
-          ) : null}
+          {/* // ) : null} */}
         </div>
       ) : null}
     </div>

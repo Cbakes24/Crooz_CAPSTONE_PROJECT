@@ -1,10 +1,3 @@
-/*
-homepage host will contain
--list of your bookings
--list of your vehicles
--your name and picture
-*/
-
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHostVehicles } from "../../store/vehicle";
@@ -45,34 +38,34 @@ const HomepageHost = () => {
 
   return (
     <div>
+
       <div>
         <h1>{currentUser.username}</h1>
       </div>
 
-            <div>
+            <div class='my-vehicles'>
                 <h3>Your Vehicles</h3>
                 {hostVehicles.map((vehicle) => (
                 <VehicleListItem vehicle={vehicle} key={vehicle.id} />
                 ))}
             </div>
-
-            <div>
+            <div class='hosted-trips'>
                 <h3>Your Hosted Trips</h3>
                 {hostBookings.map((booking) => (
                 <BookingListItem booking={booking} key={booking.id} />
                 ))}
             </div>
-
-            <div>
+            {/* <div class='personal-trips'>
                 <h3>Your Personal Trips</h3>
                 {guestBookings.map((booking) => (
                 <BookingListItem booking={booking} key={booking.id} />
                 ))}
-            </div>
-            <div>
+            </div> */}
+            <div class='vehicle-form'>
                 <h3>Add a Vehicle</h3>
                 <CreateVehicleForm />
             </div>
+
     </div>
   );
 };
