@@ -34,7 +34,10 @@ const BookingListItem = ({ booking }) => {
         <img className="booking-item-image" src={booking.vehicle.picture}></img>
       </Link>
 
+    <div className="booking-item">
       <div className="booking-info">
+
+
         <div className="booking-name">
           <h5>
             {booking.vehicle.make} {booking.vehicle.model}
@@ -46,27 +49,29 @@ const BookingListItem = ({ booking }) => {
             <li>Guest: {booking.guest.username}</li>
           </ul>
         </div>
-
+      <div className='booking-buttons'>
         {booking.pickupDate && today < new Date(booking.pickupDate) ? (
           <div>
             <button onClick={handleDelete}>Cancel Trip</button>
             <button onClick={handleEdit}>Edit</button>
           </div>
         ) : null}
-      </div>
 
-      {booking.dropOffDate && new Date(booking.dropOffDate) < new Date() ? (
-        <div>
-          {currentUser && currentUser.id === booking.guest.id ? (
-            <div>
-              <LeaveReviewButton
-                bookingId={booking.id}
-                vehicleId={booking.vehicleId}
-              />
-            </div>
-          ) : null}
+        {booking.dropOffDate && new Date(booking.dropOffDate) < new Date() ? (
+          <div>
+            {currentUser && currentUser.id === booking.guest.id ? (
+              <div>
+                <LeaveReviewButton
+                  bookingId={booking.id}
+                  vehicleId={booking.vehicleId}
+                />
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+      </div>
+      </div>
         </div>
-      ) : null}
     </div>
   );
 };
