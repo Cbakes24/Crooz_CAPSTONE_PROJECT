@@ -57,14 +57,14 @@ console.log(booking.guest.id, "THE GUEST ID")
 
       {booking.dropOffDate && new Date(booking.dropOffDate) < new Date() ? (
         <div>
-          {/* {currentUser && currentUser.id === booking.guest.id ? ( */}
+          {currentUser && currentUser.id === booking.guest.id ? (
             <div>
               <LeaveReviewButton
                 bookingId={booking.id}
                 vehicleId={booking.vehicleId}
               />
             </div>
-          {/* // ) : null} */}
+          ) : null}
         </div>
       ) : null}
     </div>

@@ -1,0 +1,12 @@
+
+.personal-trips {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  max-height: 400px; /* set a maximum height for the container */
+}
+
+.booking-item-box {
+  width: calc(50.33% - 10px); /* subtract margin/padding */
+  margin: 5px;
+}

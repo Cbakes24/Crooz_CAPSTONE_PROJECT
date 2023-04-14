@@ -14,8 +14,8 @@ const HomepageGuest = () => {
   const currentUser = useSelector((state) => state.session.user);
   const vehicles = useSelector((state) => Object.values(state.vehicle));
   const bookings = useSelector((state) => Object.values(state.booking));
-  const guestBookings = bookings.filter((booking) => booking.guest.id === currentUser.id);
-  const hostBookings = bookings.filter((booking) => booking.host.id === currentUser.id);
+  const guestBookings = bookings.filter((booking) => booking.guest.id === currentUser.id).reverse();
+  const hostBookings = bookings.filter((booking) => booking.host.id === currentUser.id).reverse();
   const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === currentUser.id);
   const today = new Date()
 
@@ -47,28 +47,13 @@ const HomepageGuest = () => {
         <p>{today.toString()}</p>
       </div>
 
-            {/* <div class='my-vehicles'>
-                <h3>Your Vehicles</h3>
-                {hostVehicles.map((vehicle) => (
-                <VehicleListItem vehicle={vehicle} key={vehicle.id} />
-                ))}
-            </div> */}
-            {/* <div class='hosted-trips'>
-                <h3>Your Hosted Trips</h3>
-                {hostBookings.map((booking) => (
-                <BookingListItem booking={booking} key={booking.id} />
-                ))}
-            </div> */}
             <div class='personal-trips'>
                 <h3>Your Personal Trips</h3>
                 {guestBookings.map((booking) => (
                 <BookingListItem booking={booking} key={booking.id} />
                 ))}
             </div>
-            {/* <div class='vehicle-form'>
-                <h3>Add a Vehicle</h3>
-                <CreateVehicleForm />
-            </div> */}
+
 
     </div>
   );
