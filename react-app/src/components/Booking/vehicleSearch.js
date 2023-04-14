@@ -106,7 +106,7 @@ const VehicleSearch = () => {
             onChange={(e) => setDropOffDate(e.target.value)}
           />
         </label>
-        <label>
+        {/* <label>
           Address
           <input
             type="text"
@@ -115,7 +115,7 @@ const VehicleSearch = () => {
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
-        </label>
+        </label> */}
         <label>
           City
           <input
@@ -126,7 +126,7 @@ const VehicleSearch = () => {
             onChange={(e) => setCity(e.target.value)}
           />
         </label>
-        <label>
+        {/* <label>
           State
           <input
             type="text"
@@ -146,7 +146,7 @@ const VehicleSearch = () => {
             value={country}
             onChange={(e) => setCountry(e.target.value)}
           />
-        </label>
+        </label> */}
 
         <button>Search Cars</button>
       </form>

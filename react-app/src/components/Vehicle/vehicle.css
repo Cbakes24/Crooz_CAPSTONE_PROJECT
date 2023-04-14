@@ -1,4 +1,4 @@
-.vehicle-item-box {
+/* .vehicle-item-box {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -14,4 +14,33 @@
 .vehicle-name {
     display: flex;
     flex-direction: column;
-}
+} */
+
+
+.vehicle-item-box {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+
+  .vehicle-item-image {
+    width: 100%;
+    max-width: 500px;
+    margin-right: 20px;
+  }
+
+  .vehicle-info {
+    width: 50%;
+    margin: 40px;
+  }
+
+  .vehicle-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .vehicle-info div {
+    margin-bottom: 5px;
+  }

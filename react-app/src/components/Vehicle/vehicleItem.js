@@ -27,10 +27,14 @@ const handleEdit = async e => {
 
   return (
     <div className="vehicle-item-box">
-      <Link to={`/vehicles/${vehicle.id}?pickupDate=${props.pickupDate}&dropOffDate=${props.dropOffDate}`} >View Car</Link>
+
+<Link to={`/vehicles/${vehicle.id}?pickupDate=${props.pickupDate}&dropOffDate=${props.dropOffDate}`} >
       <div>
         <img className="vehicle-item-image" src={vehicle.picture}></img>
       </div>
+
+      
+        </Link>
 
       <div className="vehicle-info">
         <div className="vehicle-name">
