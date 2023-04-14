@@ -1,3 +1,5 @@
+import { legacy_createStore } from "redux";
+
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -67,16 +69,23 @@ export const logout = () => async (dispatch) => {
 	}
 };
 
-export const signUp = (username, email, password) => async (dispatch) => {
+export const signUp = (firstName, lastName, username, email, address, city, state, country, password) => async (dispatch) => {
+	console.log(firstName, lastName, username, email, address, 'DATA IN THE SIGN UP THUNKKKK')
 	const response = await fetch("/api/auth/signup", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify({
+			first_name: firstName,
+			last_name: lastName,
 			username,
 			email,
-			password,
+			address,
+			city,
+			state,
+			country,
+			password
 		}),
 	});
 

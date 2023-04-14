@@ -27,8 +27,8 @@ class Review(db.Model):
 
 
     user = db.relationship('User', back_populates='reviews')
-    vehicle = db.relationship('Vehicle', back_populates='review')
-    booking = db.relationship('Booking', uselist=False, back_populates='review')
+    vehicle = db.relationship('Vehicle', back_populates='reviews')
+    booking = db.relationship('Booking', back_populates='review')
 
     def to_dict(self):
         return {
@@ -39,5 +39,6 @@ class Review(db.Model):
             'updatedAt': self.updated_at.strftime('%Y-%m-%d %H:%M:%S'),
             'userId': self.user_id,
             'vehicleId': self.vehicle_id,
+            'username' : self.user.to_dict()['username'],
             'bookingId': self.booking_id
         }

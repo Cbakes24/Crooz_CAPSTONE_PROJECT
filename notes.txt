@@ -1,0 +1,12 @@
+1. create a location entry for users in th User model and form.
+2. create the user_city = self.user.city or however location is entered in the user table
+3. make sure the location from the form entry is sent throught the thunbk into the api route
+then query filter the vehicles by location=host_location
+4. It should send back the vehicle data for only vehicles in that city
+
+see if you can pass in all the booking information into the vehicle list item so when you click book it can send a
+payload to the thunk with the booking info and vehicle information
+
+the thunk will send it to api/bookings/create
+
+there it will create a booking with a guest host vehicle and dates

@@ -26,7 +26,35 @@ def get_all_vehicles():
     Query for all vehicles and returns them in a list of vehicle dictionaries
     """
     vehicles = Vehicle.query.all()
+
     return [vehicle.to_dict() for vehicle in vehicles]
+
+
+# GET VEHICLE BY ID
+@vehicle_bp.route('/<int:id>', methods=['GET'])
+def get_vehicle_by_id(id):
+    """
+    Query for a vehicle by id and returns that vehicle in a dictionary
+    """
+    vehicle = Vehicle.query.get(id)
+    print(vehicle, "HEYOOO VEHICLE")
+    if vehicle:
+        return jsonify(vehicle.to_dict())
+    else:
+        return jsonify({
+            'success': False,
+            'message': 'Vehicle not found'
+        })
+
+# GET ALL VEHICLES - HOST
+@vehicle_bp.route('host', methods=['GET'])
+@login_required
+def get_all_vehicles_host():
+    """
+    Query for all current host vehicles and returns them in a list of vehicle dictionaries
+    """
+    host_vehicles = Vehicle.query.filter_by(host_id=current_user.id).all()
+    return [vehicle.to_dict() for vehicle in host_vehicles]
 
 
 
@@ -39,6 +67,7 @@ def create_vehicle():
     """
     form = VehicleForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data, "VEHICLE FORM DATAA")
     if form.validate_on_submit():
         new_vehicle = Vehicle()
         new_vehicle.host_id = current_user.id
@@ -46,10 +75,44 @@ def create_vehicle():
         db.session.add(new_vehicle)
         db.session.commit()
         return jsonify(
-
             new_vehicle.to_dict()
         )
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# Edit A VEHICLE
+@vehicle_bp.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_vehicle(id):
+    """
+    Query for editing a vehicle and returning it as an updated dictionary
+    """
+    form = VehicleForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        vehicle = Vehicle.query.get(id)
+        form.populate_obj(vehicle)
+        db.session.commit()
+        return jsonify(
+
+            vehicle.to_dict()
+        )
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+# Delete A VEHICLE
+@vehicle_bp.route('/<int:id>', methods=['DELETE'])
+def delete_vehicle_by_id(id):
+    """
+    Query for a vehicle by id and delete that vehicle
+    """
+    vehicle = Vehicle.query.get(id)
+
+    db.session.delete(vehicle)
+    db.session.commit()
+    return jsonify({
+        'success': True,
+        'message': 'Vehicle deleted successfully!'
+    })
 
 
     # new_vehicle = Vehicle(

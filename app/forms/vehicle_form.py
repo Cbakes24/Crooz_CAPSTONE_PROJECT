@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, FloatField, IntegerField, TextAreaField, SubmitField
-from wtforms.validators import Length, DataRequired, NumberRange, Optional
+from wtforms import StringField, IntegerField, SubmitField
+from wtforms.validators import DataRequired, NumberRange
 
 
 class VehicleForm(FlaskForm):
@@ -9,7 +9,8 @@ class VehicleForm(FlaskForm):
     model = StringField('Model', validators=[DataRequired()])
     type = StringField('Type', validators=[DataRequired()])
     power = StringField('Power', validators=[DataRequired()])
-    passengers = IntegerField('Passengers')
+    passengers = IntegerField('Passengers', validators=[DataRequired()])
     picture = StringField('Picture', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
+    daily_price = IntegerField('Daily Price', validators=[DataRequired(), NumberRange(min=1, max=999)])
     submit = SubmitField('Submit')
