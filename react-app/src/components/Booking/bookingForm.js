@@ -15,8 +15,18 @@ const BookingForm = ({ booking }) => {
   const [state, setState] = useState(booking.state);
   const [country, setCountry] = useState(booking.country);
   const [vehicle, setVehicle] = useState(booking.vehicle)
+  const today = new Date()
   const [errors, setErrors] = useState([]);
  console.log(pickupDate, "PICK UP DATE")
+
+ if( pickupDate > dropOffDate ) {
+  alert('The Pick Up Date must be before the Drop Off Date');
+  return false
+} else if ( new Date(pickupDate) < today || new Date(dropOffDate) < today) {
+  alert('Dates cannot be a previous date');
+  return false
+}
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
@@ -34,7 +44,7 @@ const BookingForm = ({ booking }) => {
     if (data.errors) {
       setErrors(data.errors);
     } else {
-      history.push(`/bookings/${data.id}`);
+      history.push(`/users/host`);
     }
   };
   return (
