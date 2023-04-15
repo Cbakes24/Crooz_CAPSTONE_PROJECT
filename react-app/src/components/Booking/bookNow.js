@@ -39,7 +39,7 @@ const BookNow = (props) => {
           setErrors(data.errors);
         } else {
             //maybe just push to the users guest profile page
-          history.push(`/`)
+          history.push(`/users/guest`)
         }
       };
 
