@@ -22,7 +22,7 @@ header {
   background-color: transparent;
   border: none;
   color: #000000;
-  font-size: 16px;
+  font-size: 12px;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -36,15 +36,21 @@ header {
   align-items: center;
 }
 
+
 .navbar li {
   list-style: none;
 }
 
+.navbar button {
+  border: none;
+}
+
 .navbar-box {
   color: #000000;
-  font-size: 16px;
+  font-size: 12px;
   text-decoration: none;
   padding: 0 20px;
+  border: none;
 }
 
 .navbar-box:hover {
@@ -57,6 +63,7 @@ header {
   color: #000000;
   font-size: 16px;
   cursor: pointer;
+
 }
 
 .profile-button:hover {

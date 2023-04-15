@@ -32,27 +32,30 @@ function Navigation({ isLoaded }) {
               </li>
             )}
             <button>
-
-            <NavLink className="navbar-box" exact to="/bookings/search">
-              Home
-            </NavLink>
+              <NavLink className="navbar-box" exact to="/bookings/search">
+                Home
+              </NavLink>
             </button>
-
-            <NavLink className="navbar-box" exact to="/vehicles/create">
-              Vehicle Form
-            </NavLink>
-
-            <NavLink className="navbar-box" exact to="/signup">
-              SignUp
-            </NavLink>
-
-            <NavLink className="navbar-box" exact to="/users/host">
-              Host Page
-            </NavLink>
-
-            <NavLink className="navbar-box" exact to="/users/guest">
-              Guest Page
-            </NavLink>
+            <button>
+              <NavLink className="navbar-box" exact to="/vehicles/create">
+                Vehicle Form
+              </NavLink>
+            </button>
+            <button>
+              <NavLink className="navbar-box" exact to="/signup">
+                SignUp
+              </NavLink>
+            </button>
+            <button>
+              <NavLink className="navbar-box" exact to="/users/host">
+                Host Page
+              </NavLink>
+            </button>
+            <button>
+              <NavLink className="navbar-box" exact to="/users/guest">
+                Guest Page
+              </NavLink>
+            </button>
           </div>
         </ul>
       </header>
