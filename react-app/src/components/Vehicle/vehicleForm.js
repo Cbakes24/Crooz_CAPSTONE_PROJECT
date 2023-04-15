@@ -45,9 +45,9 @@ const VehicleForm = ({ vehicle }) => {
   };
 
   return (
-    <div >
+    <div className='vehicle-form' >
 <h1>Create A Cruiser</h1>
-      <form className="vehicle-form" onSubmit={handleSubmit}>
+      <form className="vehicle-form-display" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
@@ -155,6 +155,10 @@ const VehicleForm = ({ vehicle }) => {
         </select> */}
         <button>{vehicle.id ? "update" : "create"}</button>
       </form>
+      {/* <img
+        className="home-image"
+        src="https://images.pexels.com/photos/10205301/pexels-photo-10205301.jpeg"
+      /> */}
     </div>
   );
 };

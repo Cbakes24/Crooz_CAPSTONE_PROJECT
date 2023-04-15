@@ -41,6 +41,9 @@ function App() {
           <Route exact path="/bookings/search">
             <VehicleSearch />
           </Route>
+          <Route exact path="/">
+            <VehicleSearch />
+          </Route>
           <Route exact path="/users/host">
             <HomepageHost />
           </Route>

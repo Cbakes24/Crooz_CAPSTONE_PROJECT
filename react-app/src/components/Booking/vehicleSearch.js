@@ -78,7 +78,6 @@ const VehicleSearch = () => {
     <div>
       <div className="homepage-title">
         <h1>Time to Find Your Ride!</h1>
-        <h2>Enter Your Location and Dates to See What's Available</h2>
       </div>
 
       <form className="booking-form" onSubmit={handleSubmit}>

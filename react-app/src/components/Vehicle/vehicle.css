@@ -30,6 +30,56 @@
     margin-right: 20px;
   }
 
+  .vehicle-form  {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: #f2f2f2; */
+    /* background-image: url('https://images.pexels.com/photos/10205301/pexels-photo-10205301.jpeg'); */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .vehicle-form-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+  }
+  .vehicle-form label{
+    display: flex;
+    flex-direction: row;
+    border-color: black;
+    border: solid black 1px;
+    width:300px;
+    border-radius: 10pm;
+    border-color: rgb(110, 220, 224);
+    padding: 5px 5px;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+  font-size: 16px;
+  margin-bottom: 10px;
+
+
+  }
+  .vehicle-form label input{
+    border-color: black;
+    border: solid black 1px;
+    width: 200px;
+    border-radius: 10px;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+  font-size: 12px;
+  padding: 5px;
+  }
+
+  .vehicle-form button {
+    width: 200px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+
   .vehicle-info {
     width: 50%;
     margin: 40px;
