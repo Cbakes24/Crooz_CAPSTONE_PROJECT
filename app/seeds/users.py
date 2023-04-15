@@ -4,7 +4,7 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 demo = User(
-   first_name='Demo', last_name='Demovski', username='Demo', email='demo@aa.io', password='password', address='123 Happy St', city='San Diego', state='CA', country='USA')
+   first_name='Judy', last_name='Baker', username='judy', email='judy@gmail.com', password='password', address='123 Happy St', city='San Diego', state='CA', country='USA')
 
 cory = User(
     first_name='Cory', last_name='Baker', username='cory', email='cory@gmail.com', password='password', address='127 Phillips Brooks rd', city='Boston', state='MA', country='USA',)
