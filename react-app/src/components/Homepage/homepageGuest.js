@@ -43,8 +43,7 @@ const HomepageGuest = () => {
     <div>
 
       <div>
-        <h1>{currentUser.username}</h1>
-        <p>{today.toString()}</p>
+        <h1>{currentUser.username}'s Trips!</h1>
       </div>
 
             <div class='personal-trips'>
