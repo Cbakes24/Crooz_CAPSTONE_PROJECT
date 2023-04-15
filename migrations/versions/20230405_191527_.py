@@ -1,3 +1,7 @@
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
+
 """empty message
 
 Revision ID: 39c199452c8f

@@ -1,3 +1,7 @@
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
+
 """empty message
 
 Revision ID: df30724309a0
@@ -22,7 +26,11 @@ def upgrade():
         batch_op.add_column(sa.Column('first_name', sa.String(length=40), nullable=False))
         batch_op.add_column(sa.Column('last_name', sa.String(length=40), nullable=False))
 
-
+    if environment == "production":
+            op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+            op.execute(f"ALTER TABLE vehicles SET SCHEMA {SCHEMA};")
+            op.execute(f"ALTER TABLE bookings SET SCHEMA {SCHEMA};")
+            op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
