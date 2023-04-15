@@ -70,6 +70,14 @@
     left: 10%
   }
 
+ .booking-edit {
+  display: flex;
+  flex-direction: column;
+ }
+
+ .booking-edit img {
+  width: 700px
+ }
   .booking-buttons {
     display: flex;
     justify-content: space-between;

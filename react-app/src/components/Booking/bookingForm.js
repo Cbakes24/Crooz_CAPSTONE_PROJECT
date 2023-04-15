@@ -19,13 +19,13 @@ const BookingForm = ({ booking }) => {
   const [errors, setErrors] = useState([]);
  console.log(pickupDate, "PICK UP DATE")
 
- if( pickupDate > dropOffDate ) {
-  alert('The Pick Up Date must be before the Drop Off Date');
-  return false
-} else if ( new Date(pickupDate) < today || new Date(dropOffDate) < today) {
-  alert('Dates cannot be a previous date');
-  return false
-}
+//  if( pickupDate > dropOffDate ) {
+//   alert('The Pick Up Date must be before the Drop Off Date');
+//   return false
+// } else if ( new Date(pickupDate) < today || new Date(dropOffDate) < today) {
+//   alert('Dates cannot be a previous date');
+//   return false
+// }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,11 +44,12 @@ const BookingForm = ({ booking }) => {
     if (data.errors) {
       setErrors(data.errors);
     } else {
-      history.push(`/users/host`);
+      history.push(`/users/guest`);
     }
   };
   return (
-    <div>
+    <div className='booking-edit'>
+      <img src={vehicle.picture} />
       <form className="booking-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
