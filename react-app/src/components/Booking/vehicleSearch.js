@@ -20,7 +20,7 @@ const VehicleSearch = () => {
   const [country, setCountry] = useState("");
   const [errors, setErrors] = useState([]);
   const [locationVehicles, setLocationVehicles] = useState([]);
-  const today = new Date()
+  const today = new Date();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,12 +34,12 @@ const VehicleSearch = () => {
       country,
     };
 
-    if( pickupDate > dropOffDate ) {
-      alert('The Pick Up Date must be before the Drop Off Date');
-      return false
-    } else if ( new Date(pickupDate) < today || new Date(dropOffDate) < today) {
-      alert('Dates cannot be a previous date');
-      return false
+    if (pickupDate > dropOffDate) {
+      alert("The Pick Up Date must be before the Drop Off Date");
+      return false;
+    } else if (new Date(pickupDate) < today || new Date(dropOffDate) < today) {
+      alert("Dates cannot be a previous date");
+      return false;
     }
 
     const data = await dispatch(fetchVehiclesByLocation(payload));
@@ -48,46 +48,47 @@ const VehicleSearch = () => {
       setErrors(data.errors);
     } else {
       const filterVehicles = data.vehicles.filter((vehicle) => {
+        // Check if the vehicle is available during the selected period using every means that every booking a vehicle has must be true to be available if one is false then the car is not available
 
-          // Check if the vehicle is available during the selected period using every means that every booking a vehicle has must be true to be available if one is false then the car is not available
+        const isVehicleAvailable = vehicle.bookings.every((booking) => {
+          const bookingStart = new Date(booking.pickupDate);
+          console.log(bookingStart, "VEHICLE BOOKING START");
+          const bookingEnd = new Date(booking.dropOffDate);
+          console.log(bookingEnd, "VEHICLE BOOKING END");
+          const start = new Date(pickupDate);
+          console.log(start, "SEARCH START DATE");
+          const end = new Date(dropOffDate);
+          console.log(end, "SEARCH END DATE");
 
-          const isVehicleAvailable = vehicle.bookings.every((booking) => {
-            const bookingStart = new Date(booking.pickupDate);
-            console.log(bookingStart, 'VEHICLE BOOKING START')
-            const bookingEnd = new Date(booking.dropOffDate);
-            console.log(bookingEnd, 'VEHICLE BOOKING END')
-            const start = new Date(pickupDate);
-            console.log(start, 'SEARCH START DATE')
-            const end = new Date(dropOffDate);
-            console.log(end, 'SEARCH END DATE')
+          return start >= bookingEnd || end <= bookingStart;
+        });
 
-            return start >= bookingEnd || end <= bookingStart;
-          });
-
-          if (!isVehicleAvailable) {
-            return false;
-          }
-          return true;
-        })
-        console.log(filterVehicles, "Filter Vehicles***");
-        setLocationVehicles(filterVehicles);
-      };
+        if (!isVehicleAvailable) {
+          return false;
+        }
+        return true;
+      });
+      console.log(filterVehicles, "Filter Vehicles***");
+      setLocationVehicles(filterVehicles);
     }
-
+  };
 
   // console.log(locationVehicles, "LOCATION VEHICLES");
   return (
     <div>
-      <h1>Time to Find Your Ride!</h1>
-      <h2>Enter Your Location and Dates to See What's Available</h2>
+      <div className="homepage-title">
+        <h1>Time to Find Your Ride!</h1>
+        <h2>Enter Your Location and Dates to See What's Available</h2>
+      </div>
+
       <form className="booking-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
-          pickupDate
+        <div className="form-label">
+          <label>Pickup Date</label>
           <input
             type="datetime-local"
             placeholder=""
@@ -95,17 +96,20 @@ const VehicleSearch = () => {
             value={pickupDate}
             onChange={(e) => setPickupDate(e.target.value)}
           />
-        </label>
-        <label>
-          dropOffDate
+        </div>
+
+        <div className="form-label" id='center-label'>
+          <label>Drop Off Date</label>
           <input
+
             type="datetime-local"
             placeholder=""
             required
             value={dropOffDate}
             onChange={(e) => setDropOffDate(e.target.value)}
           />
-        </label>
+        </div>
+
         {/* <label>
           Address
           <input
@@ -116,8 +120,9 @@ const VehicleSearch = () => {
             onChange={(e) => setAddress(e.target.value)}
           />
         </label> */}
-        <label>
-          City
+        <div className="form-label">
+          <label>City</label>
+
           <input
             type="text"
             placeholder=""
@@ -125,7 +130,8 @@ const VehicleSearch = () => {
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
-        </label>
+        </div>
+
         {/* <label>
           State
           <input
@@ -148,9 +154,12 @@ const VehicleSearch = () => {
           />
         </label> */}
 
-        <button>Search Cars</button>
+        <button>Search</button>
       </form>
-      <div></div>
+      <img
+        className="home-image"
+        src="https://images.pexels.com/photos/2454516/pexels-photo-2454516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      />
       <ul>
         {locationVehicles.map((vehicle) => (
           <VehicleListItem
@@ -171,9 +180,6 @@ const VehicleSearch = () => {
 };
 
 export default VehicleSearch;
-
-
-
 
 // import { useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
@@ -248,7 +254,6 @@ export default VehicleSearch;
 //         setLocationVehicles(filterVehicles);
 //       };
 //     }
-
 
 //   // console.log(locationVehicles, "LOCATION VEHICLES");
 //   return (

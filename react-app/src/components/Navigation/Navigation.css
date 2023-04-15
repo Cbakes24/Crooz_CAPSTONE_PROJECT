@@ -2,11 +2,93 @@
   position: absolute;
 }
 
-.navbar-box {
-  border: black solid 1px;
-  margin-left: 15px;
-}
-
 .hidden {
   display: none;
 }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.mylinks {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.mylinks button {
+  background-color: transparent;
+  border: none;
+  color: #000000;
+  font-size: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.mylinks button:hover {
+  text-decoration: underline;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar li {
+  list-style: none;
+}
+
+.navbar-box {
+  color: #000000;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 0 20px;
+}
+
+.navbar-box:hover {
+  text-decoration: underline;
+}
+
+.profile-button {
+  background-color: transparent;
+  border: none;
+  color: #000000;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.profile-button:hover {
+  text-decoration: underline;
+}
+/*
+.navbar {
+font-family:Verdana, Geneva, Tahoma, sans-serif;
+width: 1025px;
+height: 80px;
+display: flex;
+justify-content: space-around;
+margin: auto;
+align-items: center;
+background-color: #5ac1f4;
+
+}
+
+.navbar-box {
+    font-style: none;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-box:hover {
+  background-color: white;
+} */
+
+
+/*
+.navbar .divider {
+  background-color: #fcfbf9;
+  width: 1px;
+  height: 40px;
+} */

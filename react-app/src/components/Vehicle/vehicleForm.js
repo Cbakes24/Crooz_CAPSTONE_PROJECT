@@ -45,7 +45,7 @@ const VehicleForm = ({ vehicle }) => {
   };
 
   return (
-    <div>
+    <div >
 
       <form className="vehicle-form" onSubmit={handleSubmit}>
         <ul>

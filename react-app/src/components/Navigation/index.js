@@ -10,7 +10,7 @@ function Navigation({ isLoaded }) {
   return (
     <>
       <header>
-        <div id="mylinks">
+        <div className="mylinks">
           <a href="https://github.com/Cbakes24/Crooz_CAPSTONE_PROJECT">
             <button>
               GitHub <i class="fa-brands fa-github"></i>
@@ -24,31 +24,38 @@ function Navigation({ isLoaded }) {
             </button>
           </a>
         </div>
+        <ul>
+          <div className="navbar">
+            {isLoaded && (
+              <li>
+                <ProfileButton user={sessionUser} />
+              </li>
+            )}
+            <button>
+
+            <NavLink className="navbar-box" exact to="/bookings/search">
+              Home
+            </NavLink>
+            </button>
+
+            <NavLink className="navbar-box" exact to="/vehicles/create">
+              Vehicle Form
+            </NavLink>
+
+            <NavLink className="navbar-box" exact to="/signup">
+              SignUp
+            </NavLink>
+
+            <NavLink className="navbar-box" exact to="/users/host">
+              Host Page
+            </NavLink>
+
+            <NavLink className="navbar-box" exact to="/users/guest">
+              Guest Page
+            </NavLink>
+          </div>
+        </ul>
       </header>
-      <ul>
-        <li>
-          <NavLink className="navbar-box" exact to="/bookings/search">
-            Home
-          </NavLink>
-          <NavLink className="navbar-box" exact to="/vehicles/create">
-            Vehicle Form
-          </NavLink>
-          <NavLink className="navbar-box" exact to="/signup">
-            SignUp
-          </NavLink>
-          <NavLink className="navbar-box" exact to="/users/host">
-            Host Page
-          </NavLink>
-          <NavLink className="navbar-box" exact to="/users/guest">
-            Guest Page
-          </NavLink>
-        </li>
-        {isLoaded && (
-          <li>
-            <ProfileButton user={sessionUser} />
-          </li>
-        )}
-      </ul>
     </>
   );
 }
