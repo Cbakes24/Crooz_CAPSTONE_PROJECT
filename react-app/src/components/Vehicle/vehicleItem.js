@@ -13,7 +13,7 @@ const VehicleListItem = (props) => {
     e.preventDefault();
     if (!window.confirm("Do you want to delete this vehicle?")) return;
     await dispatch(deleteVehicle(vehicle.id));
-    history.push("/vehicles");
+    history.push("/users/host");
   };
 
   const handleEdit = async (e) => {
