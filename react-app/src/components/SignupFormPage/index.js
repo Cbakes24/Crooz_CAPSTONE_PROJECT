@@ -19,7 +19,7 @@ function SignupFormPage() {
   const [country, setCountry] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/users/guest" />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
