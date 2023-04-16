@@ -42,28 +42,30 @@ const BookingListItem = ({ booking }) => {
   return (
     <div className="booking-item-box">
       <Link to={`/vehicles/${booking.vehicle.id}`}>
+        <div>
         <img className="booking-item-image" src={booking.vehicle.picture}></img>
+
+        </div>
       </Link>
 
-      <div className="booking-item">
+
         <div className="booking-info">
           <div className="booking-name">
             <h5>
               {booking.vehicle.make} {booking.vehicle.model}
             </h5>
-            <ul>
-              <li>City: {booking.city}</li>
-              <li>
-                Dates: {pickupDate} - {dropOffDate}
-              </li>
-              <li>Guest: {booking.guest.username}</li>
-            </ul>
-            <ul>
-              <li>Trip Length {booking.tripLength} days</li>
-              <li>Total Price ${booking.totalPrice}.00</li>
-            </ul>
-          </div>
-          <div className="booking-buttons">
+            </div>
+
+
+           <div>City: {booking.city}</div>
+           <div> Dates: {pickupDate} - {dropOffDate}</div>
+           <div>Guest: {booking.guest.username}</div>
+           <div> Trip Length: {booking.tripLength} days</div>
+           <div>Total Price: ${booking.totalPrice}.00</div>
+
+
+          {/* <div className="booking-buttons"> */}
+          <div>
             {booking.pickupDate && today < new Date(booking.pickupDate) ? (
               <div>
                 <button onClick={handleDelete}>Cancel Trip</button>
@@ -86,7 +88,7 @@ const BookingListItem = ({ booking }) => {
             ) : null}
           </div>
         </div>
-      </div>
+
     </div>
   );
 };
