@@ -51,17 +51,17 @@ const BookingListItem = ({ booking }) => {
 
         <div className="booking-info">
           <div className="booking-name">
-            <h5>
+            <h4>
               {booking.vehicle.make} {booking.vehicle.model}
-            </h5>
+            </h4>
             </div>
 
 
-           <div>City: {booking.city}</div>
-           <div> Dates: {pickupDate} - {dropOffDate}</div>
-           <div>Guest: {booking.guest.username}</div>
-           <div> Trip Length: {booking.tripLength} days</div>
-           <div>Total Price: ${booking.totalPrice}.00</div>
+           <p>City: {booking.city}</p>
+           <p> Dates: {pickupDate} - {dropOffDate}</p>
+           <p>Guest: {booking.guest.username}</p>
+           <p> Trip Length: {booking.tripLength} days</p>
+           <p>Total Price: ${booking.totalPrice}.00</p>
 
 
           {/* <div className="booking-buttons"> */}

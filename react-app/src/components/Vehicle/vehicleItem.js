@@ -36,8 +36,8 @@ const VehicleListItem = (props) => {
 
       <div className="vehicle-info">
         <div className="vehicle-name">
-          {" "}
-          {vehicle.year} {vehicle.make} {vehicle.model}
+
+          <h4>{vehicle.year} {vehicle.make} {vehicle.model}</h4>
         </div>
         <div className="vehicle-stats">Price: ${vehicle.dailyPrice}/day</div>
         <div className="vehicle-stats">Passengers: {vehicle.passengers}</div>
