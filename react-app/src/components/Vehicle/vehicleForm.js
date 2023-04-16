@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, Redirect } from "react-router-dom";
 import { createVehicle, editVehicle } from "../../store/vehicle";
 import "./vehicle.css";
 
 const VehicleForm = ({ vehicle }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-
+  const currentUser = useSelector((state) => state.session.user);
   const [make, setMake] = useState(vehicle.make);
   const [model, setModel] = useState(vehicle.model);
   const [year, setYear] = useState(vehicle.year);
@@ -18,6 +18,8 @@ const VehicleForm = ({ vehicle }) => {
   const [description, setDescription] = useState(vehicle.description);
   const [dailyPrice, setDailyPrice] = useState(vehicle.dailyPrice);
   const [errors, setErrors] = useState([]);
+
+  if (!currentUser) return <Redirect to="/login" />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();

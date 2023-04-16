@@ -5,7 +5,7 @@ import VehicleListItem from "../Vehicle/vehicleItem";
 import BookingListItem from "../Booking/bookingListItem";
 import CreateVehicleForm from "../Vehicle/createVehicle";
 import { fetchHostBookings, fetchGuestBookings } from "../../store/booking";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
 
 const HomepageGuest = () => {
