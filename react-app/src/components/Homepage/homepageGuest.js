@@ -15,12 +15,10 @@ const HomepageGuest = () => {
   const vehicles = useSelector((state) => Object.values(state.vehicle));
   const bookings = useSelector((state) => Object.values(state.booking));
   const guestBookings = bookings.filter((booking) => booking.guest.id === currentUser.id).reverse();
-  const hostBookings = bookings.filter((booking) => booking.host.id === currentUser.id).reverse();
+  const hostBookings = bookings.filter((booking) => booking.host.id === currentUser.id);
   const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === currentUser.id);
-  const today = new Date()
-
-  console.log(today, "TODAYYYY")
   console.log(guestBookings, " Guest BOOOKING TRIPSSS")
+
 
   useEffect(() => {
     dispatch(fetchHostVehicles());
