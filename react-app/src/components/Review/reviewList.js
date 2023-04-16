@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchReviews } from "../../store/review";
 import ReviewListItem from "./reviewListItem";
+import './review.css'
 
 const ReviewList = ({ vehicle }) => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const ReviewList = ({ vehicle }) => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className='review-list'>
       <h3>Vehicle Reviews</h3>
       {filteredReviews.map((review) => (
         <ReviewListItem review={review} key={review.id} vehicle={vehicle} />
