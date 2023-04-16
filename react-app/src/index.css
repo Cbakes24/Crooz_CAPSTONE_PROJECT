@@ -17,7 +17,7 @@ h2 {
   font-family: inherit, sans-serif;
 }
 
-form {
+.all-form  {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -27,6 +27,45 @@ form {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
+}
+.all-form-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+.all-form label{
+  display: flex;
+  flex-direction: row;
+  border-color: black;
+  border: solid black 1px;
+  width:300px;
+  border-radius: 10pm;
+  border-color: rgb(110, 220, 224);
+  padding: 5px 5px;
+  justify-content: space-between;
+  font-family: Arial, sans-serif;
+font-size: 16px;
+margin-bottom: 10px;
+
+
+}
+.all-form label input{
+  border-color: black;
+  border: solid black 1px;
+  width: 200px;
+  border-radius: 10px;
+  justify-content: space-between;
+  font-family: Arial, sans-serif;
+font-size: 12px;
+padding: 5px;
+}
+.all-form  input{
+border-style: hidden;
+}
+.all-form button {
+  width: 200px;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 
