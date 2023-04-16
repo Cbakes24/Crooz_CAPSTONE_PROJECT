@@ -28,20 +28,44 @@
     background-size: cover;
     background-position: center;
     margin-bottom: 10px;
+    background-attachment: fixed;
+    z-index: 0;
 }
 
 .vehicle-item-image {
-    width: 150%;
+  width: 150%;
     max-width: 500px;
     margin-right: 20px;
+  }
+
+  .price {
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+    z-index: 2
+  }
+.vehicle-info {
+  position: relative;
+  width: 50%;
+  background: #25fbff48;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 3px 5px #25fbff48;
+
+  backdrop-filter: blur(5px);
 }
 
-  .vehicle-info {
-    width: 50%;
-    background: #95dbf9;
-    border-radius: 10px;
-    padding: 20px;
-  }
+.vehicle-info:before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  box-shadow: inset rgba(255, 255, 255, 0.499);
+  filter: blur(10px);
+
+}
 
   .vehicle-form  {
     display: flex;

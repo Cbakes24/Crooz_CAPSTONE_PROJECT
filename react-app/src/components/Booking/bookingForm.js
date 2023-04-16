@@ -56,9 +56,10 @@ const BookingForm = ({ booking }) => {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
+        <label className="form-label">
           Pickup Date
           <input
+          className="booking-input"
             type="datetime-local"
             placeholder=""
             required
@@ -66,9 +67,10 @@ const BookingForm = ({ booking }) => {
             onChange={(e) => setPickupDate(e.target.value)}
           />
         </label>
-        <label>
+        <label className="form-label">
           Drop Off Date
           <input
+          className="booking-input"
             type="datetime-local"
             placeholder=""
             required

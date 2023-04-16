@@ -36,9 +36,13 @@ const VehicleListItem = (props) => {
 
       <div className="vehicle-info">
         <div className="vehicle-name">
+          {" "}
           {vehicle.year} {vehicle.make} {vehicle.model}
         </div>
-        <div>${vehicle.dailyPrice}/day</div>
+        <div className="vehicle-stats">Price: ${vehicle.dailyPrice}/day</div>
+        <div className="vehicle-stats">Passengers: {vehicle.passengers}</div>
+        <div className="vehicle-stats">Type: {vehicle.type}</div>
+
         {currentUser && currentUser.id === vehicle.host.id ? null : (
           <BookNow
             pickupDate={props.pickupDate}
