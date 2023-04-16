@@ -17,8 +17,9 @@ const HomepageGuest = () => {
   const guestBookings = bookings.filter((booking) => booking.guest.id === currentUser.id).reverse();
   const hostBookings = bookings.filter((booking) => booking.host.id === currentUser.id);
   const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === currentUser.id);
-  console.log(guestBookings, " Guest BOOOKING TRIPSSS")
-
+  const today = new Date()
+  const previousTrips = guestBookings.filter((booking) => new Date(booking.dropOffDate) < today)
+  const upcomingTrips = guestBookings.filter((booking) => new Date(booking.dropOffDate) >= today)
 
   useEffect(() => {
     dispatch(fetchHostVehicles());
@@ -45,13 +46,18 @@ const HomepageGuest = () => {
       </div>
 
             <div class='personal-trips'>
-                <h3>Your Personal Trips</h3>
-                {guestBookings.map((booking) => (
+                <h3>Your Upcoming Trips</h3>
+                {upcomingTrips.map((booking) => (
                 <BookingListItem booking={booking} key={booking.id} />
                 ))}
             </div>
 
-
+            <div class='personal-trips'>
+                <h3>Your Previous Trips</h3>
+                {previousTrips.map((booking) => (
+                <BookingListItem booking={booking} key={booking.id} />
+                ))}
+            </div>
     </div>
   );
 };
