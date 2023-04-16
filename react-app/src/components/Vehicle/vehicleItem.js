@@ -36,12 +36,15 @@ const VehicleListItem = (props) => {
 
       <div className="vehicle-info">
         <div className="vehicle-name">
-
-          <h4>{vehicle.year} {vehicle.make} {vehicle.model}</h4>
+          <h4>
+            {vehicle.year} {vehicle.make} {vehicle.model}
+          </h4>
         </div>
-        <div className="vehicle-stats">Price: ${vehicle.dailyPrice}/day</div>
-        <div className="vehicle-stats">Passengers: {vehicle.passengers}</div>
-        <div className="vehicle-stats">Type: {vehicle.type}</div>
+        <div className="vehicle-stats">
+          <p>Price: ${vehicle.dailyPrice}/day</p>
+          <p>Passengers: {vehicle.passengers}</p>
+          <p>Type: {vehicle.type}</p>
+        </div>
 
         {currentUser && currentUser.id === vehicle.host.id ? null : (
           <BookNow

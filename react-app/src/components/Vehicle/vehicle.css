@@ -66,6 +66,11 @@
 
 }
 
+.vehicle-stats {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
   .vehicle-form  {
     display: flex;
     justify-content: center;
@@ -124,9 +129,7 @@ border-style: hidden;
     margin-bottom: 10px;
   }
 
-  .vehicle-info div {
-    margin-bottom: 5px;
-  }
+
 
   img {
     border-radius: 10px;

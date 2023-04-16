@@ -4,6 +4,10 @@
   src: url(./Fonts/Summer\ Beach.ttf);
 }
 
+@font-face {
+  font-family: regular-font;
+  src: url(./Fonts/Comfortaa-VariableFont_wght.ttf);
+}
 h1 {
   font-family: beach-font;
   color: #33b8d6;
@@ -112,6 +116,7 @@ button:hover {
 }
 
 p {
-  font-size: 12;
-  margin: 5px
+  font-size: 18px;
+  margin: 2px;
+  font-family: 'Times New Roman', Times, serif
 }

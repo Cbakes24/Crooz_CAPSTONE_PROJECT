@@ -56,8 +56,13 @@
     padding: 20px;
     box-shadow: 0 0 10px 5px #b4b4b448;
     backdrop-filter: blur(5px);
+    margin-left: 0
   }
 
+  .booking-stats {
+    margin-left: 20px;
+    margin-bottom: 15px
+  }
   .booking-form {
     display: flex;
     flex-direction: row;
