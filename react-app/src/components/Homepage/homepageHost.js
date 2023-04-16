@@ -5,7 +5,7 @@ import VehicleListItem from "../Vehicle/vehicleItem";
 import BookingListItem from "../Booking/bookingListItem";
 import CreateVehicleForm from "../Vehicle/createVehicle";
 import { fetchHostBookings, fetchGuestBookings } from "../../store/booking";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
 
 const HomepageHost = () => {
@@ -19,6 +19,9 @@ const HomepageHost = () => {
   const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === currentUser.id);
   console.log(guestBookings, " Guest BOOOKING TRIPSSS")
 
+
+
+
   useEffect(() => {
     dispatch(fetchHostVehicles());
     dispatch(fetchHostBookings());
@@ -26,15 +29,8 @@ const HomepageHost = () => {
   }, [dispatch]);
 
 
+  if (!currentUser) return <Redirect to="/login" />;
 
-  if (!currentUser) {
-    return (
-      <div>
-        <h1>Please log in</h1>
-        <button onClick={() => history.push("/login")}>Log in</button>
-      </div>
-    );
-  }
 
   return (
     <div>

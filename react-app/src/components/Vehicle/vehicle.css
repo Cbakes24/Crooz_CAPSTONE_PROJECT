@@ -85,7 +85,9 @@
   font-size: 12px;
   padding: 5px;
   }
-
+  .vehicle-form  input{
+border-style: hidden;
+  }
   .vehicle-form button {
     width: 200px;
     margin-top: 10px;

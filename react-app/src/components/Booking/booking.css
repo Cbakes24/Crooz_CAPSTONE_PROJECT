@@ -120,9 +120,10 @@ li {
     border-left: black solid 1px;
     border-right: black solid 1px;
 }
-input {
+.booking-input {
     border-style: none;
-    padding: 5px
+    padding: 5px;
+    border-style: hidden
 }
 
 ul {

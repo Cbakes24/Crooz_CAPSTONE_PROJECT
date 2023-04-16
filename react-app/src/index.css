@@ -9,14 +9,26 @@ h1 {
   color: #33b8d6;
 }
 
+input {
+  border-style: solid;
+  border-style: 1px;
+}
 h2 {
   font-family: inherit, sans-serif;
 }
 
 form {
   display: flex;
+  justify-content: center;
   flex-direction: column;
+  align-items: center;
+  /* background-color: #f2f2f2; */
+  /* background-image: url('https://images.pexels.com/photos/10205301/pexels-photo-10205301.jpeg'); */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
 }
+
 
 img {
   width: 500px;

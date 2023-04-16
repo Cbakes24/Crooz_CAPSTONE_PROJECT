@@ -28,15 +28,7 @@ const HomepageGuest = () => {
   }, [dispatch]);
 
 
-
-  if (!currentUser) {
-    return (
-      <div>
-        <h1>Please log in</h1>
-        <button onClick={() => history.push("/login")}>Log in</button>
-      </div>
-    );
-  }
+  if (!currentUser) return <Redirect to="/login" />;
 
   return (
     <div>

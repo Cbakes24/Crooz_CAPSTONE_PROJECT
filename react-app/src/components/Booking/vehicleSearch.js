@@ -89,6 +89,7 @@ const VehicleSearch = () => {
         <div className="form-label">
           <label>Pickup Date</label>
           <input
+            className="booking-input"
             type="datetime-local"
             placeholder=""
             required
@@ -97,10 +98,10 @@ const VehicleSearch = () => {
           />
         </div>
 
-        <div className="form-label" id='center-label'>
+        <div className="form-label" id="center-label">
           <label>Drop Off Date</label>
           <input
-
+            className="booking-input"
             type="datetime-local"
             placeholder=""
             required
@@ -123,6 +124,7 @@ const VehicleSearch = () => {
           <label>City</label>
 
           <input
+            className="booking-input"
             type="text"
             placeholder=""
             required
