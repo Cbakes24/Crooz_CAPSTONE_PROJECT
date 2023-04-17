@@ -70,14 +70,16 @@ margin: auto 10px
   .booking-form {
     display: flex;
     flex-direction: row;
-    /* background-image: url('https://images.pexels.com/photos/2454516/pexels-photo-2454516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); */
+    /* background-image: url(https://images.pexels.com/photos/2454516/pexels-photo-2454516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2); */
     background-size: cover;
     background-position: center;
     border-radius: 25px;
     background-color: #ffffff;
-    position: absolute;
-    top: 50%;
-    left: 10%
+    position: relative;
+    top: 175px;
+    /* left: 10%; */
+    margin: auto 100px;
+
   }
 
  .booking-edit {
@@ -143,3 +145,32 @@ ul {
 label {
     padding-left: 8px
 }
+
+
+@keyframes move-bicycle {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(calc(100% - 1.5em));
+  }
+  100% {
+    transform: translateX(0);
+  }
+ }
+
+
+ .fa-bicycle {
+  animation: move-bicycle 20s linear infinite;
+  width: 1200px;
+ }
+
+
+ .star {
+
+    width: 500px;
+    position: relative;
+    border-left: 25px solid transparent;
+
+
+  }
