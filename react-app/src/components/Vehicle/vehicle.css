@@ -129,8 +129,38 @@ border-style: hidden;
     margin-bottom: 10px;
   }
 
+.availability {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
+.availability button {
+margin-left: 5px
+}
 
+.vehicle-profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.vehicle-profile-stats p {
+  margin-left: 30px
+}
+
+.description p {
+  margin-left: 30px
+}
+
+.host-info p {
+  margin-left: 30px
+}
+.divider {
+  width: 200px;
+  border-bottom: solid black 1px;
+  margin: 25px auto;
+}
   img {
     border-radius: 10px;
     border-style: double;

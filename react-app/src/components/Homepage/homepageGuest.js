@@ -11,15 +11,17 @@ import { useHistory, Redirect } from "react-router-dom";
 const HomepageGuest = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const currentUser = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user);
   const vehicles = useSelector((state) => Object.values(state.vehicle));
   const bookings = useSelector((state) => Object.values(state.booking));
-  const guestBookings = bookings.filter((booking) => booking.guest.id === currentUser.id).reverse();
-  const hostBookings = bookings.filter((booking) => booking.host.id === currentUser.id);
-  const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === currentUser.id);
+  const guestBookings = bookings.filter((booking) => booking.guest.id === sessionUser.id).reverse();
+  const hostBookings = bookings.filter((booking) => booking.host.id === sessionUser.id);
+  const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === sessionUser.id);
   const today = new Date()
   const previousTrips = guestBookings.filter((booking) => new Date(booking.dropOffDate) < today)
   const upcomingTrips = guestBookings.filter((booking) => new Date(booking.dropOffDate) >= today)
+
+
 
   useEffect(() => {
     dispatch(fetchHostVehicles());
@@ -27,14 +29,14 @@ const HomepageGuest = () => {
     dispatch(fetchGuestBookings());
   }, [dispatch]);
 
+  // if (!sessionUser) return <Redirect to="/login" />;
 
-  if (!currentUser) return <Redirect to="/login" />;
 
-  return (
+  return sessionUser ? (
     <div>
 
       <div>
-        <h1>{currentUser.username}'s Trips!</h1>
+        <h1>{sessionUser.username}'s Trips!</h1>
       </div>
 
             <div class='personal-trips'>
@@ -51,7 +53,7 @@ const HomepageGuest = () => {
                 ))}
             </div>
     </div>
-  );
+  ):  <Redirect to="/login" />;
 };
 
 export default HomepageGuest;

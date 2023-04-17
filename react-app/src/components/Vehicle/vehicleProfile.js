@@ -6,34 +6,26 @@ import BookNow from "../Booking/bookNow";
 import { deleteVehicle } from "../../store/vehicle";
 import ReviewList from "../Review/reviewList";
 import { fetchReviews } from "../../store/review";
-// import { fetchBookings } from "../../store/booking";
 
 const VehicleProfile = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
-  const urlPickupDate = new URLSearchParams(location.search).get('pickupDate');
-  const urlDropOffDate = new URLSearchParams(location.search).get('dropOffDate');
+  const urlPickupDate = new URLSearchParams(location.search).get("pickupDate");
+  const urlDropOffDate = new URLSearchParams(location.search).get(
+    "dropOffDate"
+  );
   const [pickupDate, setPickupDate] = useState(urlPickupDate || "");
   const [dropOffDate, setDropOffDate] = useState(urlDropOffDate || "");
   const today = new Date();
   const { vehicleId } = useParams();
   const vehicleState = useSelector((state) => state.vehicle);
-  const vehicle = vehicleState[vehicleId]
+  const vehicle = vehicleState[vehicleId];
   const currentUser = useSelector((state) => state.session.user);
-
-
-
-  //if vehicle is undefined on a page refresh redirect to vehicle search?
-  // console.log(vehicleId, "SELECTED VEHICLE ID");
-  // console.log(vehicleState, 'VEHICLEE STATEEE')
-  // console.log(vehicle.dailyPrice, 'DAILY PRICEEEE')
-
 
   useEffect(() => {
     dispatch(fetchVehicle(vehicleId));
     dispatch(fetchReviews());
-    // dispatch(fetchBookings());
   }, [dispatch, vehicleId]);
 
   const isVehicleAvailable = (pickupDate, dropOffDate) => {
@@ -61,7 +53,6 @@ const VehicleProfile = (props) => {
     });
   };
 
-
   useEffect(() => {
     const available = isVehicleAvailable(pickupDate, dropOffDate);
     setVehicleAvailable(available);
@@ -69,88 +60,98 @@ const VehicleProfile = (props) => {
 
   const [vehicleAvailable, setVehicleAvailable] = useState(false);
 
-
-  const handleDelete = async e => {
+  const handleDelete = async (e) => {
     e.preventDefault();
-    if (!window.confirm('Do you want to delete this vehicle?')) return;
+    if (!window.confirm("Do you want to delete this vehicle?")) return;
     await dispatch(deleteVehicle(vehicle.id));
-    history.push('/vehicles');
+    history.push("/vehicles");
   };
 
-
   return vehicle ? (
-    <div>
+    <div className="vehicle-profile">
       <h1>Vehicle Profile</h1>
       <div>
         <img src={vehicle.picture} />
       </div>
       <div>
-        <section>
+        <section className="vehicle-profile-info">
           <h3>
             {vehicle.year} {vehicle.make} {vehicle.model}
           </h3>
-          <p>{vehicle.description}</p>
-          <ul>
-            <li>Passengers {vehicle.passengers}</li>
-            <li>Power: {vehicle.power}</li>
-            <li>Type: {vehicle.type}</li>
-            <li>Price: ${vehicle.dailyPrice}/day</li>
-            <li>Located: {vehicle.city}</li>
-          </ul>
-        </section>
-      </div>
-      <div>
-        Host: {vehicle.host.username} Email: {vehicle.host.email}
-      </div>
-      {currentUser && currentUser.id === vehicle.host.id ? null : (
-        <section>
-          <h4>Check Availability</h4>
-          <label>
-            pickupDate
-            <input
-              type="datetime-local"
-              placeholder={urlPickupDate}
-              required
-              value={pickupDate}
-              onChange={(e) => setPickupDate(e.target.value)}
-            />
-          </label>
-          <label>
-            dropOffDate
-            <input
-              type="datetime-local"
-              placeholder=""
-              required
-              value={dropOffDate}
-              onChange={(e) => setDropOffDate(e.target.value)}
-            />
-          </label>
+          {/* <div className="divider"></div> */}
+          {currentUser && currentUser.id === vehicle.host.id ? null : (
+            <section className="availability">
+              <h4>Check Availability: </h4>
+              <label>
+                Pick Up:{"  "}
+                <input
+                  type="datetime-local"
+                  placeholder={urlPickupDate}
+                  required
+                  value={pickupDate}
+                  onChange={(e) => setPickupDate(e.target.value)}
+                />
+              </label>
+              <label>
+                Drop Off:{"  "}
+                <input
+                  type="datetime-local"
+                  placeholder=""
+                  required
+                  value={dropOffDate}
+                  onChange={(e) => setDropOffDate(e.target.value)}
+                />
+              </label>
 
-          <div>
-            {vehicleAvailable && (
-              <BookNow
-                pickupDate={pickupDate}
-                dropOffDate={dropOffDate}
-                vehicle={vehicle}
-                address={vehicle.host.address}
-                city={vehicle.host.city}
-                state={vehicle.host.state}
-                country={vehicle.host.country}
-              />
-            )}
+              <div>
+                {vehicleAvailable && (
+                  <BookNow
+                    pickupDate={pickupDate}
+                    dropOffDate={dropOffDate}
+                    vehicle={vehicle}
+                    address={vehicle.host.address}
+                    city={vehicle.host.city}
+                    state={vehicle.host.state}
+                    country={vehicle.host.country}
+                  />
+                )}
+              </div>
+            </section>
+          )}
+
+          <div className="divider"></div>
+          <div className="description">
+            <h3>Description</h3>
+            <p>{vehicle.description}</p>
+          </div>
+
+          <div className="vehicle-profile-stats">
+            <h3>Vehicle Information</h3>
+            <p>Passengers {vehicle.passengers}</p>
+            <p>Power: {vehicle.power}</p>
+            <p>Type: {vehicle.type}</p>
+            <p>Price: ${vehicle.dailyPrice}/day</p>
+            <p>Located: {vehicle.city}</p>
+          </div>
+
+          <div className="host-info">
+            <h3>Host Info</h3>
+           <p>Host: {vehicle.host.username}</p>
+           <p>Email: {vehicle.host.email}</p>
           </div>
         </section>
-      )}
-
-<div>
-  <ReviewList vehicle={vehicle} />
-</div>
+      </div>
+      <div className="divider"></div>
 
       <div>
-         {currentUser && currentUser.id === vehicle.host.id ? (
-           <button onClick={handleDelete}>Delete</button>) : null }
-        </div>
+        <ReviewList vehicle={vehicle} />
+      </div>
 
+      <div>
+        {currentUser && currentUser.id === vehicle.host.id ? (
+          <button onClick={handleDelete}>Delete</button>
+        ) : null}
+      </div>
     </div>
   ) : null;
 };

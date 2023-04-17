@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect} from "react";
 import { fetchBookings } from "../../store/booking";
+
+
 const ReviewListItem = ({review, vehicle}) => {
     const dispatch = useDispatch()
     const currentUser = useSelector((state) => state.session.user);
@@ -12,8 +14,8 @@ const ReviewListItem = ({review, vehicle}) => {
 
     return (
         <div>
-          {review.username}
-           {review.rating}
+         <p> {review.username} </p>
+           <p>{review.rating}<i className="fas fa-star"></i></p>
           <p>{review.body}</p>
         </div>
 
