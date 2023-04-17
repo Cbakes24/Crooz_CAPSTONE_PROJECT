@@ -14,12 +14,11 @@ const HomepageGuest = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const vehicles = useSelector((state) => Object.values(state.vehicle));
   const bookings = useSelector((state) => Object.values(state.booking));
-  const guestBookings = bookings.filter((booking) => booking.guest.id === sessionUser.id).reverse();
-  const hostBookings = bookings.filter((booking) => booking.host.id === sessionUser.id);
-  const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === sessionUser.id);
+
+  // const hostBookings = bookings.filter((booking) => booking.host.id === sessionUser.id);
+  // const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === sessionUser.id);
   const today = new Date()
-  const previousTrips = guestBookings.filter((booking) => new Date(booking.dropOffDate) < today)
-  const upcomingTrips = guestBookings.filter((booking) => new Date(booking.dropOffDate) >= today)
+
 
 
 
@@ -29,10 +28,13 @@ const HomepageGuest = () => {
     dispatch(fetchGuestBookings());
   }, [dispatch]);
 
-  // if (!sessionUser) return <Redirect to="/login" />;
+  if (!sessionUser) return <Redirect to="/login" />;
+  const guestBookings = bookings.filter((booking) => booking.guest.id === sessionUser.id).reverse();
+  const previousTrips = guestBookings.filter((booking) => new Date(booking.dropOffDate) < today)
+  const upcomingTrips = guestBookings.filter((booking) => new Date(booking.dropOffDate) >= today)
 
 
-  return sessionUser ? (
+  return (
     <div>
 
       <div>
@@ -53,7 +55,7 @@ const HomepageGuest = () => {
                 ))}
             </div>
     </div>
-  ):  <Redirect to="/login" />;
+  );
 };
 
 export default HomepageGuest;

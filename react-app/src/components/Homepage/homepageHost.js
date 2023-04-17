@@ -14,14 +14,7 @@ const HomepageHost = () => {
   const currentUser = useSelector((state) => state.session.user);
   const vehicles = useSelector((state) => Object.values(state.vehicle));
   const bookings = useSelector((state) => Object.values(state.booking));
-  const guestBookings = bookings.filter((booking) => booking.guest.id === currentUser.id).reverse();
-  const hostBookings = bookings.filter((booking) => booking.host.id === currentUser.id).reverse();
-  const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === currentUser.id);
-  console.log(guestBookings, " Guest BOOOKING TRIPSSS")
-
-
-
-
+ 
   useEffect(() => {
     dispatch(fetchHostVehicles());
     dispatch(fetchHostBookings());
@@ -30,6 +23,10 @@ const HomepageHost = () => {
 
 
   if (!currentUser) return <Redirect to="/login" />;
+  const guestBookings = bookings.filter((booking) => booking.guest.id === currentUser.id).reverse();
+  const hostBookings = bookings.filter((booking) => booking.host.id === currentUser.id).reverse();
+  const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === currentUser.id);
+
 
 
   return (
