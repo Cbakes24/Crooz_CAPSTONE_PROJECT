@@ -75,9 +75,13 @@ border-style: hidden;
 
 img {
   width: 500px;
+  object-fit:cover;
+  object-position: center;
+  height: 325px
 }
 
 button {
+  margin: auto 5px;
   padding: 0.4em 1em;
   border: 1px solid #000000;
   position: relative;

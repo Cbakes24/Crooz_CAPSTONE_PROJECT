@@ -1,3 +1,32 @@
 .review-list {
-    border: black solid 1px;
-}
+    border: 10px solid rgb(21, 192, 234);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+
+  .review-list-item {
+    border: solid black 1px;
+  }
+
+  .review-list-item p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .review-list-item p:first-of-type {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .review-list-item p:nth-of-type(2) {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+  }
+
+  .review-list-item p:nth-of-type(2) i {
+    margin-left: 5px;
+    color: gold;
+  }

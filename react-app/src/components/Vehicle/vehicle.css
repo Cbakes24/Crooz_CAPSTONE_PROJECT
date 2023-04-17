@@ -30,6 +30,7 @@
     margin-bottom: 10px;
     background-attachment: fixed;
     z-index: 0;
+    height: 340px
 }
 
 .vehicle-item-image {
@@ -44,13 +45,17 @@
     z-index: 2
   }
 .vehicle-info {
-  position: relative;
-  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  width: 450px;
   background: #ffffff48;
   border-radius: 1px;
   padding: 20px;
   box-shadow: 0 0 10px 5px #b4b4b448;
   backdrop-filter: blur(5px);
+  margin: auto 10px
 }
 
 .vehicle-info:before {

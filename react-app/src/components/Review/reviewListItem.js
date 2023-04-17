@@ -13,7 +13,7 @@ const ReviewListItem = ({review, vehicle}) => {
   }, [dispatch, ]);
 
     return (
-        <div>
+        <div className='review-list-item'>
          <p> {review.username} </p>
            <p>{review.rating}<i className="fas fa-star"></i></p>
           <p>{review.body}</p>
