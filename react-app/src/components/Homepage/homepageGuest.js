@@ -29,7 +29,7 @@ const HomepageGuest = () => {
   }, [dispatch]);
 
   if (!sessionUser) return <Redirect to="/login" />;
-  const guestBookings = bookings.filter((booking) => booking.guest.id === sessionUser.id).reverse();
+  const guestBookings = bookings.filter((booking) => booking.guest.id === sessionUser.id).reverse()
   const previousTrips = guestBookings.filter((booking) => new Date(booking.dropOffDate) < today)
   const upcomingTrips = guestBookings.filter((booking) => new Date(booking.dropOffDate) >= today)
 
