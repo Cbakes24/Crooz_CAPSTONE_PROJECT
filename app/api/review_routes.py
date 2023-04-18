@@ -33,7 +33,7 @@ def create_review():
     """
 
     data= request.json
-    print( " THE DATA", data)
+    # print( " THE DATA", data)
     user_id = data['user_id']
     vehicle_id = data['vehicle_id']
     booking_id = data['booking_id']
@@ -49,7 +49,7 @@ def create_review():
         body=body,
         vehicle=vehicle,
     )
-    print(new_review)
+    # print(new_review)
 
     db.session.add(new_review)
     db.session.commit()

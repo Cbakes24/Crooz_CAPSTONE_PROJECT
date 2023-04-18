@@ -37,7 +37,7 @@ def get_vehicle_by_id(id):
     Query for a vehicle by id and returns that vehicle in a dictionary
     """
     vehicle = Vehicle.query.get(id)
-    print(vehicle, "HEYOOO VEHICLE")
+    # print(vehicle, "HEYOOO VEHICLE")
     if vehicle:
         return jsonify(vehicle.to_dict())
     else:
@@ -67,7 +67,7 @@ def create_vehicle():
     """
     form = VehicleForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data, "VEHICLE FORM DATAA")
+    # print(form.data, "VEHICLE FORM DATAA")
     if form.validate_on_submit():
         new_vehicle = Vehicle()
         new_vehicle.host_id = current_user.id
