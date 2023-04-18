@@ -31,7 +31,7 @@ export const fetchReviews = () => async (dispatch) => {
 
 // CREATE REVIEW
 export const createReview = (payload) => async (dispatch) => {
-  console.log(payload, 'review in thunk')
+  // console.log(payload, 'review in thunk')
   const res = await fetch("/api/reviews/create", {
     method: "POST",
     body: JSON.stringify(payload),
@@ -41,7 +41,7 @@ export const createReview = (payload) => async (dispatch) => {
   });
 
     const data = await res.json();
-    console.log(data, 'data in thunk')
+    // console.log(data, 'data in thunk')
   if (res.ok) {
     dispatch(setReview([data]));
   }

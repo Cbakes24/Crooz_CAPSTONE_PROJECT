@@ -49,13 +49,13 @@ const VehicleSearch = () => {
 
         const isVehicleAvailable = vehicle.bookings.every((booking) => {
           const bookingStart = new Date(booking.pickupDate);
-          console.log(bookingStart, "VEHICLE BOOKING START");
+          // console.log(bookingStart, "VEHICLE BOOKING START");
           const bookingEnd = new Date(booking.dropOffDate);
-          console.log(bookingEnd, "VEHICLE BOOKING END");
+          // console.log(bookingEnd, "VEHICLE BOOKING END");
           const start = new Date(pickupDate);
-          console.log(start, "SEARCH START DATE");
+          // console.log(start, "SEARCH START DATE");
           const end = new Date(dropOffDate);
-          console.log(end, "SEARCH END DATE");
+          // console.log(end, "SEARCH END DATE");
 
           return start >= bookingEnd || end <= bookingStart;
         });

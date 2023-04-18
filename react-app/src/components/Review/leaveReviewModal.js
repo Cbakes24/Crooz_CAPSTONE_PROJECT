@@ -23,7 +23,7 @@ const LeaveReviewModal = ({bookingId, vehicleId}) => {
     }
 
 
-    console.log(payload, "REVIEWWWW SUBMIT")
+    // console.log(payload, "REVIEWWWW SUBMIT")
     const data = await dispatch(createReview(payload));
     if (data.errors) {
       setErrors(data.errors);

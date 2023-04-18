@@ -9,7 +9,7 @@ const BookingEdit = () => {
   const { bookingId } = useParams();
   const bookingsObj = useSelector((state) => state.booking);
   const booking = bookingsObj[bookingId];
-console.log("Greetings from EditeBooking!", booking)
+// console.log("Greetings from EditeBooking!", booking)
 
   const dispatch = useDispatch();
 

@@ -10,7 +10,7 @@ const VehiclesList = ({location}) => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
     const vehicles = useSelector( state => Object.values(state.vehicle))
-    console.log(vehicles, 'VEHICLES!!')
+    // console.log(vehicles, 'VEHICLES!!')
 
     useEffect(() => {
         dispatch(fetchVehicles());
