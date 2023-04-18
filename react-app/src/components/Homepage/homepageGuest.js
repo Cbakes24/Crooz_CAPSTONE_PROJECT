@@ -23,8 +23,8 @@ const HomepageGuest = () => {
 
 
   useEffect(() => {
-    dispatch(fetchHostVehicles());
-    dispatch(fetchHostBookings());
+    // dispatch(fetchHostVehicles());
+    // dispatch(fetchHostBookings());
     dispatch(fetchGuestBookings());
   }, [dispatch]);
 
