@@ -97,12 +97,12 @@ const VehicleProfile = (props) => {
 
 
           {/* <div className="divider"></div> */}
-          {currentUser && currentUser.id === vehicle.host.id ? null : (
             <div className="availability">
               <div className="profile-info">
-              <h4>Check Availability: </h4>
+          {currentUser && currentUser.id === vehicle.host.id ? null : (
 
-              <div className="update">
+            <div className="update">
+                <h4>Check Availability: </h4>
               <label>
                 Pick Up:{"  "}
                 </label>
@@ -124,6 +124,7 @@ const VehicleProfile = (props) => {
                   onChange={(e) => setDropOffDate(e.target.value)}
                 />
 </div>
+                )}
               <div>
                 {vehicleAvailable && (
                   <BookNow
@@ -157,7 +158,6 @@ const VehicleProfile = (props) => {
 
                 </div>
             </div>
-          )}
 
           {/* <div className="divider"></div> */}
 
