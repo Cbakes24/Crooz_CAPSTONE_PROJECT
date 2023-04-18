@@ -144,18 +144,67 @@ border-style: hidden;
 margin-left: 5px
 }
 
-.vehicle-profile-info {
+.vehicle-profile {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
+.profile-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.vehicle-profile-info {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  flex-wrap: nowrap;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
 .vehicle-profile-stats p {
   margin-left: 30px
 }
 
-.description p {
-  margin-left: 30px
+.profile-picture {
+  width: 1000px
+}
+
+.profile-picture img {
+  width: inherit;
+  object-fit: cover;
+  object-position: center;
+  height: 445px;
+}
+
+.description {
+width: 650px;
+margin: 50px
+}
+
+.update {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+#description {
+margin:40px
+}
+
+
+
+.description p h3 {
+ flex-direction: column;
+ display: flex;
+ width: 300px;
+ margin-left: 40px
 }
 
 .host-info p {

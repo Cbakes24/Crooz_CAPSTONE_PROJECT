@@ -8,9 +8,9 @@ const ReviewListItem = ({review, vehicle}) => {
     const currentUser = useSelector((state) => state.session.user);
 
 
-  useEffect(() => {
-    dispatch(fetchBookings());
-  }, [dispatch, ]);
+  // useEffect(() => {
+  //   dispatch(fetchBookings());
+  // }, [dispatch, ]);
 
     return (
         <div className='review-list-item'>

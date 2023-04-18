@@ -69,21 +69,43 @@ const VehicleProfile = (props) => {
 
   return vehicle ? (
     <div className="vehicle-profile">
+      <div className='profile-title'>
+
       <h1>Vehicle Profile</h1>
-      <div>
+      <div className='profile-picture'>
         <img src={vehicle.picture} />
       </div>
+
+
+      </div>
       <div>
-        <section className="vehicle-profile-info">
-          <h3>
+        <div className="vehicle-profile-info">
+          <div className="description">
+          <h2>
             {vehicle.year} {vehicle.make} {vehicle.model}
-          </h3>
+          </h2>
+
+          <div id="description" >
+            <h3>Description</h3>
+            <p>{vehicle.description}</p>
+          </div>
+          <div>
+        <ReviewList vehicle={vehicle} />
+      </div>
+
+          </div>
+
+
           {/* <div className="divider"></div> */}
           {currentUser && currentUser.id === vehicle.host.id ? null : (
-            <section className="availability">
+            <div className="availability">
+              <div className="profile-info">
               <h4>Check Availability: </h4>
+
+              <div className="update">
               <label>
                 Pick Up:{"  "}
+                </label>
                 <input
                   type="datetime-local"
                   placeholder={urlPickupDate}
@@ -91,9 +113,9 @@ const VehicleProfile = (props) => {
                   value={pickupDate}
                   onChange={(e) => setPickupDate(e.target.value)}
                 />
-              </label>
               <label>
                 Drop Off:{"  "}
+                </label>
                 <input
                   type="datetime-local"
                   placeholder=""
@@ -101,8 +123,7 @@ const VehicleProfile = (props) => {
                   value={dropOffDate}
                   onChange={(e) => setDropOffDate(e.target.value)}
                 />
-              </label>
-
+</div>
               <div>
                 {vehicleAvailable && (
                   <BookNow
@@ -116,14 +137,6 @@ const VehicleProfile = (props) => {
                   />
                 )}
               </div>
-            </section>
-          )}
-
-          <div className="divider"></div>
-          <div className="description">
-            <h3>Description</h3>
-            <p>{vehicle.description}</p>
-          </div>
 
           <div className="vehicle-profile-stats">
             <h3>Vehicle Information</h3>
@@ -132,20 +145,26 @@ const VehicleProfile = (props) => {
             <p>Type: {vehicle.type}</p>
             <p>Price: ${vehicle.dailyPrice}/day</p>
             <p>Located: {vehicle.city}</p>
-          </div>
 
           <div className="host-info">
             <h3>Host Info</h3>
            <p>Host: {vehicle.host.username}</p>
            <p>Email: {vehicle.host.email}</p>
           </div>
-        </section>
+
+          </div>
+
+
+                </div>
+            </div>
+          )}
+
+          {/* <div className="divider"></div> */}
+
+        </div>
       </div>
       <div className="divider"></div>
 
-      <div>
-        <ReviewList vehicle={vehicle} />
-      </div>
 
       <div>
         {currentUser && currentUser.id === vehicle.host.id ? (
