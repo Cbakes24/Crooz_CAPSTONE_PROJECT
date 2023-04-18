@@ -21,7 +21,7 @@ class Vehicle(db.Model):
 
     reviews = db.relationship('Review', back_populates='vehicle', cascade='all, delete', passive_deletes=True)
     host = db.relationship('User', back_populates='bookings_host')
-    bookings = db.relationship('Booking', back_populates='vehicle', cascade='all, delete', passive_deletes=True)
+    bookings = db.relationship('Booking', back_populates='vehicle', cascade='all, delete-orphan', passive_deletes=True)
     fav_by_users = db.relationship("User", secondary=favorites, back_populates="fav_vehicles", cascade='all, delete' )
 
 
