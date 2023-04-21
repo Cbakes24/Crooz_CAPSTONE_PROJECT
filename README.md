@@ -1,6 +1,46 @@
-# Flask React Project
 
-This is the starter for the Flask React project.
+
+
+
+
+# CRUZ
+
+Cruz is a service that offers guests and hosts the opportunity to rent out their vehicles for a specific period of time, creating a Fun Utility Vehicle (FUV) experience. This idea originated from living in a beach town where a car isn't always necessary for transportation. People seek more experiential travel and desire a hands-on and enjoyable ride. Additionally, Cruz provides an opportunity for vehicle owners to rent out their FUVs (golf carts, mopeds, e-bikes, scooters) in popular locations, creating an extra source of income.
+
+Check out the live version of CRUZ!
+https://crooz-web-service.onrender.com
+
+
+## Stack
+
+### Backends
+CRUZ uses **Python** as the backend language with frame-works such as **Flask** and **SQLalchemy** to handle database usage. This allows for
+the backend routes to be accessed easily and save of data usage for faster more powerful website.
+
+### Frontend
+For front end of CRUZ uses **React.js** to create components along with with **Redux** for storing the state to create a clean looking and responsive website
+that will feel very modern and easy to use for a user.
+
+### Extra
+Google-Maps
+AWS
+
+
+## Features
+
+The design of CRUZ is meant to be simple and quick to use. The idea is to make it as easy as possible to a user to book a trip, look up information on vehicles, and
+be able to check on any bookings past or present.
+### Search Filter
+
+The homepage immediately gives a user access to look up a vehicle based on it's location and date availability. This will instantly pull up a list
+of vehicles that fit the criteria of your trip and allows users to book the trip right then and there or have the option to check the vehicles profile out
+for more detailed information.
+### Guest/Host Profile Page
+
+
+
+
+
 
 ## Getting started
 1. Clone this repository (only this branch)
