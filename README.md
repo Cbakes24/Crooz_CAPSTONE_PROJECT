@@ -1,9 +1,14 @@
 
+- ## Cory Baker
+[LinkedIn](https://www.linkedin.com/in/cory-baker-9738ba2a/)
+[GitHub](https://github.com/Cbakes24)
+
 # CRUZ
 
 Cruz is a service that offers guests and hosts the opportunity to rent out their vehicles for a specific period of time, creating a Fun Utility Vehicle (FUV) experience. This idea originated from living in a beach town where a car isn't always necessary for transportation. People seek more experiential travel and desire a hands-on and enjoyable ride. Additionally, Cruz provides an opportunity for vehicle owners to rent out their FUVs (golf carts, mopeds, e-bikes, scooters) in popular locations, creating an extra source of income.
 
 Check out the live version of [CRUZ](https://crooz-web-service.onrender.com)
+
 
 
 ## Stack
@@ -44,6 +49,16 @@ The Host page will show a host their vehicles they have listed on the website an
 
 ![Profile Page](./images/HostPage.png)
 
+## Technologies Used
+
+- JavaScript
+- Python
+- React
+- Redux
+- SQLalchemly
+- Flask
+- Render
+- PostgreSQL
 
 
 ## Running the Project
