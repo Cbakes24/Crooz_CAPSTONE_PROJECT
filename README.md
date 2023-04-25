@@ -63,4 +63,4 @@ The Host page will show a host their vehicles they have listed on the website an
 
 ## Running the Project
 
-To set this up please refer to the SetUp folder of this repository. There you will find front/backend instructions for the set up.
+To set this up please refer to the SetUp folder of this repository. There you will find front/backend instructions for the set up. Enjoy!
