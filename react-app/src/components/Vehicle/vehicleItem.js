@@ -9,6 +9,9 @@ const VehicleListItem = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const vehicle = props.vehicle;
+
+
+  
   const handleDelete = async (e) => {
     e.preventDefault();
     if (!window.confirm("Do you want to delete this vehicle?")) return;

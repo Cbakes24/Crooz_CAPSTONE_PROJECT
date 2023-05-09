@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
@@ -13,7 +13,8 @@ import VehicleProfile from "./components/Vehicle/vehicleProfile";
 import VehicleEdit from "./components/Vehicle/VehicleEdit";
 import BookingEdit from "./components/Booking/EditBooking";
 import HomepageGuest from "./components/Homepage/homepageGuest";
-
+import HomeMap from "./components/GoogleMaps/googleMapSetup";
+import Home from "./components/GoogleMaps/GoogleMaps";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -58,6 +59,12 @@ function App() {
           </Route>
           <Route exact path="/bookings/:bookingId/edit">
             <BookingEdit />
+          </Route>
+          <Route exact path="/bookings/map">
+            <Home />
+          </Route>
+          <Route exact path="/bookings/othermap">
+            <HomeMap />
           </Route>
         </Switch>
       )}

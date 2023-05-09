@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 import VehicleListItem from './vehicleItem';
 import './vehicle.css';
 
+import Home from '../GoogleMaps/GoogleMaps';
+
 
 const VehiclesList = ({location}) => {
     const dispatch = useDispatch();
@@ -19,6 +21,7 @@ const VehiclesList = ({location}) => {
     return (
         <div>
             <h1>Vehicles</h1>
+     
             <div className='add-vehicle-button'>
             {currentUser && (
               <NavLink to='/vehicles/create'>
