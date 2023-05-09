@@ -126,6 +126,8 @@ li {
     padding-left: 0;
     object-fit: cover;
     width: 24vw;
+    outline: none
+
 }
 
 #center-label {
@@ -135,7 +137,9 @@ li {
 .booking-input {
     border-style: none;
     padding: 5px;
-    border-style: hidden
+    border-style: hidden;
+    outline: 2px solid transparent;
+    outline-offset: 1rem;
 }
 
 ul {
@@ -159,6 +163,21 @@ label {
   }
  }
 
+ .list-map {
+  display: flex;
+  height: 100vh;
+}
+
+.list-map ul {
+  flex: 1;
+  height: 140vh;
+  overflow-y: scroll;
+}
+
+.Home {
+  flex: 1;
+  height: 100vh;
+}
 
  .fa-bicycle {
   animation: move-bicycle 20s linear infinite;

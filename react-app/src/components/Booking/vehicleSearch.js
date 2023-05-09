@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { fetchVehiclesByLocation } from "../../store/vehicle";
 import "./booking.css";
 import VehicleListItem from "../Vehicle/vehicleItem";
+import Home from "../GoogleMaps/GoogleMaps";
 
 const VehicleSearch = () => {
   const history = useHistory();
@@ -17,6 +18,7 @@ const VehicleSearch = () => {
   const [country, setCountry] = useState("");
   const [errors, setErrors] = useState([]);
   const [locationVehicles, setLocationVehicles] = useState([]);
+  const [showMap, setShowMap] = useState(false);
   const today = new Date();
 
   const handleSubmit = async (e) => {
@@ -70,13 +72,19 @@ const VehicleSearch = () => {
     }
   };
 
+  useEffect(() => {
+    if (locationVehicles.length > 0) {
+      setShowMap(true);
+    } else {
+      setShowMap(false);
+    }
+  }, [locationVehicles]);
 
   return (
     <div>
       <div className="homepage-title">
         <h1>Time to Find Your Ride!</h1>
       </div>
-
 
       <form className="booking-form" onSubmit={handleSubmit}>
         <ul>
@@ -156,27 +164,30 @@ const VehicleSearch = () => {
         <button>Search</button>
       </form>
       <div className="star">
-       <i className="fas fa-bicycle"></i>
-       </div>
+        <i className="fas fa-bicycle"></i>
+      </div>
       <img
         className="home-image"
         src="https://images.pexels.com/photos/2454516/pexels-photo-2454516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       />
-      <ul>
-        {locationVehicles.map((vehicle) => (
-          <VehicleListItem
-            vehicle={vehicle}
-            key={vehicle.id}
-            pickupDate={pickupDate}
-            dropOffDate={dropOffDate}
-            address={address}
-            city={city}
-            state={state}
-            country={country}
-            currentUser={currentUser}
-          />
-        ))}
-      </ul>
+      <div className="list-map">
+        <ul>
+          {locationVehicles.map((vehicle) => (
+            <VehicleListItem
+              vehicle={vehicle}
+              key={vehicle.id}
+              pickupDate={pickupDate}
+              dropOffDate={dropOffDate}
+              address={address}
+              city={city}
+              state={state}
+              country={country}
+              currentUser={currentUser}
+            />
+          ))}
+        </ul>
+        {showMap && <Home city={city} />}
+      </div>
     </div>
   );
 };
