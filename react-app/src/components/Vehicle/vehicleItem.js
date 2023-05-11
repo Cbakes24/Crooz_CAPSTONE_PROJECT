@@ -11,7 +11,7 @@ const VehicleListItem = (props) => {
   const vehicle = props.vehicle;
 
 
-  
+
   const handleDelete = async (e) => {
     e.preventDefault();
     if (!window.confirm("Do you want to delete this vehicle?")) return;
@@ -54,7 +54,7 @@ const VehicleListItem = (props) => {
             pickupDate={props.pickupDate}
             dropOffDate={props.dropOffDate}
             vehicle={vehicle}
-            address={props.address}
+            address={vehicle.address}
             city={props.city}
             state={props.state}
             country={props.country}
