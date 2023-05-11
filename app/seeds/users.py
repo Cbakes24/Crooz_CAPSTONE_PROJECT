@@ -4,7 +4,7 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 demo = User(
-   first_name='Judy', last_name='Baker', username='judy', email='judy@gmail.com', password='password', address='123 Happy St', city='San Diego', state='CA', country='USA')
+   first_name='Judy', last_name='Baker', username='judy', email='judy@gmail.com', password='password', address='7223 Camino Degrazia ', city='San Diego', state='CA', country='USA')
 
 cory = User(
     first_name='Cory', last_name='Baker', username='cory', email='cory@gmail.com', password='password', address='127 Phillips Brooks rd', city='Boston', state='MA', country='USA',)
@@ -13,7 +13,7 @@ heather = User(
     first_name='Heather', last_name='Baker', username='heather', email='heather@gmail.com', password='password', address='1509 Chalcedony st', city='San Diego', state='CA', country='USA',)
 
 mac = User(
-    first_name='Mac', last_name='Baker',   username='mac', email='mac@gmail.com', password='password', address='5 Deacons Folly rd', city='Boston', state='MA', country='USA',)
+    first_name='Mac', last_name='Baker',   username='mac', email='mac@gmail.com', password='password', address='5 Deacons Folly rd', city='Harwich', state='MA', country='USA',)
 
 ayla = User(
     first_name='Ayla', last_name='Rey', username='ayla', email='ayla@gmail.com', password='password', address='1227 Chalcedony st', city='San Diego', state='CA', country='USA',)

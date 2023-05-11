@@ -115,17 +115,18 @@ const VehicleSearch = () => {
             onChange={(e) => setDropOffDate(e.target.value)}
           />
         </div>
-{/* 
-        <label>
-          Address
+        {/* <div className="form-label">
+        <label> Address</label>
           <input
+          className="booking-input"
             type="text"
             placeholder=""
             required
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
-        </label> */}
+        </div> */}
+
         <div className="form-label">
           <label>City</label>
 
@@ -186,7 +187,7 @@ const VehicleSearch = () => {
             />
           ))}
         </ul>
-        {showMap && <Home city={city} />}
+        {showMap && <Home city={city} locationVehicles={locationVehicles} />}
       </div>
     </div>
   );

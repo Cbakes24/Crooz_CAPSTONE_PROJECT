@@ -38,6 +38,9 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def get_full_address(self):
+        return f"{self.address}, {self.city}, {self.state}, {self.country}"
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -45,7 +48,7 @@ class User(db.Model, UserMixin):
             'firstName': self.first_name,
             'lastName': self.last_name,
             'email': self.email,
-            'address': self.address,
+            'address': self.get_full_address(),
             'city': self.city,
             'state' : self.state,
             'country': self.country,
@@ -60,7 +63,7 @@ class User(db.Model, UserMixin):
             'firstName': self.first_name,
             'lastName': self.last_name,
             'email': self.email,
-            'address': self.address,
+            'address': self.get_full_address(),
             'city': self.city,
             'state' : self.state,
             'country': self.country,

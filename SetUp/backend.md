@@ -78,6 +78,8 @@ pip install -r requirements.txt &&
 pip install psycopg2 &&
 flask db upgrade &&
 flask seed all
+flask db downgrade - removes migrations from database
+flask seed undo
 ```
 
 This script will install dependencies for the frontend, and run the build
