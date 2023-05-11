@@ -38,6 +38,7 @@ class Vehicle(db.Model):
             'passengers': self.passengers,
             'host': self.host.to_dict_user(),
             'city': self.host.to_dict_user()['city'],
+            'address': self.host.to_dict_user()['address'],
             'dailyPrice': self.daily_price,
             'reviews' : [review.to_dict() for review in self.reviews],
             'bookings': [booking.to_dict() for booking in self.bookings]
