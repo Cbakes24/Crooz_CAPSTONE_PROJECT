@@ -4,12 +4,14 @@ import session from './session'
 import vehicle from './vehicle'
 import booking from './booking'
 import review from './review'
+import favorites from './favorites'
 
 const rootReducer = combineReducers({
   session,
   vehicle,
   booking,
-  review
+  review,
+  favorites
 });
 
 
