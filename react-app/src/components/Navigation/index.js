@@ -56,16 +56,7 @@ function Navigation({ isLoaded }) {
                 Guest Page
               </NavLink>
             </button>
-            <button>
-              <NavLink className="navbar-box" exact to="/bookings/map">
-               Map
-              </NavLink>
-            </button>
-            <button>
-              <NavLink className="navbar-box" exact to="/bookings/othermap">
-               Other Map
-              </NavLink>
-            </button>
+
           </div>
         </ul>
       </header>
