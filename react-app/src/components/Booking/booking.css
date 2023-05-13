@@ -39,7 +39,9 @@ margin: auto 10px
     margin-left: 20px;
     margin-bottom: 15px
   }
+
   .booking-form {
+    transform: translate(-50, -50%);
     display: inline-flex;
     flex-direction: row;
     /* background-image: url(https://images.pexels.com/photos/2454516/pexels-photo-2454516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2); */
@@ -49,11 +51,9 @@ margin: auto 10px
     background-color: #ffffff;
     position: relative;
     top: 175px;
-    /* left: 10%; */
-    margin: auto 100px;
-
+    left: 12%;
+    margin: auto 100pxx;
   }
-
  .booking-edit {
   display: flex;
   flex-direction: column;
@@ -162,6 +162,3 @@ label {
   animation: move-bicycle 20s linear infinite;
   width: -webkit-fill-available;
  }
-
-
-

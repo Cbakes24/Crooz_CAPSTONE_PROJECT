@@ -23,10 +23,10 @@ const HomeMap = () => {
   return (
     // Important! Always set the container height explicitly
     <div className="map_page__container">
-      <div style={{ height: '900px', width: '900px' }}>
+      <div style={{ height: '2002px', width: '900px' }}>
         <GoogleMap
           mapContainerStyle={containerStyle}
-          zoom={8}
+          zoom={5}
           center={currentPosition}
 
         >
