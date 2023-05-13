@@ -161,8 +161,10 @@ const VehicleSearch = () => {
             onChange={(e) => setCountry(e.target.value)}
           />
         </label> */}
+<div className="form-label-button">
 
         <button>Search</button>
+</div>
       </form>
       <div className="star">
         <i className="fas fa-bicycle"></i>
