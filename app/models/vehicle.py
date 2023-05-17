@@ -63,6 +63,21 @@ class Vehicle(db.Model):
             'host': self.host.to_dict_user(),
         }
 
+    def to_dict_fav(self):
+            return {
+                'id': self.id,
+                'year': self.year,
+                'make': self.make,
+                'model': self.model,
+                'picture': self.picture,
+                'power': self.power,
+                'description': self.description,
+                'type': self.type,
+                'passengers': self.passengers,
+                'dailyPrice': self.daily_price,
+                'city': self.host.to_dict_user()['city'],
+
+            }
     # def to_dict(self):
     #     return {
     #         'id': self.id,

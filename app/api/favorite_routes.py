@@ -30,4 +30,4 @@ def add_favorite_car(id):
         return jsonify(message="Vehicle already in user's favorites."), 400
     user.favorites.append(vehicle)
     db.session.commit()
-    return  jsonify(vehicle.to_dict())
+    return  jsonify(vehicle.to_dict_user())

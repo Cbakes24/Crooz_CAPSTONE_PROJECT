@@ -52,7 +52,7 @@ class User(db.Model, UserMixin):
             'city': self.city,
             'state' : self.state,
             'country': self.country,
-            # 'favVehicles': [vehicle.to_dict_no_booking() for vehicle in self.fav_vehicles]
+            'favVehicles': [vehicle.to_dict_fav() for vehicle in self.fav_vehicles]
         }
 
 # able to see the user without seeing their favorite cars, also avoids recursion
