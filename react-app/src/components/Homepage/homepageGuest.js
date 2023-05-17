@@ -6,6 +6,7 @@ import BookingListItem from "../Booking/bookingListItem";
 import CreateVehicleForm from "../Vehicle/createVehicle";
 import { fetchHostBookings, fetchGuestBookings } from "../../store/booking";
 import { useHistory, Redirect } from "react-router-dom";
+import FavoritesList from "../Favorites/FavoritesList";
 
 
 const HomepageGuest = () => {
@@ -53,6 +54,10 @@ const HomepageGuest = () => {
                 {previousTrips.map((booking) => (
                 <BookingListItem booking={booking} key={booking.id} />
                 ))}
+            </div>
+
+            <div>
+              <FavoritesList />
             </div>
     </div>
   );
