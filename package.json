@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@heroicons/react": "^2.0.18",
     "@react-google-maps/api": "^2.18.1",
     "flask": "^0.2.10",
     "react-geocode": "^0.2.3"

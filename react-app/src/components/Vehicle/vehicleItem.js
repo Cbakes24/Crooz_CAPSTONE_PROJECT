@@ -3,6 +3,8 @@ import { Link, useHistory } from "react-router-dom";
 import BookNow from "../Booking/bookNow";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteVehicle } from "../../store/vehicle";
+import { HeartIcon } from "@heroicons/react/24/solid";
+import FavoriteButton from "../Favorites/FavoriteButton";
 
 const VehicleListItem = (props) => {
   const currentUser = useSelector((state) => state.session.user);
@@ -50,6 +52,7 @@ const VehicleListItem = (props) => {
         </div>
 
         {currentUser && currentUser.id === vehicle.host.id ? null : (
+          <div>
           <BookNow
             pickupDate={props.pickupDate}
             dropOffDate={props.dropOffDate}
@@ -59,6 +62,9 @@ const VehicleListItem = (props) => {
             state={props.state}
             country={props.country}
           />
+          <FavoriteButton className='HeartIcon' vehicle={vehicle}/>
+
+          </div>
         )}
 
         <div>
