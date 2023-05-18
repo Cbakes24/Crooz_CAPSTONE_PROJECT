@@ -26,8 +26,10 @@ def add_favorite_vehicle(id):
     """
     vehicle = Vehicle.query.get(id)
     user = User.query.get(current_user.id)
-    print(user.fav_vehicles, "USERRRRRRRRR")
+    print(user.fav_vehicles, "USER FAV VEHICLES")
+    print(vehicle, "ADD THIS VEHICLE")
     if vehicle in user.fav_vehicles:
+        print("YOU ALREADY LIKED THIS ONE")
         return jsonify(message="Vehicle already in user's favorites."), 400
     user.fav_vehicles.append(vehicle)
     db.session.commit()
