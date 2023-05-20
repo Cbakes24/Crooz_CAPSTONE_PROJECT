@@ -2,19 +2,21 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { HeartIcon } from '@heroicons/react/24/solid'
+import { HeartIcon1 } from "@heroicons/react/24/outline"
 import { addToFavorites } from "../../store/favorites";
 
 const FavoriteButton = ({vehicle}) => {
-  const [favorite, setFavorite] = useState("false");
   const dispatch = useDispatch()
+  const [isFilled, setIsFilled] = useState(false);
   const [errors, setErrors] = useState([]);
 
 
   const handleFavorite = async (e) => {
     e.preventDefault();
     setErrors([])
+    setIsFilled(!'isFilled')
     console.log(vehicle, 'FAV VEHICLE')
-    setFavorite("true")
+  
 
     const vehicleId = vehicle.id
 
@@ -30,8 +32,9 @@ const FavoriteButton = ({vehicle}) => {
 
   return (
 
-  <div onClick={handleFavorite}>
-   <HeartIcon className="HeartIcon" />
+  <div onClick={handleFavorite} className='heart'>
+{ isFilled ?  <HeartIcon className="HeartIconSolid" /> : <HeartIcon className="HeartIconOutline" />}
+  
   </div>
 
   )

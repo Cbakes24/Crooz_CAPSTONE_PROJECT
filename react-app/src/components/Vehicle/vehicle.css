@@ -221,7 +221,14 @@ margin:40px
     border-color: white;
   }
 
-  .HeartIcon {
+  .HeartIconSolid {
     height: 20px;
     cursor: pointer;
+    color: red
+  }
+
+  .HeartIconOutline {
+    height: 20px;
+    cursor: pointer;
+    color: rgb(26, 220, 242)
   }
