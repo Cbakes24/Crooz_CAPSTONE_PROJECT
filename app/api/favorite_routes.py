@@ -18,6 +18,8 @@ def get_user_favorite_vehicles():
     favorite_vehicles = db.session.query(Vehicle).join(favorites).filter(favorites.c.user_id == user_id).all()
     return jsonify([vehicle.to_dict() for vehicle in favorite_vehicles])
 
+
+# ADD TO FAVS
 @favorite_bp.route('/<int:id>', methods=['POST'])
 @login_required
 def add_favorite_vehicle(id):
@@ -34,3 +36,22 @@ def add_favorite_vehicle(id):
     user.fav_vehicles.append(vehicle)
     db.session.commit()
     return  jsonify(vehicle.to_dict_fav())
+
+
+
+# REMOVE FROM FAVORITES
+@favorite_bp.route('/<int:id>', methods=['DELETE'])
+@login_required
+def remove_favorite(id):
+    """
+    Query for a vehicle by id and delete that vehicle
+    """
+    vehicle = Vehicle.query.get(id)
+    if vehicle in current_user.fav_vehicles:
+        current_user.fav_vehicles.remove(vehicle)
+    db.session.commit()
+    print("YOU REMOVED ", vehicle, " FROM YOUR FAVORITES")
+    return jsonify({
+        'success': True,
+        'message': 'Favorite removed from user favorites successfully!'
+    })

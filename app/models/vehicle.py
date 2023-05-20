@@ -41,7 +41,9 @@ class Vehicle(db.Model):
             'address': self.host.to_dict_user()['address'],
             'dailyPrice': self.daily_price,
             'reviews' : [review.to_dict() for review in self.reviews],
-            'bookings': [booking.to_dict() for booking in self.bookings]
+            'bookings': [booking.to_dict() for booking in self.bookings],
+            'favByUser': [user.to_dict_user() for user in self.fav_by_users]
+
         }
 
 
@@ -76,6 +78,7 @@ class Vehicle(db.Model):
                 'passengers': self.passengers,
                 'dailyPrice': self.daily_price,
                 'city': self.host.to_dict_user()['city'],
+     
 
             }
     # def to_dict(self):
