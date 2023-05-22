@@ -58,7 +58,19 @@ def create_review():
 
 
 # DELETE REVIEW
-
+@review_bp.route('/<int:id>', methods=['DELETE'])
+@login_required
+def remove_review(id):
+    """
+    Query for a review by id and delete
+    """
+    review = Review.query.get(id)
+    db.session.delete(review)
+    db.session.commit()
+    return jsonify({
+        'success': True,
+        'message': 'Review deleted successfully!'
+    })
 
 
 # EDIT A REVIEW

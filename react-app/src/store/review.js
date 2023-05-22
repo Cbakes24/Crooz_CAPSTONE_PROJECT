@@ -48,6 +48,17 @@ export const createReview = (payload) => async (dispatch) => {
   return data;
 }
 
+export const deleteReview = (reviewId) => async (dispatch) => {
+  const res = await fetch(`/api/reviews/${reviewId}`, {
+    method: "DELETE",
+
+  });
+  if(res.ok) {
+    dispatch(removeReview(reviewId));
+  }
+  return res
+}
+
 
 
 
