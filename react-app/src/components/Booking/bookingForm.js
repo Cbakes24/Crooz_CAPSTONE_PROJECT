@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { editBooking, editVehicle } from "../../store/booking";
+import { editBooking } from "../../store/booking";
 import "./booking.css";
 
 const BookingForm = ({ booking }) => {

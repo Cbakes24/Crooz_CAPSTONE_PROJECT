@@ -15,8 +15,8 @@ import BookingEdit from "./components/Booking/EditBooking";
 import HomepageGuest from "./components/Homepage/homepageGuest";
 import HomeMap from "./components/GoogleMaps/googleMapSetup";
 import Home from "./components/GoogleMaps/GoogleMaps";
-import ReviewListItem from "./components/Review/reviewListItem";
 import EditReviewButton from "./components/Review/EditReviewModal";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -64,9 +64,6 @@ function App() {
           </Route>
           <Route exact path="/bookings/map">
             <Home />
-          </Route>
-          <Route exact path="/bookings/othermap">
-            <HomeMap />
           </Route>
           <Route exact path="/reviews/:reviewId/edit">
             <EditReviewButton />

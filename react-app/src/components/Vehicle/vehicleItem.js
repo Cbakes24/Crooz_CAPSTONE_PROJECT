@@ -3,7 +3,6 @@ import { Link, useHistory } from "react-router-dom";
 import BookNow from "../Booking/bookNow";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteVehicle } from "../../store/vehicle";
-import { HeartIcon } from "@heroicons/react/24/solid";
 import FavoriteButton from "../Favorites/FavoriteButton";
 
 const VehicleListItem = (props) => {

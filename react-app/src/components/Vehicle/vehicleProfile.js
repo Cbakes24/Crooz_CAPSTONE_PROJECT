@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link, useHistory, useLocation } from "react-router-dom";
+import { useParams, useHistory, useLocation } from "react-router-dom";
 import { fetchVehicle } from "../../store/vehicle";
 import BookNow from "../Booking/bookNow";
 import { deleteVehicle } from "../../store/vehicle";

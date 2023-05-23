@@ -1,10 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchHostVehicles } from "../../store/vehicle";
-import VehicleListItem from "../Vehicle/vehicleItem";
 import BookingListItem from "../Booking/bookingListItem";
-import CreateVehicleForm from "../Vehicle/createVehicle";
-import { fetchHostBookings, fetchGuestBookings } from "../../store/booking";
+import { fetchGuestBookings } from "../../store/booking";
 import { useHistory, Redirect } from "react-router-dom";
 import FavoritesList from "../Favorites/FavoritesList";
 

@@ -1,9 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { fetchBookings } from "../../store/booking";
-import { Link, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 import { deleteReview } from "../../store/review";
-import { editReview } from "../../store/review";
 import EditReviewButton from "./EditReviewModal";
 
 const ReviewListItem = ({ review, vehicle }) => {

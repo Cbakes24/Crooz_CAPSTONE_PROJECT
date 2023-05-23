@@ -4,7 +4,7 @@ import { fetchHostVehicles } from "../../store/vehicle";
 import VehicleListItem from "../Vehicle/vehicleItem";
 import BookingListItem from "../Booking/bookingListItem";
 import CreateVehicleForm from "../Vehicle/createVehicle";
-import { fetchHostBookings, fetchGuestBookings } from "../../store/booking";
+import { fetchHostBookings } from "../../store/booking";
 import { useHistory, Redirect } from "react-router-dom";
 
 

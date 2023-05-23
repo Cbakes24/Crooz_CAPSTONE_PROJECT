@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 import BookingForm from "./bookingForm";
 import { fetchBooking } from "../../store/booking";
 
