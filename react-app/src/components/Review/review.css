@@ -33,6 +33,9 @@
 .review-form-box {
   height: 142px;
   border: black solid 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
 }
   .review-form {
@@ -42,4 +45,14 @@
 
   .review-title {
     margin: 25px
+  }
+
+  .review-success-message {
+  font-size: 30px;
+  background-color: white;
+  padding: 10px;
+  display: inline;
+  border: black solid 3px;
+
+
   }

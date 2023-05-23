@@ -14,6 +14,7 @@ const LeaveReviewModal = ({bookingId, vehicleId, review}) => {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
   const [message, setMessage] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,8 +34,9 @@ const LeaveReviewModal = ({bookingId, vehicleId, review}) => {
     if (data.errors) {
       setErrors(data.errors);
     } else {
-      setTimeout(() => closeModal(), 1000);
-      setMessage("Review submitted successfully!");;
+      setTimeout(() => closeModal(), 1500);
+      setMessage("Review submitted successfully!");
+      setIsSubmitted(true);
     }
   };
 
@@ -70,8 +72,8 @@ const LeaveReviewModal = ({bookingId, vehicleId, review}) => {
         <div>
             <button type="submit">Submit Review</button>
         </div>
-      <p>{message}</p>
       </form>
+      {isSubmitted && <p className="review-success-message">{message}</p>}
     </div>
   );
 };
