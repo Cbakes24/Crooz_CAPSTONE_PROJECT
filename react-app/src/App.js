@@ -15,7 +15,7 @@ import BookingEdit from "./components/Booking/EditBooking";
 import HomepageGuest from "./components/Homepage/homepageGuest";
 import HomeMap from "./components/GoogleMaps/googleMapSetup";
 import Home from "./components/GoogleMaps/GoogleMaps";
-import EditReviewButton from "./components/Review/EditReviewModal";
+import EditReviewButton from "./components/Review/EditReviewButton";
 
 function App() {
   const dispatch = useDispatch();

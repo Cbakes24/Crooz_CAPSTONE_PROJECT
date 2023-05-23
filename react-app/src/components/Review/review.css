@@ -30,3 +30,16 @@
     margin-left: 5px;
     color: gold;
   }
+.review-form-box {
+  height: 142px;
+  border: black solid 3px;
+
+}
+  .review-form {
+    display: flex;
+
+  }
+
+  .review-title {
+    margin: 25px
+  }

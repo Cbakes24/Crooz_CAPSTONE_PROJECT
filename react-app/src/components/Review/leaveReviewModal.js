@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { createReview } from "../../store/review";
 import { editReview } from "../../store/review";
+import "./review.css"
 
 const LeaveReviewModal = ({bookingId, vehicleId, review}) => {
   const dispatch = useDispatch();
@@ -13,8 +14,6 @@ const LeaveReviewModal = ({bookingId, vehicleId, review}) => {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
   const [message, setMessage] = useState("");
-
-console.log(review?.id, "THE REVIWWWW TO EDITTTTTT")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +28,6 @@ console.log(review?.id, "THE REVIWWWW TO EDITTTTTT")
     }
 
 
-    // console.log(payload, "REVIEWWWW SUBMIT")
     const action = review?.id ? editReview : createReview;
     const data = await dispatch(action(payload));
     if (data.errors) {
@@ -41,10 +39,10 @@ console.log(review?.id, "THE REVIWWWW TO EDITTTTTT")
   };
 
   return (
-    <div>
-      <h1>Leave a Review!</h1>
+    <div className="review-form-box">
+      <h1 className="review-title">Leave a Review!</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="review-form">
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
