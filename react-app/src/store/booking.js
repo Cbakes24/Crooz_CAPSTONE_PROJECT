@@ -15,7 +15,7 @@ export const removeBooking = (bookingId) => {
   };
 };
 
-// GET ALL bookingS
+// GET ALL bookings
 export const fetchBookings = () => async (dispatch) => {
   const res = await fetch("/api/bookings", {
     headers: {
@@ -29,7 +29,7 @@ export const fetchBookings = () => async (dispatch) => {
   return data;
 };
 
-// GET ALL Host bookingS
+// GET ALL Host bookings
 export const fetchHostBookings = () => async (dispatch) => {
   const res = await fetch("/api/bookings/host", {
     headers: {
@@ -42,7 +42,7 @@ export const fetchHostBookings = () => async (dispatch) => {
   }
   return data;
 };
-// GET ALL Guest bookingS
+// GET ALL Guest bookings
 export const fetchGuestBookings = () => async (dispatch) => {
   const res = await fetch("/api/bookings/guest", {
     headers: {

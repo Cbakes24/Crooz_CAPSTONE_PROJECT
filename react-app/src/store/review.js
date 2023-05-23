@@ -48,6 +48,27 @@ export const createReview = (payload) => async (dispatch) => {
   return data;
 }
 
+// Edit a Review
+export const editReview = (review) => async (dispatch) => {
+  console.log(review, "REVIEW THUNKKKKK")
+  const res = await fetch(`/api/reviews/${review.id}`, {
+    method: "PUT",
+    body: JSON.stringify(review),
+    headers: {
+      "Content-Type": "application/json",
+    },
+
+});
+
+const data = await res.json();
+if(res.ok)
+ {
+  dispatch(setReview([data]));
+ }
+return data;
+};
+
+// Delete a Review
 export const deleteReview = (reviewId) => async (dispatch) => {
   const res = await fetch(`/api/reviews/${reviewId}`, {
     method: "DELETE",

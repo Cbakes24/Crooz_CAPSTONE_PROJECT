@@ -74,9 +74,22 @@ def remove_review(id):
 
 
 # EDIT A REVIEW
-
-
-
+@review_bp.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_review(id):
+    """
+    Query for editing a review and returning it as an updated dictionary
+    """
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        review = Review.query.get(id)
+        form.populate_obj(review)
+        db.session.commit()
+        return jsonify(
+            review.to_dict()
+        )
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 

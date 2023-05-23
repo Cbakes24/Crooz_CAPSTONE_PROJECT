@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { createReview } from "../../store/review";
+import { editReview } from "../../store/review";
 
-const LeaveReviewModal = ({bookingId, vehicleId}) => {
+const LeaveReviewModal = ({bookingId, vehicleId, review}) => {
   const dispatch = useDispatch();
   const [body, setBody] = useState("");
   const [rating, setRating] = useState("");
@@ -11,10 +12,14 @@ const LeaveReviewModal = ({bookingId, vehicleId}) => {
   const user_id = currentUser.id
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
+
+console.log(review?.id, "THE REVIWWWW TO EDITTTTTT")
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const payload = {
+      ...review,
       body,
       rating,
       vehicle_id: vehicleId,
@@ -24,7 +29,8 @@ const LeaveReviewModal = ({bookingId, vehicleId}) => {
 
 
     // console.log(payload, "REVIEWWWW SUBMIT")
-    const data = await dispatch(createReview(payload));
+    const action = review?.id ? editReview : createReview;
+    const data = await dispatch(action(payload));
     if (data.errors) {
       setErrors(data.errors);
     } else {
