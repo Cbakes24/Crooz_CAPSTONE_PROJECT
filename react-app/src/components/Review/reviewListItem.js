@@ -11,14 +11,7 @@ const ReviewListItem = ({ review, vehicle }) => {
   const history = useHistory();
   const currentUser = useSelector((state) => state.session.user);
 
-  const handleEdit = async (e) => {
-    e.preventDefault();
-    if (currentUser.id === review.UserId) {
-      history.push(`/reviews/${review.id}/edit`);
-    }
-    return null;
-  };
-
+ 
   const handleDelete = async (e) => {
     e.preventDefault();
     if (!window.confirm("Do you want to delete this review?")) return;

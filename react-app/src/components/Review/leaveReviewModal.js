@@ -12,6 +12,7 @@ const LeaveReviewModal = ({bookingId, vehicleId, review}) => {
   const user_id = currentUser.id
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
+  const [message, setMessage] = useState("");
 
 console.log(review?.id, "THE REVIWWWW TO EDITTTTTT")
 
@@ -34,7 +35,8 @@ console.log(review?.id, "THE REVIWWWW TO EDITTTTTT")
     if (data.errors) {
       setErrors(data.errors);
     } else {
-      closeModal();
+      setTimeout(() => closeModal(), 1000);
+      setMessage("Review submitted successfully!");;
     }
   };
 
@@ -70,6 +72,7 @@ console.log(review?.id, "THE REVIWWWW TO EDITTTTTT")
         <div>
             <button type="submit">Submit Review</button>
         </div>
+      <p>{message}</p>
       </form>
     </div>
   );
