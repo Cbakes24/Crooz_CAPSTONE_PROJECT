@@ -1,6 +1,6 @@
 import React from "react";
 import OpenModalButton from "../OpenModalButton";
-import LeaveReviewModal from "./LeaveReviewModal";
+import LeaveReviewModal from "./leaveReviewModal";
 
 const LeaveReviewButton = ({bookingId, vehicleId}) => {
 
