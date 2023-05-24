@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
+
 export default function Home({ city, locationVehicles }) {
   const [currentPosition, setCurrentPosition] = useState({ lat: 0, lng: 0 });
   const [currentAddress, setCurrentAddress] = useState({ lat: 0, lng: 0 })
@@ -79,7 +80,7 @@ export default function Home({ city, locationVehicles }) {
   };
 
   return (
-    <LoadScript googleMapsApiKey="AIzaSyBHOzuWX7MX862EHpW_4iJl_DZ5LX8TbNs">
+    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API}>
       <GoogleMap
         mapContainerStyle={containerStyle} // Youll most likely just want to use containerStyle for this
         center={currentPosition} // automatically centers the map on the coordinates
