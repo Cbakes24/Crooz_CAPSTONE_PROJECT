@@ -160,5 +160,6 @@ label {
 
  .fa-bicycle {
   animation: move-bicycle 20s linear infinite;
+  
   width: -webkit-fill-available;
  }
