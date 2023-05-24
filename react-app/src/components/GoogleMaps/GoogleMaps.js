@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 
 
 export default function Home({ city, locationVehicles }) {
