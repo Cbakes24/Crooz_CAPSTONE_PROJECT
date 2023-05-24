@@ -1,4 +1,4 @@
-import LeaveReviewButton from "../Review/LeaveReviewButton";
+import LeaveReviewButton from "../Review/leaveReviewButton";
 import { useSelector, useDispatch } from "react-redux";
 import "./booking.css";
 import { deleteBooking } from "../../store/booking";

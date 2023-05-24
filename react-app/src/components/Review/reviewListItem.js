@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
-import {  useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { deleteReview } from "../../store/review";
-import EditReviewButton from "./EditReviewButton";
+import EditReviewButton from "./EditReviewModal";
 
 const ReviewListItem = ({ review, vehicle }) => {
   const dispatch = useDispatch();
