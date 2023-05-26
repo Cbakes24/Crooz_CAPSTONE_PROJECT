@@ -19,8 +19,8 @@ const FavoriteButton = ({vehicle}) => {
     setIsFilled(!isFilled)
     console.log(vehicle, 'FAV VEHICLE')
     
-    
     const vehicleId = vehicle.id
+
     if( isFilled === false) {
       const data = await dispatch(addToFavorites(vehicleId));
       if (data.errors) {

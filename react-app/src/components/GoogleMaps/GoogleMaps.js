@@ -8,12 +8,6 @@ export default function Home({ city, locationVehicles }) {
   const [currentAddress, setCurrentAddress] = useState({ lat: 0, lng: 0 })
   const [addresses, setAddresses] = useState([]);
 
-//   let addresses = locationVehicles.map(vehicle => {
-//     return vehicle.address
-
-//   })
-// console.log(addresses, "ADDERESSESS")
-
 
   useEffect(() => {
     const loadMap = async () => {
