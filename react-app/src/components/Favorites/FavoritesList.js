@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import VehicleListItem from "../Vehicle/vehicleItem";
+import FavoritesListItem from "./FavoritesListItem";
 import { getUserFavorites } from "../../store/favorites";
 
 
@@ -23,7 +24,7 @@ const FavoritesList= ({ location }) => {
 
       <div>
         {favoritesObj.map((vehicle) => (
-          <VehicleListItem vehicle={vehicle} key={vehicle.id} />
+          <FavoritesListItem vehicle={vehicle} key={vehicle.id} />
         ))}
       </div>
 

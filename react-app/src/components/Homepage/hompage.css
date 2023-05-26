@@ -1,7 +1,36 @@
+.guest-page-trips {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+
 .personal-trips {
+    width: 70%;
+}
+
+.upcoming-trips {
     display: flex;
     flex-wrap: nowrap;
     overflow-y: scroll;
-    max-height: 400px;
+    max-height: 500px;
     flex-direction: column;
+    
+}
+
+.previous-trips {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+    max-height: 500px;
+    flex-direction: column;
+}
+
+.favorites-list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+    max-height: 500px;
+    flex-direction: column;
+    width: 30%
 }
