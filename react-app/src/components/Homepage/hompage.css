@@ -7,6 +7,7 @@
 
 .personal-trips {
     width: 70%;
+
 }
 
 .upcoming-trips {
@@ -15,7 +16,7 @@
     overflow-y: scroll;
     max-height: 500px;
     flex-direction: column;
-    
+  
 }
 
 .previous-trips {
@@ -26,11 +27,22 @@
     flex-direction: column;
 }
 
+.favorites-section {
+    width: 30%
+}
 .favorites-list {
     display: flex;
     flex-wrap: nowrap;
     overflow-y: scroll;
     max-height: 500px;
     flex-direction: column;
-    width: 30%
+    align-items: stretch;
+    margin-top: 62px
 }
+
+.sticky-heading {
+    position: sticky;
+    top: 0;
+    background-color: white; /* Add a background color if needed */
+    z-index: 1; /* Make sure the sticky element appears above other elements */
+  }

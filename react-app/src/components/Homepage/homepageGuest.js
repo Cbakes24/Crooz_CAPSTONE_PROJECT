@@ -41,8 +41,7 @@ const HomepageGuest = () => {
           <h1>{sessionUser.username}'s Trips!</h1>
         </div>
         <div>
-          <h3 className="sticky-heading">Your Upcoming Trips</h3>
-
+          <h3>Your Upcoming Trips</h3>
           <div className="upcoming-trips">
             {upcomingTrips.map((booking) => (
               <BookingListItem booking={booking} key={booking.id} />
@@ -50,8 +49,8 @@ const HomepageGuest = () => {
           </div>
         </div>
         <div>
+          <h3>Your Previous Trips</h3>
           <div className="previous-trips">
-            <h3 className="sticky-heading">Your Previous Trips</h3>
             {previousTrips.map((booking) => (
               <BookingListItem booking={booking} key={booking.id} />
             ))}
@@ -59,8 +58,13 @@ const HomepageGuest = () => {
         </div>
       </div>
 
-      <div className="favorites-list">
-        <FavoritesList />
+      <div className="favorites-section">
+        <div>
+          <h1>Favorites!</h1>
+        </div>
+        <div className="favorites-list">
+          <FavoritesList />
+        </div>
       </div>
     </div>
   );

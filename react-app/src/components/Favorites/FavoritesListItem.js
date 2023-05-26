@@ -11,8 +11,6 @@ const FavoritesListItem = (props) => {
   const history = useHistory();
   const vehicle = props.vehicle;
 
-
-
   const handleDelete = async (e) => {
     e.preventDefault();
     if (!window.confirm("Do you want to delete this vehicle?")) return;
@@ -30,47 +28,42 @@ const FavoritesListItem = (props) => {
 
   return (
     <div className="favorite-item-box">
-      <Link
-        to={`/vehicles/${vehicle.id}`}
-      >
-        <div>
-          <img className="vehicle-item-image" src={vehicle.picture}></img>
-        </div>
-      </Link>
-
-      <div className="vehicle-info">
-        <div className="vehicle-name">
-          <h4>
-            {vehicle.year} {vehicle.make} {vehicle.model}
-          </h4>
-        </div>
-        <div className="vehicle-stats">
-          <p>Price: ${vehicle.dailyPrice}/day</p>
-          <p>Passengers: {vehicle.passengers}</p>
-          <p>Type: {vehicle.type}</p>
-        </div>
-
-        {currentUser && currentUser.id === vehicle.host.id ? null : (
+      <div className="favorite-item-inner">
+        <Link to={`/vehicles/${vehicle.id}`}>
           <div>
-          <BookNow
-            vehicle={vehicle}
-            address={vehicle.address}
-            city={props.city}
-            state={props.state}
-            country={props.country}
-          />
-          <FavoriteButton className='HeartIcon' vehicle={vehicle}/>
-
+            <img className="favorite-item-image" src={vehicle.picture}></img>
           </div>
-        )}
+        </Link>
 
-        <div>
-          {currentUser && currentUser.id === vehicle.host.id ? (
+        <div className="favorite-info">
+          <div className="favorite-name">
+            <h4>
+              {vehicle.year} {vehicle.make} {vehicle.model}
+            </h4>
             <div>
-              <button onClick={handleDelete}>Delete</button>
-              <button onClick={handleEdit}>Edit</button>
+              {currentUser && currentUser.id === vehicle.host.id ? null : (
+                <div  className="favorite-buttons">
+                  <BookNow
+                    vehicle={vehicle}
+                    address={vehicle.address}
+                    city={props.city}
+                    state={props.state}
+                    country={props.country}
+                  />
+                  <FavoriteButton className="HeartIcon" vehicle={vehicle} />
+                </div>
+              )}
+
+              <div>
+                {currentUser && currentUser.id === vehicle.host.id ? (
+                  <div  className="favorite-buttons">
+                    <button onClick={handleDelete}>Delete</button>
+                    <button onClick={handleEdit}>Edit</button>
+                  </div>
+                ) : null}
+              </div>
             </div>
-          ) : null}
+          </div>
         </div>
       </div>
     </div>

@@ -20,7 +20,6 @@ const FavoritesList= ({ location }) => {
 
   return (
     <div>
-      <h1>You Favorite Vehicles</h1>
 
       <div>
         {favoritesObj.map((vehicle) => (

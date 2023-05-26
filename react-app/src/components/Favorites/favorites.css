@@ -24,5 +24,31 @@
   margin-bottom: 10px;
   background-attachment: fixed;
   z-index: 0;
-  height: 340px
+  height: 150px;
+  width: 90%;
+
+  }
+
+  .favorite-item-inner {
+display: flex;
+
+  }
+  .favorite-item-image {
+    width: 100px;
+    height: 100px;
+    max-width: 500px;
+    margin-right: 20px;
+
+  }
+
+  .favorite-info {
+    margin: auto 0px;
+  }
+.favorite-name {
+
+}
+
+.favorite-buttons {
+
+display: flex
   }
