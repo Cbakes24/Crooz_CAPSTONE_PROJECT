@@ -12,6 +12,12 @@ const FavoritesList= ({ location }) => {
   const currentUser = useSelector((state) => state.session.user);
   const vehicles = useSelector((state) => Object.values(state.vehicle));
   const favoritesObj = useSelector((state) => Object.values(state.favorites))
+  console.log(favoritesObj, "FAVS OBJECT")
+// on line 28.5? or 27.5 could you ask if favoites.userId === currentUser.id then list that vehicle 
+// the favorites stat is return an array with the favorited vehicles as objects, do you want this to be just the userId and VehicleID and run a filter?
+
+
+
   console.log(favoritesObj, 'VEHICLES!!')
 
   useEffect(() => {

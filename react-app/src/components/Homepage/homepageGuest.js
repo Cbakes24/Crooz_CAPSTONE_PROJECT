@@ -12,6 +12,7 @@ const HomepageGuest = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const vehicles = useSelector((state) => Object.values(state.vehicle));
   const bookings = useSelector((state) => Object.values(state.booking));
+  
 
   // const hostBookings = bookings.filter((booking) => booking.host.id === sessionUser.id);
   // const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === sessionUser.id);
