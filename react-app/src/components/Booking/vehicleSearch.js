@@ -86,12 +86,12 @@ const VehicleSearch = () => {
         <h1>Time to Find Your Ride!</h1>
       </div>
 
-      <form className="booking-form" onSubmit={handleSubmit}>
-        <ul>
+        <ul className="booking-errors">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
+      <form className="booking-form" onSubmit={handleSubmit}>
         <div className="form-label">
           <label>Pickup Date</label>
           <input

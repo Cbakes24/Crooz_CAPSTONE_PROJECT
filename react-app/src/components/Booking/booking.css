@@ -52,7 +52,8 @@ margin: auto 10px
     position: relative;
     top: 175px;
     left: 12%;
-    margin: auto 100pxx;
+    margin: auto 100px;
+    padding: 5px
   }
  .booking-edit {
   display: flex;
@@ -162,4 +163,9 @@ label {
   animation: move-bicycle 20s linear infinite;
   
   width: -webkit-fill-available;
+ }
+
+
+ .booking-errors {
+font-size: 30px;
  }

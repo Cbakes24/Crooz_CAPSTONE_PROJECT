@@ -86,7 +86,7 @@ def unauthorized():
     """
     Returns unauthorized JSON when flask-login authentication fails
     """
-    return {'errors': ['Unauthorized']}, 401
+    return {'errors': ['Please Log In or Sign Up']}, 401
 
 
 @auth_routes.route('/current_user_id', methods=['GET'])
