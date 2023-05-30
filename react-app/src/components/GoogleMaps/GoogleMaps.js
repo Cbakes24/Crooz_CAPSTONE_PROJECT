@@ -7,7 +7,7 @@ export default function Home({ city, locationVehicles }) {
   const [currentPosition, setCurrentPosition] = useState({ lat: 0, lng: 0 });
   const [currentAddress, setCurrentAddress] = useState({ lat: 0, lng: 0 })
   const [addresses, setAddresses] = useState([]);
-
+  const [selectedMarker, setSelectedMarker] = useState('')
 
   useEffect(() => {
     const loadMap = async () => {
@@ -81,8 +81,14 @@ export default function Home({ city, locationVehicles }) {
         zoom={12}
       >
        {addresses.map((address, index) => (
-          <Marker key={index} position={address} />
+          <Marker 
+            key={index} 
+            position={address} 
+
+            />
         ))}
+
+        
       </GoogleMap>
     </LoadScript>
   );
