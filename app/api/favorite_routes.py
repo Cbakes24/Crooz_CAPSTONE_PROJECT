@@ -32,7 +32,7 @@ def add_favorite_vehicle(id):
     print(vehicle, "ADD THIS VEHICLE")
     if vehicle in user.fav_vehicles:
         print("YOU ALREADY LIKED THIS ONE")
-        return jsonify(message="Vehicle already in user's favorites."), 400
+        return {'errors': ["Vehicle already in user's favorites."]}, 400
     user.fav_vehicles.append(vehicle)
     db.session.commit()
     return  jsonify(vehicle.to_dict_fav())

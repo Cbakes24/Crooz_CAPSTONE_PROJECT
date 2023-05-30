@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { HeartIcon } from '@heroicons/react/24/solid'
 import { addToFavorites } from "../../store/favorites";
 import { removeFromFavorites } from "../../store/favorites";
@@ -11,10 +11,14 @@ const FavoriteButton = ({vehicle}) => {
   const dispatch = useDispatch()
   const [isFilled, setIsFilled] = useState(false);
   const [errors, setErrors] = useState([]);
-
-
+  const currentUser = useSelector((state) => state.session.user);
+  
+  if( currentUser.favVehicles.includes(vehicle)) {
+    setIsFilled(true)
+  }
   const handleFavorite = async (e) => {
     e.preventDefault();
+    console.log(currentUser.favVehicles, "FAVORTIE VEHICLES BY USER")
     setErrors([])
     setIsFilled(!isFilled)
     console.log(vehicle, 'FAV VEHICLE')

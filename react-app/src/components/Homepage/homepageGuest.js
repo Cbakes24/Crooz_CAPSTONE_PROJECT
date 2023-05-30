@@ -9,13 +9,13 @@ import "./hompage.css";
 const HomepageGuest = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const sessionUser = useSelector((state) => state.session.user);
+  const currentUser = useSelector((state) => state.session.user);
   const vehicles = useSelector((state) => Object.values(state.vehicle));
   const bookings = useSelector((state) => Object.values(state.booking));
   
-
-  // const hostBookings = bookings.filter((booking) => booking.host.id === sessionUser.id);
-  // const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === sessionUser.id);
+  console.log()
+  // const hostBookings = bookings.filter((booking) => booking.host.id === currentUser.id);
+  // const hostVehicles = vehicles.filter((vehicle) => vehicle.host.id === currentUser.id);
   const today = new Date();
 
   useEffect(() => {
@@ -24,9 +24,9 @@ const HomepageGuest = () => {
     dispatch(fetchGuestBookings());
   }, [dispatch]);
 
-  if (!sessionUser) return <Redirect to="/login" />;
+  if (!currentUser) return <Redirect to="/login" />;
   const guestBookings = bookings
-    .filter((booking) => booking.guest.id === sessionUser.id)
+    .filter((booking) => booking.guest.id === currentUser.id)
     .reverse();
   const previousTrips = guestBookings.filter(
     (booking) => new Date(booking.dropOffDate) < today
@@ -39,7 +39,7 @@ const HomepageGuest = () => {
     <div className="guest-page-trips">
       <div className="personal-trips">
         <div>
-          <h1>{sessionUser.username}'s Trips!</h1>
+          <h1>{currentUser.username}'s Trips!</h1>
         </div>
         <div>
           <h3>Your Upcoming Trips</h3>
