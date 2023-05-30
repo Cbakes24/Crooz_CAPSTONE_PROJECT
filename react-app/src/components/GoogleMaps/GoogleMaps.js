@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import '../Booking/booking.css'
+import "../Booking/booking.css";
 import {
   GoogleMap,
   LoadScript,
@@ -65,9 +65,6 @@ export default function Home({ city, locationVehicles }) {
 
     loadMap();
   }, [city, locationVehicles]);
-  //     const { isLoaded } = useLoadScript({
-  //         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API,
-  //     })
 
   const containerStyle = {
     width: "39%",
@@ -92,18 +89,25 @@ export default function Home({ city, locationVehicles }) {
         ))}
 
         {selectedMarker && (
-  <InfoWindow
-    position={addresses.find((address, index) => locationVehicles[index] === selectedMarker)}
-    onCloseClick={() => setSelectedMarker(null)}
-  >
-    <div>
-    <img className='marker-image' src={selectedMarker.picture} alt="vehicle" />
-      <h3>
-        {selectedMarker.year} {selectedMarker.make} {selectedMarker.model}
-      </h3>
-    </div>
-  </InfoWindow>
-)}
+          <InfoWindow
+            position={addresses.find(
+              (address, index) => locationVehicles[index] === selectedMarker
+            )}
+            onCloseClick={() => setSelectedMarker(null)}
+          >
+            <div>
+              <img
+                className="marker-image"
+                src={selectedMarker.picture}
+                alt="vehicle"
+              />
+              <h3>
+                {selectedMarker.year} {selectedMarker.make}{" "}
+                {selectedMarker.model}
+              </h3>
+            </div>
+          </InfoWindow>
+        )}
       </GoogleMap>
     </LoadScript>
   );
