@@ -6,6 +6,8 @@ import BookNow from "../Booking/bookNow";
 import { deleteVehicle } from "../../store/vehicle";
 import ReviewList from "../Review/reviewList";
 import { fetchReviews } from "../../store/review";
+import FavoriteButton from "../Favorites/FavoriteButton";
+
 
 const VehicleProfile = (props) => {
   const dispatch = useDispatch();
@@ -84,7 +86,13 @@ const VehicleProfile = (props) => {
           <h2>
             {vehicle.year} {vehicle.make} {vehicle.model}
           </h2>
-
+          <div>
+              {currentUser && currentUser.id === vehicle.host ? null : (
+                <div className="favorite-buttons">
+                  <FavoriteButton className="HeartIcon" vehicle={vehicle} />
+                </div>
+              )}
+            </div>
           <div id="description" >
             <h3>Description</h3>
             <p>{vehicle.description}</p>
