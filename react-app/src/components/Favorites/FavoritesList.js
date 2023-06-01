@@ -15,7 +15,7 @@ const FavoritesList= ({ location }) => {
 // the favorites stat is return an array with the favorited vehicles as objects, do you want this to be just the userId and VehicleID and run a filter?
 
 
-
+console.log(currentUser.favVehicles, "FAVORTIE VEHICLES BY USER")
 
 
   useEffect(() => {
