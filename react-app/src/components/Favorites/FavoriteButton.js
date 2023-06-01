@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HeartIcon } from '@heroicons/react/24/solid'
 import { addToFavorites } from "../../store/favorites";
@@ -13,25 +13,45 @@ const FavoriteButton = ({vehicle}) => {
   const [errors, setErrors] = useState([]);
   const currentUser = useSelector((state) => state.session.user);
   
-  if( currentUser.favVehicles.includes(vehicle)) {
-    setIsFilled(true)
-  }
+
+  // console.log(currentUser.favVehicles, "FAV VEHICLE IDS")
+
+  // // useEffect(() => {
+  // //   dispatch(getUserFavorites());
+  // // }, [dispatch,currentUser, vehicle.id]);
+
+  // useEffect(() => {
+  //   if (currentUser.favVehicles.includes(vehicle.id)) {
+  //     setIsFilled(true);
+  //   }
+  // }, [currentUser, vehicle.id]);
+
+  const favorites = useSelector(state => state.favorites)
+
+  useEffect(() => {
+    if(favorites[vehicle.id]) {
+      setIsFilled(true)
+    } else {
+      setIsFilled(false)
+    }
+  }, [dispatch, vehicle, favorites])
+  
   const handleFavorite = async (e) => {
     e.preventDefault();
     console.log(currentUser.favVehicles, "FAVORTIE VEHICLES BY USER")
     setErrors([])
-    setIsFilled(!isFilled)
+   
     console.log(vehicle, 'FAV VEHICLE')
-    
+    console.log("IS FILLD BEFORE", isFilled)
     const vehicleId = vehicle.id
 
-    if( isFilled === false) {
+    if(isFilled === false) {
+      setIsFilled(true)
       const data = await dispatch(addToFavorites(vehicleId));
       if (data.errors) {
         setErrors(data.errors);
       } else {
-        //maybe just push to the users guest profile page
-        // history.push(`/users/guest`)
+    return
       }
       
       
@@ -47,7 +67,7 @@ const FavoriteButton = ({vehicle}) => {
     
   }
   
-  console.log("IS FILLD", isFilled)
+  console.log("IS FILLD AFTER", isFilled)
   return (
     
     <div onClick={handleFavorite} className='heart'>

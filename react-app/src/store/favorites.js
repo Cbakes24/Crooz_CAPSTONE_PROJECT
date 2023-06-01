@@ -70,7 +70,7 @@ const favoritesReducer = (state = {}, action) => {
       return newState;
 
     case REMOVE_FAVORITE:
-      delete newState[action.favoriteId];
+      delete newState[action.favorites];
       return newState;
     default:
       return state;

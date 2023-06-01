@@ -7,6 +7,7 @@ from app.models import db, Booking, User, Review, Vehicle, favorites
 favorite_bp = Blueprint('favorite', __name__)
 
 
+
 # GET A USER'S FAVORITE Vehicles
 @favorite_bp.route('', methods=['GET'])
 @login_required
@@ -15,7 +16,9 @@ def get_user_favorite_vehicles():
     Query for a user's favorite vehicles and returns them in a list of vehicle dictionaries
     """
     user_id = current_user.id
-    favorite_vehicles = db.session.query(Vehicle).join(favorites).filter(favorites.c.user_id == user_id).all()
+    user = User.query.get(current_user.id)
+    # favorite_vehicles = db.session.query(Vehicle).join(favorites).filter(favorites.c.user_id == user_id).all()
+    favorite_vehicles = user.fav_vehicles
     return jsonify([vehicle.to_dict() for vehicle in favorite_vehicles])
 
 
@@ -29,10 +32,11 @@ def add_favorite_vehicle(id):
     vehicle = Vehicle.query.get(id)
     user = User.query.get(current_user.id)
     print(user.fav_vehicles, "USER FAV VEHICLES")
-    print(vehicle, "ADD THIS VEHICLE")
-    if vehicle in user.fav_vehicles:
-        print("YOU ALREADY LIKED THIS ONE")
-        return {'errors': ["Vehicle already in user's favorites."]}, 400
+    print(vehicle.id, "ADD THIS VEHICLE")
+    print(user.fav_vehicles, "USER FAV VEHICLES")
+    for fav_vehicle in user.fav_vehicles:
+        if fav_vehicle.id == id:
+            return {'errors': ["Vehicle already in user's favorites."]}, 400
     user.fav_vehicles.append(vehicle)
     db.session.commit()
     return  jsonify(vehicle.to_dict_fav())
@@ -53,5 +57,6 @@ def remove_favorite(id):
     print("YOU REMOVED ", vehicle, " FROM YOUR FAVORITES")
     return jsonify({
         'success': True,
-        'message': 'Favorite removed from user favorites successfully!'
+        'message': 'Favorite removed from user favorites successfully!',
+        'favoriteId': id  # Add the removed favorite vehicle ID to the response
     })

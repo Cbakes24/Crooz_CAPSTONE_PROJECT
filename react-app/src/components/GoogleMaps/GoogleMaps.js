@@ -8,6 +8,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 
+
 export default function Home({ city, locationVehicles }) {
   const [currentPosition, setCurrentPosition] = useState({ lat: 0, lng: 0 });
   const [currentAddress, setCurrentAddress] = useState({ lat: 0, lng: 0 });
@@ -77,7 +78,7 @@ export default function Home({ city, locationVehicles }) {
   return (
     <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API}>
       <GoogleMap
-        mapContainerStyle={containerStyle} // Youll most likely just want to use containerStyle for this
+        mapContainerStyle={containerStyle} 
         center={currentPosition} // automatically centers the map on the coordinates
         zoom={12}
       >
