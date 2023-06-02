@@ -16,12 +16,13 @@ export const removeFavorite = (favorites) => {
   };
 };
 // GET ALL Host FAVORITES
-export const getUserFavorites= () => async (dispatch) => {
-  const res = await fetch("/api/favorites", {
+export const getUserFavorites= (userId) => async (dispatch) => {
+  const res = await fetch(`/api/favorites/${userId}`, {
     headers: {
       "Content-Type": "application/json",
     },
   });
+  console.log(res, "FAV RESSSS***")
   const data = await res.json();
   if (res.ok) {
     dispatch(setFavorite(data));

@@ -9,16 +9,17 @@ favorite_bp = Blueprint('favorite', __name__)
 
 
 # GET A USER'S FAVORITE Vehicles
-@favorite_bp.route('', methods=['GET'])
+@favorite_bp.route('/<int:id>', methods=['GET'])
 @login_required
-def get_user_favorite_vehicles():
+def get_user_favorite_vehicles(id):
     """
     Query for a user's favorite vehicles and returns them in a list of vehicle dictionaries
     """
     user_id = current_user.id
-    user = User.query.get(current_user.id)
-    # favorite_vehicles = db.session.query(Vehicle).join(favorites).filter(favorites.c.user_id == user_id).all()
-    favorite_vehicles = user.fav_vehicles
+    user = User.query.get(id)
+    print(user, "******* USERRRR *****")
+    favorite_vehicles = db.session.query(Vehicle).join(favorites).filter(favorites.c.user_id == id).all()
+    # favorite_vehicles = user.fav_vehicles
     return jsonify([vehicle.to_dict() for vehicle in favorite_vehicles])
 
 

@@ -19,8 +19,8 @@ console.log(currentUser.favVehicles, "FAVORTIE VEHICLES BY USER")
 
 
   useEffect(() => {
-    dispatch(getUserFavorites());
-  }, [dispatch]);
+    dispatch(getUserFavorites(currentUser.id));
+  }, [dispatch, currentUser.id, currentUser.favVehicles]);
 
   return (
     <div>
