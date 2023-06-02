@@ -21,12 +21,12 @@ useEffect(() => {
 }, [dispatch, currentUser.id, currentUser.favVehicles]);
 
 
-const userFavs = vehicle.favByUser && vehicle.favByUser.filter(user => {
+const userFavorited = vehicle.favByUser && vehicle.favByUser.filter(user => {
   return user.id === currentUser.id
 });
-console.log(userFavs, " $$$$$ THE FINAL USER FAVS $$$$$")
+console.log(userFavorited, " $$$$$ THE FINAL USER FAVS $$$$$")
   
-return  userFavs && userFavs.length > 0 ? (
+return  userFavorited && userFavorited.length > 0 ? (
     <div className="favorite-item-box">
       <div className="favorite-item-inner">
 
