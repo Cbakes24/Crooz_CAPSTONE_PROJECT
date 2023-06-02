@@ -16,6 +16,16 @@ const removeUser = () => ({
 const initialState = { user: null };
 
 
+// export const getUser = (userId) => async (dispatch) => {
+// 	const res = await fetch(`/api/users/${userId}`) 
+// 	console.log(res, "USER RESULTS")
+// 	const data = await res.json();
+
+// 	if(res.ok) {
+// 		dispatch(setUser([data]));
+// 	}
+// 	return data;
+// 	};
 
 
 
