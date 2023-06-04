@@ -86,7 +86,7 @@ export const createBooking = (booking) => async (dispatch) => {
 
 //   PUT edit a booking
 export const editBooking = (booking) => async (dispatch) => {
-  // console.log(booking, "BOOKING IN VEHICLE EDIT THUNK")
+
   const res = await fetch(`/api/bookings/${booking.id}`, {
     method: "PUT",
     body: JSON.stringify(booking),
@@ -96,7 +96,7 @@ export const editBooking = (booking) => async (dispatch) => {
   });
 
   const data = await res.json();
-  // console.log(data, "DATA EDIT BOOKING THUNK")
+
   if (res.ok) {
     dispatch(setBookings([data]));
   }

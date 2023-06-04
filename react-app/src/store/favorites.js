@@ -22,7 +22,6 @@ export const getUserFavorites= (userId) => async (dispatch) => {
       "Content-Type": "application/json",
     },
   });
-  console.log(res, "FAV RESSSS***")
   const data = await res.json();
   if (res.ok) {
     dispatch(setFavorite(data));
@@ -32,7 +31,6 @@ export const getUserFavorites= (userId) => async (dispatch) => {
 
 
 export const addToFavorites = (vehicleId) => async (dispatch) => {
-console.log(vehicleId, "VEHICLE IDDDDDD!!!!!")
   const res = await fetch(`/api/favorites/${vehicleId}`, {
     method: "POST",
     body: JSON.stringify(vehicleId),
@@ -40,7 +38,6 @@ console.log(vehicleId, "VEHICLE IDDDDDD!!!!!")
       "Content-Type": "application/json",
     },
   });
-console.log(res, "RESSSS IN FAV THUNK")
   const data = await res.json();
   if (res.ok) {
     dispatch(setFavorite([data]));

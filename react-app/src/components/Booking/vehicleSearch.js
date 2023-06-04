@@ -42,7 +42,6 @@ const VehicleSearch = () => {
     }
 
     const data = await dispatch(fetchVehiclesByLocation(payload));
-    console.log(data, "DATA FROM THE THUNNKKKK");
     if (data.errors) {
       setErrors(data.errors);
     } else {
@@ -86,11 +85,11 @@ const VehicleSearch = () => {
         <h1>Time to Find Your Ride!</h1>
       </div>
 
-        <ul className="booking-errors">
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
+      <ul className="booking-errors">
+        {errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
+      </ul>
       <form className="booking-form" onSubmit={handleSubmit}>
         <div className="form-label">
           <label>Pickup Date</label>
@@ -161,16 +160,15 @@ const VehicleSearch = () => {
             onChange={(e) => setCountry(e.target.value)}
           />
         </label> */}
-<div className="form-label-button">
-
-        <button>Search</button>
-</div>
+        <div className="form-label-button">
+          <button>Search</button>
+        </div>
       </form>
       <div className="star">
         <i className="fas fa-bicycle"></i>
       </div>
       <img
-        className="home-image"
+        className="home-image" alt="vehicle-pic"
         src="https://images.pexels.com/photos/2454516/pexels-photo-2454516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       />
       <div className="list-map">

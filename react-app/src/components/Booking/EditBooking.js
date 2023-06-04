@@ -8,7 +8,6 @@ const BookingEdit = () => {
   const { bookingId } = useParams();
   const bookingsObj = useSelector((state) => state.booking);
   const booking = bookingsObj[bookingId];
-// console.log("Greetings from EditeBooking!", booking)
 
   const dispatch = useDispatch();
 
@@ -20,7 +19,7 @@ const BookingEdit = () => {
     return null;
   }
 
-  return <BookingForm booking={booking}/>;
+  return <BookingForm booking={booking} />;
 };
 
 export default BookingEdit;

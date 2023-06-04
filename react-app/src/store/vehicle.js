@@ -2,7 +2,6 @@ const SET_VEHICLES = "vehicles/SET_VEHICLES";
 const REMOVE_VEHICLES = "vehicles/REMOVE_VEHICLES";
 
 export const setVehicles = (vehicles) => {
-  // console.log(vehicles, 'DATA IN THE ACTION')
   return {
     type: SET_VEHICLES,
     vehicles,
@@ -44,10 +43,8 @@ export const fetchHostVehicles = () => async (dispatch) => {
   return data;
 };
 
-
 // GET ALL VEHICLES BY DATE and LOCATION
 export const fetchVehiclesByLocation = (payload) => async (dispatch) => {
-  // console.log("Greetings from the THUNK!");
   const res = await fetch("/api/bookings/search", {
     method: "POST",
     headers: {
@@ -55,20 +52,19 @@ export const fetchVehiclesByLocation = (payload) => async (dispatch) => {
     },
     body: JSON.stringify(payload),
   });
-  // console.log("Greetings HELLOOOOO!");
+
   const data = await res.json();
-  // console.log(data, "DATA IN THE THUNK")
+
   if (res.ok) {
     dispatch(setVehicles(data.vehicles));
   }
-  return data
+  return data;
 };
 
 // GET a vehicle by id
 export const fetchVehicle = (vehicleId) => async (dispatch) => {
-  // console.log(vehicleId, "VEHICLEID IN THUNK")
   const res = await fetch(`/api/vehicles/${vehicleId}`);
-  // console.log(res, "RES IN THUNK")
+
   const data = await res.json();
 
   if (res.ok) {
@@ -90,8 +86,7 @@ export const fetchVehicleType = (vehicleType) => async (dispatch) => {
 
 // POST create a vehicle
 export const createVehicle = (vehicle) => async (dispatch) => {
-  // console.log(vehicle, "VEHICLE IN THUNK")
-  const res = await fetch("/api/vehicles", {
+   const res = await fetch("/api/vehicles", {
     method: "POST",
     body: JSON.stringify(vehicle),
     headers: {
@@ -100,7 +95,7 @@ export const createVehicle = (vehicle) => async (dispatch) => {
   });
 
   const data = await res.json();
-  // console.log(data, 'NEW VEHICLE DATAAA in thunk')
+
   if (res.ok) {
     dispatch(setVehicles([data]));
   }
@@ -109,7 +104,6 @@ export const createVehicle = (vehicle) => async (dispatch) => {
 
 //   PUT edit a vehicle
 export const editVehicle = (vehicle) => async (dispatch) => {
-  // console.log(vehicle, "VEHICLE IN VEHICLE EDIT THUNK")
   const res = await fetch(`/api/vehicles/${vehicle.id}`, {
     method: "PUT",
     body: JSON.stringify(vehicle),
@@ -119,7 +113,7 @@ export const editVehicle = (vehicle) => async (dispatch) => {
   });
 
   const data = await res.json();
-  // console.log(data, "DATA EDIT VEHICLE THUNK")
+
   if (res.ok) {
     dispatch(setVehicles([data]));
   }
@@ -145,9 +139,9 @@ const vehiclesReducer = (state = {}, action) => {
       action.vehicles.forEach((vehicle) => {
         vehiclesObj[vehicle.id] = vehicle;
       });
-      // console.log(vehiclesObj, "vehicles OBject")
-      newState = {...newState, ...vehiclesObj };
-      // console.log(newState, "THET NEW STATE")
+
+      newState = { ...newState, ...vehiclesObj };
+
       return newState;
 
     case REMOVE_VEHICLES:

@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import '../Booking/booking.css'
+import "../Booking/booking.css";
 import {
   GoogleMap,
   LoadScript,
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-
 
 export default function Home({ city, locationVehicles }) {
   const [currentPosition, setCurrentPosition] = useState({ lat: 0, lng: 0 });
@@ -26,7 +25,7 @@ export default function Home({ city, locationVehicles }) {
       geocoderCity.geocode({ address: city }, (results, status) => {
         if (status === "OK") {
           const { lat, lng } = results[0].geometry.location;
-          console.log("RESULTSS!!!!!!", results);
+
           setCurrentPosition({ lat: lat(), lng: lng() });
         } else {
           console.error(
@@ -66,9 +65,6 @@ export default function Home({ city, locationVehicles }) {
 
     loadMap();
   }, [city, locationVehicles]);
-  //     const { isLoaded } = useLoadScript({
-  //         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API,
-  //     })
 
   const containerStyle = {
     width: "39%",
@@ -78,7 +74,7 @@ export default function Home({ city, locationVehicles }) {
   return (
     <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API}>
       <GoogleMap
-        mapContainerStyle={containerStyle} 
+        mapContainerStyle={containerStyle}
         center={currentPosition} // automatically centers the map on the coordinates
         zoom={12}
       >
@@ -93,18 +89,25 @@ export default function Home({ city, locationVehicles }) {
         ))}
 
         {selectedMarker && (
-  <InfoWindow
-    position={addresses.find((address, index) => locationVehicles[index] === selectedMarker)}
-    onCloseClick={() => setSelectedMarker(null)}
-  >
-    <div>
-    <img className='marker-image' src={selectedMarker.picture} alt="vehicle" />
-      <h3>
-        {selectedMarker.year} {selectedMarker.make} {selectedMarker.model}
-      </h3>
-    </div>
-  </InfoWindow>
-)}
+          <InfoWindow
+            position={addresses.find(
+              (address, index) => locationVehicles[index] === selectedMarker
+            )}
+            onCloseClick={() => setSelectedMarker(null)}
+          >
+            <div>
+              <img
+                className="marker-image"
+                src={selectedMarker.picture}
+                alt="vehicle"
+              />
+              <h3>
+                {selectedMarker.year} {selectedMarker.make}{" "}
+                {selectedMarker.model}
+              </h3>
+            </div>
+          </InfoWindow>
+        )}
       </GoogleMap>
     </LoadScript>
   );

@@ -9,8 +9,6 @@ const BookingListItem = ({ booking }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const today = new Date();
-
-  // console.log(typeof booking.pickupDate, "TYPE OFFFFF");
   const pickupDateObj = new Date(booking.pickupDate);
   const dropOffDateObj = new Date(booking.dropOffDate);
   const options = {
@@ -22,7 +20,7 @@ const BookingListItem = ({ booking }) => {
   const pickupDate = pickupDateObj.toLocaleDateString("en-US", options);
   const dropOffDate = dropOffDateObj.toLocaleDateString("en-US", options);
 
-  // console.log(pickupDate, "FORMATED DATE");
+
 
   const handleDelete = async (e) => {
     e.preventDefault();

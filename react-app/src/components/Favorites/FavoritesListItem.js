@@ -11,25 +11,19 @@ const FavoritesListItem = (props) => {
   const history = useHistory();
   const vehicle = props.vehicle;
 
-console.log(vehicle.make, vehicle.id, "FAV LIST VEHICLE *******")
+  useEffect(() => {
+    dispatch(getUserFavorites(currentUser.id));
+  }, [dispatch, currentUser.id, currentUser.favVehicles]);
 
+  const userFavorited =
+    vehicle.favByUser &&
+    vehicle.favByUser.filter((user) => {
+      return user.id === currentUser.id;
+    });
 
-
-
-useEffect(() => {
-  dispatch(getUserFavorites(currentUser.id));
-}, [dispatch, currentUser.id, currentUser.favVehicles]);
-
-
-const userFavorited = vehicle.favByUser && vehicle.favByUser.filter(user => {
-  return user.id === currentUser.id
-});
-console.log(userFavorited, " $$$$$ THE FINAL USER FAVS $$$$$")
-  
-return  userFavorited && userFavorited.length > 0 ? (
+  return userFavorited && userFavorited.length > 0 ? (
     <div className="favorite-item-box">
       <div className="favorite-item-inner">
-
         <Link to={`/vehicles/${vehicle.id}`}>
           <div>
             <img className="favorite-item-image" src={vehicle.picture}></img>
