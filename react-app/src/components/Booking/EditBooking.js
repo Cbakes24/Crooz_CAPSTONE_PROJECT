@@ -19,7 +19,11 @@ const BookingEdit = () => {
     return null;
   }
 
-  return <BookingForm booking={booking} />;
+  return (
+    <div className="booking-form-edit">
+      <BookingForm booking={booking} />;
+    </div>
+  );
 };
 
 export default BookingEdit;

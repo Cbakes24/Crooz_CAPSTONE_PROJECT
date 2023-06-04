@@ -1,10 +1,17 @@
 
+.vehicle-search-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .booking-item-box {
   display: flex;
   align-items: center;
   padding: 10px;
   border: 1px solid #ccc;
   position: relative;
+  /* background-color: rgb(199, 254, 252); */
   background-image: url('https://images.pexels.com/photos/2454516/pexels-photo-2454516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
   background-size: cover;
   background-position: center;
@@ -43,6 +50,23 @@ margin: auto 10px
     transform: translate(-50, -50%);
     display: inline-flex;
     flex-direction: row;
+    /* background-image: url(https://images.pexels.com/photos/2454516/pexels-photo-2454516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2); */
+    background-size: cover;
+    background-position: center;
+    border-radius: 25px;
+    background-color: #ffffff;
+    position: relative;
+    top: 175px;
+   
+    margin: auto 100px;
+    padding: 5px
+  }
+
+  .booking-form-edit  {
+    transform: translate(-50, -50%);
+    display: inline-flex;
+    flex-direction: row;
+    /* background-image: url(https://images.pexels.com/photos/2454516/pexels-photo-2454516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2); */
     background-size: cover;
     background-position: center;
     border-radius: 25px;
@@ -51,10 +75,10 @@ margin: auto 10px
     margin: auto 100px;
     padding: 5px
   }
+
  .booking-edit {
   display: flex;
   flex-direction: column;
-  align-items: center;
  }
 
  .booking-edit img {
@@ -158,8 +182,8 @@ label {
 
  .fa-bicycle {
   animation: move-bicycle 20s linear infinite;
-  
-  width: -webkit-fill-available;
+  top: 100px;
+  width:  100vw;
  }
 
 
