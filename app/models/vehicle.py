@@ -81,16 +81,3 @@ class Vehicle(db.Model):
      
 
             }
-    # def to_dict(self):
-    #     return {
-    #         'id': self.id,
-    #         'year': self.year,
-    #         'make': self.make,
-    #         'model': self.model,
-    #         'picture': self.picture,
-    #         'power': self.power,
-    #         'description': self.description,
-    #         'type': self.type,
-    #         'passengers': self.passengers,
-    #         'hostId': self.host_id,
-    #     }

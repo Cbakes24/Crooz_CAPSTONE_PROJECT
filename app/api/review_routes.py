@@ -33,7 +33,6 @@ def create_review():
     """
 
     data= request.json
-    # print( " THE DATA", data)
     user_id = data['user_id']
     vehicle_id = data['vehicle_id']
     booking_id = data['booking_id']
@@ -49,7 +48,7 @@ def create_review():
         body=body,
         vehicle=vehicle,
     )
-    # print(new_review)
+
 
     db.session.add(new_review)
     db.session.commit()
@@ -91,18 +90,3 @@ def edit_review(id):
         )
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-
-
-    # form = ReviewForm()
-    # form['csrf_token'].data = request.cookies['csrf_token']
-    # print(form.data, "REVIEW FORM DATAA")
-    # if form.validate_on_submit():
-    #     new_review = Review()
-    #     new_review.user_id = current_user.id
-    #     form.populate_obj(new_review)
-    #     db.session.add(new_review)
-    #     db.session.commit()
-    #     return jsonify(
-    #         new_review.to_dict()
-    #     )
-    # return {'errors': validation_errors_to_error_messages(form.errors)}, 401

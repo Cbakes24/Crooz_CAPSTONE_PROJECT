@@ -21,7 +21,6 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     bookings_guest = db.relationship('Booking', back_populates='guest')
-    # consider renaming bookings_host to host_vehicles, makes more sense a host wants to see his vehicles
     bookings_host = db.relationship('Vehicle', back_populates='host')
     fav_vehicles = db.relationship("Vehicle", secondary=favorites, back_populates="fav_by_users", cascade='all, delete')
     reviews = db.relationship('Review', back_populates='user')

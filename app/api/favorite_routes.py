@@ -19,7 +19,6 @@ def get_user_favorite_vehicles(id):
     user = User.query.get(id)
     print(user, "******* USERRRR *****")
     favorite_vehicles = db.session.query(Vehicle).join(favorites).filter(favorites.c.user_id == id).all()
-    # favorite_vehicles = user.fav_vehicles
     return jsonify([vehicle.to_dict() for vehicle in favorite_vehicles])
 
 
@@ -59,5 +58,5 @@ def remove_favorite(id):
     return jsonify({
         'success': True,
         'message': 'Favorite removed from user favorites successfully!',
-        'favoriteId': id  # Add the removed favorite vehicle ID to the response
+        'favoriteId': id  
     })
