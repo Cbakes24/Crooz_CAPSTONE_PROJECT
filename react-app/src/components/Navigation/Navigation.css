@@ -69,33 +69,3 @@ header {
 .profile-button:hover {
   text-decoration: underline;
 }
-/*
-.navbar {
-font-family:Verdana, Geneva, Tahoma, sans-serif;
-width: 1025px;
-height: 80px;
-display: flex;
-justify-content: space-around;
-margin: auto;
-align-items: center;
-background-color: #5ac1f4;
-
-}
-
-.navbar-box {
-    font-style: none;
-    text-decoration: none;
-    color: black;
-}
-
-.navbar-box:hover {
-  background-color: white;
-} */
-
-
-/*
-.navbar .divider {
-  background-color: #fcfbf9;
-  width: 1px;
-  height: 40px;
-} */
