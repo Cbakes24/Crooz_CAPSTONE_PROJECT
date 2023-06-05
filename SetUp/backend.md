@@ -76,6 +76,7 @@ npm install --prefix react-app &&
 npm run build --prefix react-app &&
 pip install -r requirements.txt &&
 pip install psycopg2 &&
+pip install email_validator &&
 flask db upgrade &&
 flask seed all
 flask db downgrade - removes migrations from database
