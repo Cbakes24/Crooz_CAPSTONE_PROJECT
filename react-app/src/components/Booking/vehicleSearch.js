@@ -19,7 +19,11 @@ const VehicleSearch = () => {
   const [errors, setErrors] = useState([]);
   const [locationVehicles, setLocationVehicles] = useState([]);
   const [showMap, setShowMap] = useState(false);
+
+
   const today = new Date();
+  const cities = ['Boston', 'San Diego']
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -128,15 +132,28 @@ const VehicleSearch = () => {
 
         <div className="form-label">
           <label>City</label>
-
-          <input
+          <select className='city-selector' onChange={e => setCity(e.target.value)}>
+          <option value={-0}></option>
+          {cities.map((city, idx) =>
+            city === "" ? (
+              <option key={idx} value={city} selected>
+                {city}
+              </option>
+            ) : (
+              <option key={idx} value={city}>
+                {city}
+              </option>
+            )
+          )}
+        </select>
+          {/* <input
             className="booking-input"
             type="text"
             placeholder=""
             required
             value={city}
             onChange={(e) => setCity(e.target.value)}
-          />
+          /> */}
         </div>
 
         {/* <label>
