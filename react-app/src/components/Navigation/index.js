@@ -47,7 +47,13 @@ function Navigation({ isLoaded }) {
               </NavLink>
             </button>
 
-            {toggleRole ? (
+
+               <button>
+              <NavLink className="navbar-box" exact to="/vehicles/create">
+                My Page
+              </NavLink>
+            </button>
+            {/* {toggleRole ? (
               <button>
                 <NavLink
                   onClick={handleRole}
@@ -69,7 +75,7 @@ function Navigation({ isLoaded }) {
                   Switch To Host
                 </NavLink>
               </button>
-            )}
+            )} */}
           </div>
         </ul>
       </header>
