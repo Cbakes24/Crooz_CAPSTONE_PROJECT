@@ -1,11 +1,16 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
-  const sessionUser = useSelector((state) => state.session.user);
+  const currentUser = useSelector((state) => state.session.user);
+  const [toggleRole, setToggleRole] = useState(false);
+
+  const handleRole = () => {
+    setToggleRole(!toggleRole);
+  };
 
   return (
     <>
@@ -28,7 +33,7 @@ function Navigation({ isLoaded }) {
           <div className="navbar">
             {isLoaded && (
               <li>
-                <ProfileButton user={sessionUser} />
+                <ProfileButton user={currentUser} />
               </li>
             )}
             <button>
@@ -41,22 +46,30 @@ function Navigation({ isLoaded }) {
                 Vehicle Form
               </NavLink>
             </button>
-            <button>
-              <NavLink className="navbar-box" exact to="/signup">
-                SignUp
-              </NavLink>
-            </button>
-            <button>
-              <NavLink className="navbar-box" exact to="/users/host">
-                Host Page
-              </NavLink>
-            </button>
-            <button>
-              <NavLink className="navbar-box" exact to="/users/guest">
-                Guest Page
-              </NavLink>
-            </button>
 
+            {toggleRole ? (
+              <button>
+                <NavLink
+                  onClick={handleRole}
+                  className="navbar-box"
+                  exact
+                  to="/users/guest"
+                >
+                  Switch To Guest
+                </NavLink>
+              </button>
+            ) : (
+              <button>
+                <NavLink
+                  onClick={handleRole}
+                  className="navbar-box"
+                  exact
+                  to="/users/host"
+                >
+                  Switch To Host
+                </NavLink>
+              </button>
+            )}
           </div>
         </ul>
       </header>
