@@ -6,36 +6,32 @@ import { useHistory, Redirect, NavLink } from "react-router-dom";
 import FavoritesList from "../Favorites/FavoritesList";
 import "./hompage.css";
 import HomepageGuest from "./homepageGuest";
+import HomepageHost from "./homepageHost";
 
-const MyPage = () => {
+const MyPage = ({toggleRole, role}) => {
   const currentUser = useSelector((state) => state.session.user);
-  const [toggleRole, setToggleRole] = useState(false);
 
-  const handleRole = () => {
-    setToggleRole(!toggleRole);
-  };
+
+ 
 
   return (
-  <div>
+    <div>
+    <button onClick={toggleRole} className="toggleRole">
+      Switch Roles
+    </button>
 
-{toggleRole ? (
-              <button>
-            <HomepageGuest />
-              </button>
-            ) : (
-              <button>
-                <NavLink
-                  onClick={handleRole}
-                  className="navbar-box"
-                  exact
-                  to="/users/host"
-                >
-                  Switch To Host
-                </NavLink>
-              </button>
-            )}
-  </div>
+    { role ? (
+        <HomepageGuest />
+    ) : (
+        <HomepageHost />
+    )}
+
+    </div>
+
+
+
+
+
   );
 };
-
-export default MyPage
+export default MyPage;

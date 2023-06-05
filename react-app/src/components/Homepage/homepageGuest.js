@@ -34,7 +34,7 @@ const HomepageGuest = () => {
     <div className="guest-page-trips">
       <div className="personal-trips">
         <div>
-          <h1>{currentUser.username}'s Trips!</h1>
+          <h1>{currentUser.username}'s Guest Page</h1>
         </div>
         <div>
           <h3>Your Upcoming Trips</h3>

@@ -3,6 +3,7 @@ import { NavLink, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
+import HomepageGuest from "../Homepage/homepageGuest";
 
 function Navigation({ isLoaded }) {
   const currentUser = useSelector((state) => state.session.user);
@@ -47,35 +48,13 @@ function Navigation({ isLoaded }) {
               </NavLink>
             </button>
 
-
-               <button>
-              <NavLink className="navbar-box" exact to="/vehicles/create">
-                My Page
+            <button>
+              <NavLink className="navbar-box" exact to="/users/mypage">
+                MyPage
               </NavLink>
             </button>
-            {/* {toggleRole ? (
-              <button>
-                <NavLink
-                  onClick={handleRole}
-                  className="navbar-box"
-                  exact
-                  to="/users/guest"
-                >
-                  Switch To Guest
-                </NavLink>
-              </button>
-            ) : (
-              <button>
-                <NavLink
-                  onClick={handleRole}
-                  className="navbar-box"
-                  exact
-                  to="/users/host"
-                >
-                  Switch To Host
-                </NavLink>
-              </button>
-            )} */}
+
+           
           </div>
         </ul>
       </header>

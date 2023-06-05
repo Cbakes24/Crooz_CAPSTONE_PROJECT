@@ -16,10 +16,17 @@ import HomepageGuest from "./components/Homepage/homepageGuest";
 import HomeMap from "./components/GoogleMaps/googleMapSetup";
 import Home from "./components/GoogleMaps/GoogleMaps";
 import EditReviewButton from "./components/Review/EditReviewModal";
-
+import MyPage from "./components/Homepage/MyPage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [role, setRole] = useState(false);
+
+  const toggleRole = () => {
+    setRole(!role);
+    console.log(role, "**** ROLE *****")
+  };
+
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -67,6 +74,9 @@ function App() {
           </Route>
           <Route exact path="/reviews/:reviewId/edit">
             <EditReviewButton />
+          </Route>
+          <Route exact path="/users/mypage">
+            <MyPage toggleRole={toggleRole} role={role} />
           </Route>
         </Switch>
       )}

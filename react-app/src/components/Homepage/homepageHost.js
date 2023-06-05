@@ -37,13 +37,13 @@ const HomepageHost = () => {
       </div>
 
             <div class='my-vehicles'>
-                <h2>Your Vehicles</h2>
+                <h3>Your Vehicles</h3>
                 {hostVehicles.map((vehicle) => (
                 <VehicleListItem vehicle={vehicle} key={vehicle.id} />
                 ))}
             </div>
             <div class='hosted-trips'>
-                <h2>Your Hosted Trips</h2>
+                <h3>Your Hosted Trips</h3>
                 {hostBookings.map((booking) => (
                 <BookingListItem booking={booking} key={booking.id} />
                 ))}
@@ -55,7 +55,7 @@ const HomepageHost = () => {
                 ))}
             </div> */}
             <div class='vehicle-form'>
-                <h2>Add a Vehicle</h2>
+                <h3>Add a Vehicle</h3>
                 <CreateVehicleForm />
             </div>
 
