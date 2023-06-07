@@ -46,3 +46,18 @@
     background-color: white; /* Add a background color if needed */
     z-index: 1; /* Make sure the sticky element appears above other elements */
   }
+
+  /* @media (max-width: 480px) {
+    .guest-page-trips {
+      flex-direction: column;
+    }
+  
+    .personal-trips {
+      width: 100%;
+    }
+  
+    .favorites-section {
+      width: 100%;
+      margin-top: 20px;
+    }
+  } */

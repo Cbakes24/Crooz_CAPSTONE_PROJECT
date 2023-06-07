@@ -84,7 +84,7 @@ const VehicleSearch = () => {
   }, [locationVehicles]);
 
   return (
-    <div>
+    <div className="homepage">
       <div className="homepage-title">
         <h1>Time to Find Your Ride!</h1>
       </div>
@@ -188,7 +188,10 @@ const VehicleSearch = () => {
         className="home-image" alt="vehicle-pic"
         src="https://images.pexels.com/photos/2454516/pexels-photo-2454516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       />
+
       <div className="list-map">
+      { locationVehicles.length === 0 ? ( null ) : (
+
         <ul>
           {locationVehicles.map((vehicle) => (
             <VehicleListItem
@@ -204,6 +207,8 @@ const VehicleSearch = () => {
             />
           ))}
         </ul>
+
+      )}
         {showMap && <Home city={city} locationVehicles={locationVehicles} />}
       </div>
     </div>
