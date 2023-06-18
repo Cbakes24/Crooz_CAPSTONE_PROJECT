@@ -7,6 +7,7 @@ import { fetchBooking } from "../../store/booking";
 const BookingEdit = () => {
   const { bookingId } = useParams();
   const bookingsObj = useSelector((state) => state.booking);
+  
   const booking = bookingsObj[bookingId];
 
   const dispatch = useDispatch();

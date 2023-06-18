@@ -31,9 +31,13 @@ const VehicleProfile = (props) => {
   }, [dispatch, vehicleId]);
 
   const isVehicleAvailable = (pickupDate, dropOffDate) => {
-    if (!pickupDate || !dropOffDate) {
+    if (!vehicle ||!pickupDate || !dropOffDate) {
+      console.log("***** NO PICK UP DATES ENTERED ****")
       return false;
     }
+
+
+
     return vehicle.bookings.every((booking) => {
       const bookingStart = new Date(booking.pickupDate);
       const bookingEnd = new Date(booking.dropOffDate);
