@@ -5,14 +5,14 @@ import BookingForm from "./bookingForm";
 import { fetchBooking } from "../../store/booking";
 
 const BookingEdit = () => {
+  const dispatch = useDispatch();
   const { bookingId } = useParams();
   const bookingsObj = useSelector((state) => state.booking);
-  
   const booking = bookingsObj[bookingId];
 
-  const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("HELLO IN THE")
     dispatch(fetchBooking(bookingId));
   }, [dispatch]);
 
@@ -20,11 +20,11 @@ const BookingEdit = () => {
     return null;
   }
 
-  return (
+  return booking ? ( 
     <div className="booking-form-edit">
       <BookingForm booking={booking} />;
     </div>
-  );
+  ) : (null);
 };
 
 export default BookingEdit;

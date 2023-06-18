@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { editBooking } from "../../store/booking";
 import "./booking.css";
 
 const BookingForm = ({ booking }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-
-  const [pickupDate, setPickupDate] = useState(booking.pickupDate);
-  const [dropOffDate, setDropOffDate] = useState(booking.dropOffDate);
+  const location = useLocation();
+  const urlPickupDate = new URLSearchParams(location.search).get("pickupDate");
+  const urlDropOffDate = new URLSearchParams(location.search).get(
+    "dropOffDate"
+  );
+  const [pickupDate, setPickupDate] = useState(urlPickupDate || "");
+  const [dropOffDate, setDropOffDate] = useState(urlDropOffDate || "");
   const [address, setAddress] = useState(booking.address);
   const [city, setCity] = useState(booking.city);
   const [state, setState] = useState(booking.state);
@@ -53,7 +57,7 @@ const BookingForm = ({ booking }) => {
           <input
           className="booking-input"
             type="datetime-local"
-            placeholder=""
+            placeholder={pickupDate}
             required
             value={pickupDate}
             onChange={(e) => setPickupDate(e.target.value)}
@@ -64,7 +68,7 @@ const BookingForm = ({ booking }) => {
           <input
           className="booking-input"
             type="datetime-local"
-            placeholder=""
+            placeholder={dropOffDate}
             required
             value={dropOffDate}
             onChange={(e) => setDropOffDate(e.target.value)}

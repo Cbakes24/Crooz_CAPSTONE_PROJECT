@@ -107,12 +107,14 @@ def delete_booking_by_id(id):
 # Edit A BOOKING
 @booking_bp.route('/<int:id>', methods=['PUT'])
 def edit_booking(id):
+    print(id, "*** DATTTTAA EDITTT ***")
     """
     Query for a booking by id and edit that booking
     """
     data = request.json
+    print(data, "DATAAAA")
     id = data['id']
-    address = data['address']
+    address = data['address'] 
     city = data['city']
     state = data['state']
     country = data['country']
@@ -127,3 +129,18 @@ def edit_booking(id):
     db.session.commit()
 
     return jsonify(booking.to_dict())
+
+# GET BOOKING BY ID
+@booking_bp.route('/<int:id>', methods=['GET'])
+def get_booking(id):
+    """
+    Query for a booking by id and edit that booking
+    """
+    booking = Booking.query.get(id)
+    if booking:
+        return jsonify(booking.to_dict())
+    else:
+        return jsonify({
+                'success': False,
+                'message': "Booking Not Found"
+        })

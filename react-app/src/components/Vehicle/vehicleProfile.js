@@ -36,13 +36,18 @@ const VehicleProfile = (props) => {
       return false;
     }
 
-
+// this function is making sure you cant book a vehicle 
+// if it is already booked during those given dates so it cannon over lap
 
     return vehicle.bookings.every((booking) => {
       const bookingStart = new Date(booking.pickupDate);
+      console.log("🚀 ~ file: vehicleProfile.js:43 ~ returnvehicle.bookings.every ~ booking.pickupDate:", booking.pickupDate)
       const bookingEnd = new Date(booking.dropOffDate);
+      console.log("🚀 ~ file: vehicleProfile.js:44 ~ returnvehicle.bookings.every ~ booking.dropOffDate:", booking.dropOffDate)
       const start = new Date(pickupDate);
+      console.log("🚀 ~ file: vehicleProfile.js:46 ~ returnvehicle.bookings.every ~ pickupDate:", pickupDate)
       const end = new Date(dropOffDate);
+      console.log("🚀 ~ file: vehicleProfile.js:49 ~ returnvehicle.bookings.every ~ dropOffDate:", dropOffDate)
 
       if (pickupDate > dropOffDate) {
         alert("The Pick Up Date must be before the Drop Off Date");

@@ -18,7 +18,9 @@ const BookingListItem = ({ booking }) => {
     day: "numeric",
   };
   const pickupDate = pickupDateObj.toLocaleDateString("en-US", options);
+  console.log("🚀 ~ file: bookingListItem.js:21 ~ BookingListItem ~ pickupDate:", pickupDate)
   const dropOffDate = dropOffDateObj.toLocaleDateString("en-US", options);
+  console.log("🚀 ~ file: bookingListItem.js:23 ~ BookingListItem ~ dropOffDate:", dropOffDate)
 
 
 
@@ -29,13 +31,13 @@ const BookingListItem = ({ booking }) => {
     history.push("/users/guest");
   };
 
-  const handleEdit = async (e) => {
-    e.preventDefault();
-    if (currentUser.id === booking.guest.id) {
-      history.push(`/bookings/${booking.id}/edit`);
-    }
-    return null;
-  };
+  // const handleEdit = async (e) => {
+  //   e.preventDefault();
+  //   if (currentUser.id === booking.guest.id) {
+  //    history.push(`/bookings/${booking.id}/edit?pickupDate=${pickupDate}&dropOffDate=${dropOffDate}`)
+  //   }
+  //   return null;
+  // };
 
   return (
     <div className="booking-item-box">
@@ -69,8 +71,12 @@ const BookingListItem = ({ booking }) => {
             {booking.pickupDate && today < new Date(booking.pickupDate) ? (
               <div>
                 <button onClick={handleDelete}>Cancel Trip</button>
-                <button onClick={handleEdit}>Edit</button>
+                {/* <button onClick={handleEdit}>Edit</button> */}
+                <Link to={`/bookings/${booking.id}/edit?pickupDate=${pickupDate}&dropOffDate=${dropOffDate}`} >
+                  <button>Edit</button>
+                </Link>
               </div>
+              
             ) : null}
 
             {booking.dropOffDate &&
