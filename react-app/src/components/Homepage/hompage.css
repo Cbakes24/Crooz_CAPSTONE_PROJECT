@@ -37,7 +37,8 @@
     max-height: 500px;
     flex-direction: column;
     align-items: stretch;
-    margin-top: 62px
+    margin-top: 62px;
+    margin-left: 10px
 }
 
 .sticky-heading {

@@ -16,14 +16,22 @@ const MyPage = ({toggleRole, role}) => {
 
   return (
     <div>
-    <button onClick={toggleRole} className="toggleRole">
-      Switch Roles
-    </button>
 
     { role ? (
+      <div>
+    <button onClick={toggleRole} className="toggleRole">
+      <h3>Switch To Host</h3>
+    </button>
         <HomepageGuest />
+      </div>
     ) : (
+      <div>
+    <button onClick={toggleRole} className="toggleRole">
+    <h3> Switch To Guest</h3>
+   
+    </button>
         <HomepageHost />
+        </div>
     )}
 
     </div>
