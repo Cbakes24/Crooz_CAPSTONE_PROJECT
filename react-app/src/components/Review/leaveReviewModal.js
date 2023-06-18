@@ -8,7 +8,7 @@ import "./review.css"
 const LeaveReviewModal = ({bookingId, vehicleId, review}) => {
   const dispatch = useDispatch();
   const [body, setBody] = useState("");
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(1);
   const currentUser = useSelector((state) => state.session.user);
   const user_id = currentUser.id
   const [errors, setErrors] = useState([]);
@@ -39,7 +39,11 @@ const LeaveReviewModal = ({bookingId, vehicleId, review}) => {
       setIsSubmitted(true);
     }
   };
+  const handleRating = (e) => {
+    const newRating = parseInt(e.target.value);
+    setRating(newRating);
 
+  };
   return (
     <div className="review-form-box">
       <h1 className="review-title">Leave a Review!</h1>
@@ -63,12 +67,15 @@ const LeaveReviewModal = ({bookingId, vehicleId, review}) => {
         <label>
           Rating
           <input
-            type="number"
+            type="range"
             value={rating}
-            onChange={(e) => setRating(e.target.value)}
+            min={1}
+            max={10}
+            onChange={handleRating}
             required
            />
         </label>
+        <span>{rating}</span>
         <div>
             <button type="submit">Submit Review</button>
         </div>

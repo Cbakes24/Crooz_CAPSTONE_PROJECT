@@ -9,7 +9,12 @@
   align-items: center;
   flex-direction: column;
 }
+.upcoming-trips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three song boxes per row */
+  grid-gap: 20px; /* Gap between song boxes */
 
+}
 .booking-item-box {
   display: flex;
   align-items: center;
