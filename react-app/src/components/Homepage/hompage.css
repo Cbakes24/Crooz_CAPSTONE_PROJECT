@@ -13,7 +13,6 @@
 .upcoming-trips {
     display: flex;
     flex-wrap: nowrap;
-    overflow-y: scroll;
     max-height: 500px;
     flex-direction: column;
   
@@ -22,9 +21,12 @@
 .previous-trips {
     display: flex;
     flex-wrap: nowrap;
-    overflow-y: scroll;
     max-height: 500px;
     flex-direction: column;
+}
+
+.prev-trip-title {
+  margin-top: 180px
 }
 
 .favorites-section {

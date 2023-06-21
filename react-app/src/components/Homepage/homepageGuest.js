@@ -45,7 +45,7 @@ const HomepageGuest = () => {
           </div>
         </div>
         <div>
-          <h3>Your Previous Trips</h3>
+          <h3 className="prev-trip-title">Your Previous Trips</h3>
           <div className="previous-trips">
             {previousTrips.map((booking) => (
               <BookingListItem booking={booking} key={booking.id} />
