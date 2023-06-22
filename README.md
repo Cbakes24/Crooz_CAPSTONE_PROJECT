@@ -41,9 +41,9 @@ Logic has been built in using JavaScript functions on React to prevent any over 
 ![CRUZ Search Filter](./images/SearchFiler.png)
 
 ### Guest/Host Profile Page
-The Guest/Host pages feature full CRUD (GET, CREATE, EDIT, DELETE)for vehicles, and bookings. It also contains partial CRUD (GET, CREATE, DELETE) for reviews and favorite vehicles.
+The Guest/Host pages feature full CRUD (GET, CREATE, EDIT, DELETE)for vehicles, bookings, and reviews. It also contains partial CRUD (GET, CREATE, DELETE) for favorite vehicles.
 
-The Guest profile page is a feature where users will have access to all of their information regarding any upcoming bookings, previous bookings, and a favorite vehicles list to have quick access to desired FUVs. Reviews can be left on previous bookings, that will show up on a vehicle's profile page.
+The Guest profile page is a feature where users will have access to all of their information regarding any upcoming bookings, previous bookings, and a favorite vehicles list to have quick access to desired FUVs. Reviews can only be left on previous bookings, that will show up on a vehicle's profile page.
 
 The Host page will show a host their vehicles they have listed on the website and any upcoming/previous bookings with those vehicles. It also contains a vehicle form where a host can add a new vehicle or edit a current one.
 

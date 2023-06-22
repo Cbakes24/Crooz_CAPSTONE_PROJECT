@@ -175,20 +175,20 @@ label {
 
  .list-map {
   display: flex;
-  height: 100vh;
+  width: 100%;
 }
 
 .list-map ul {
   flex: 1;
-  height: 140vh;
   overflow-y: scroll;
+  margin-right: 10px; /* Add some spacing between the list and map */
 }
 
 .Home {
   flex: 1;
   height: 100vh;
+  width: 100%; /* Set the width to 100% to take up the full available space */
 }
-
  .fa-bicycle {
   animation: move-bicycle 20s linear infinite;
   top: 100px;

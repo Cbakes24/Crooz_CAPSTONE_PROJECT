@@ -37,11 +37,14 @@ const VehicleSearch = () => {
       country,
     };
 
+    var now = new Date();
+    var minimumPickupTime = new Date(now.getTime() + (59 * 60 * 1000)); // Adding 1 hour to the current time
+    
     if (pickupDate > dropOffDate) {
       alert("The Pick Up Date must be before the Drop Off Date");
       return false;
-    } else if (new Date(pickupDate) < today || new Date(dropOffDate) < today) {
-      alert("Dates cannot be a previous date");
+    } else if (new Date(pickupDate) < minimumPickupTime || new Date(dropOffDate) < minimumPickupTime) {
+      alert("The earliest pick up date must be at least 1 hour in advance");
       return false;
     }
 

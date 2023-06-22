@@ -76,7 +76,7 @@ export default function Home({ city, locationVehicles }) {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={currentPosition} // automatically centers the map on the coordinates
-        zoom={12}
+        zoom={11}
       >
         {addresses.map((address, index) => (
           <Marker

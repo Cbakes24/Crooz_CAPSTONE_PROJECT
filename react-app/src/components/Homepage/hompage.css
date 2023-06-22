@@ -6,27 +6,28 @@
 
 
 .personal-trips {
-    width: 70%;
-
+  width: 70%;
 }
 
 .upcoming-trips {
-    display: flex;
-    flex-wrap: nowrap;
-    max-height: 500px;
-    flex-direction: column;
-  
+  display: flex;
+  flex-direction: column;
+  height: 1000px;
+  overflow: scroll;
+  margin-bottom: 20px;
 }
 
 .previous-trips {
-    display: flex;
-    flex-wrap: nowrap;
-    max-height: 500px;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  overflow: scroll;
+  height: 1000px;
+  margin-bottom: 20px;
 }
 
 .prev-trip-title {
-  margin-top: 180px
+  margin-top: 100px
 }
 
 .favorites-section {
