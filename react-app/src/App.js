@@ -24,7 +24,6 @@ function App() {
 
   const toggleRole = () => {
     setRole(!role);
-    console.log(role, "**** ROLE *****")
   };
 
   useEffect(() => {

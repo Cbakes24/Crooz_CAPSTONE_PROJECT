@@ -18,9 +18,8 @@ const BookingListItem = ({ booking }) => {
     day: "numeric",
   };
   const pickupDate = pickupDateObj.toLocaleDateString("en-US", options);
-  console.log("🚀 ~ file: bookingListItem.js:21 ~ BookingListItem ~ pickupDate:", pickupDate)
   const dropOffDate = dropOffDateObj.toLocaleDateString("en-US", options);
-  console.log("🚀 ~ file: bookingListItem.js:23 ~ BookingListItem ~ dropOffDate:", dropOffDate)
+
 
 
 

@@ -12,7 +12,6 @@ const BookingEdit = () => {
 
 
   useEffect(() => {
-    console.log("HELLO IN THE")
     dispatch(fetchBooking(bookingId));
   }, [dispatch]);
 

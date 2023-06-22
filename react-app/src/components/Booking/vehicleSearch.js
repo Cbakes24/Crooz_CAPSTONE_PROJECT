@@ -19,6 +19,7 @@ const VehicleSearch = () => {
   const [errors, setErrors] = useState([]);
   const [locationVehicles, setLocationVehicles] = useState([]);
   const [showMap, setShowMap] = useState(false);
+  const [searchPerformed, setSearchPerformed] = useState(false);
 
 
   const today = new Date();
@@ -37,8 +38,10 @@ const VehicleSearch = () => {
       country,
     };
 
+    setSearchPerformed(true);
+
     var now = new Date();
-    var minimumPickupTime = new Date(now.getTime() + (59 * 60 * 1000)); // Adding 1 hour to the current time
+    var minimumPickupTime = new Date(now.getTime() - (59 * 60 * 1000)); // Adding 1 hour to the current time
     
     if (pickupDate > dropOffDate) {
       alert("The Pick Up Date must be before the Drop Off Date");
@@ -193,7 +196,7 @@ const VehicleSearch = () => {
       />
 
       <div className="list-map">
-      { locationVehicles.length === 0 ? ( null ) : (
+      { locationVehicles && locationVehicles.length > 0 ?  (
 
         <ul>
           {locationVehicles.map((vehicle) => (
@@ -211,7 +214,7 @@ const VehicleSearch = () => {
           ))}
         </ul>
 
-      )}
+      ) : ( searchPerformed && <h2>No available vehicles</h2>)}
         {showMap && <Home city={city} locationVehicles={locationVehicles} />}
       </div>
     </div>

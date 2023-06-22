@@ -57,11 +57,8 @@ export const fetchGuestBookings = () => async (dispatch) => {
 };
 
 // GET a booking by id
-export const fetchBooking = (bookingId) => async (dispatch) => {
-  console.log("🚀 ~ file: booking.js:61 ~ fetchBooking ~ bookingId:", bookingId)
-  
+export const fetchBooking = (bookingId) => async (dispatch) => {  
   const res = await fetch(`/api/bookings/${bookingId}`);
-
   const data = await res.json();
   if (res.ok) {
     dispatch(setBookings([data]));
