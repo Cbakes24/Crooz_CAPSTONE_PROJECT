@@ -23,7 +23,7 @@ const VehicleSearch = () => {
 
 
   const today = new Date();
-  const cities = ['Boston', 'San Diego']
+  const cities = ['Boston', 'San Diego', 'Phoenix']
 
 
   const handleSubmit = async (e) => {
