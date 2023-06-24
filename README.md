@@ -38,7 +38,7 @@ for more detailed information.
 
 Logic has been built in using JavaScript functions on React to prevent any over lapping dates/previous date selection. On the backend Redux is used to load the bookings state of each vehicle to determine if it has any bookings during the selected user dates and will filter them out if any bookings over lap.
 
-![CRUZ Search Filter](./images/SearchFiler.png)
+![CRUZ Search Filter](./images/SearchFilter.png)
 
 ### Guest/Host Profile Page
 The Guest/Host pages feature full CRUD (GET, CREATE, EDIT, DELETE)for vehicles, bookings, and reviews. It also contains partial CRUD (GET, CREATE, DELETE) for favorite vehicles.
