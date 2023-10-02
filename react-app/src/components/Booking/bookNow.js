@@ -36,7 +36,7 @@ const BookNow = (props) => {
     if (data.errors) {
       setErrors(data.errors);
     } else {
-      history.push(`/users/guest`);
+      history.push(`/bookings/payments`);
     }
   };
 

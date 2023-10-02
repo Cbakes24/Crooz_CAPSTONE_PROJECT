@@ -17,6 +17,7 @@ import HomeMap from "./components/GoogleMaps/googleMapSetup";
 import Home from "./components/GoogleMaps/GoogleMaps";
 import EditReviewButton from "./components/Review/EditReviewModal";
 import MyPage from "./components/Homepage/MyPage";
+import StripeContainer from "./components/Payments/StripeContainer";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -26,6 +27,7 @@ function App() {
     setRole(!role);
   };
 
+  // get the current user and show the app when done
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -76,6 +78,10 @@ function App() {
           </Route>
           <Route exact path="/users/mypage">
             <MyPage toggleRole={toggleRole} role={role} />
+          </Route>
+          <Route exact path="/bookings/payments">
+            <StripeContainer />
+            <div>hi</div>
           </Route>
         </Switch>
       )}

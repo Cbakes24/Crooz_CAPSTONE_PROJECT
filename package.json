@@ -3,6 +3,9 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@heroicons/react": "^2.0.18",
     "@react-google-maps/api": "^2.18.1",
+    "@stripe/react-stripe-js": "^2.1.1",
+    "@stripe/stripe-js": "^1.54.1",
+    "axios": "^1.4.0",
     "flask": "^0.2.10",
     "react-geocode": "^0.2.3"
   }
