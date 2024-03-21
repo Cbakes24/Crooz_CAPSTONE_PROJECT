@@ -42,6 +42,18 @@
   s1.setAttribute('crossorigin','*');
   s0.parentNode.insertBefore(s1,s0);
   })();
+
+  window.Tawk_API = window.Tawk_API || {};
+window.Tawk_API.onLoad = function(){
+    // Custom code to run when the Tawk.to widget is loaded
+    console.log("chat box haxs loaded");
+    var messageDiv = document.createElement("div");
+        messageDiv.innerText = "Hello Chat Box";
+        document.body.appendChild(messageDiv);
+
+    // You ,can add your custom logic here
+};
+
   </script>
   <!--End of Tawk.to Script-->
   </body>
