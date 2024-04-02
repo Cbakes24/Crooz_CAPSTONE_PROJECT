@@ -101,7 +101,7 @@ def delete_booking_by_id(id):
     db.session.commit()
     return jsonify({
         'success': True,
-        'message': 'Booking deleted successfully!!!'
+        'message': 'Booking deleted successfully!'
     })
 
 # Edit A BOOKING
