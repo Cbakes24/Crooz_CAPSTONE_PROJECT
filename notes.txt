@@ -10,3 +10,5 @@ payload to the thunk with the booking info and vehicle information
 the thunk will send it to api/bookings/create
 
 there it will create a booking with a guest host vehicle and dates
+
+5. New Note
